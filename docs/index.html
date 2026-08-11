@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出勤早見表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #17130f;
+    --surface: #221c16;
+    --surface-2: #2b241c;
+    --line: #3a3226;
+    --text: #f2e9da;
+    --text-dim: #a89a86;
+    --text-faint: #6e6255;
+    --brass: #c99a3f;
+    --brass-soft: rgba(201,154,63,0.16);
+    --off: #574d3e;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: radial-gradient(circle at 50% -10%, #241d16 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    min-height:100vh;
+    padding-bottom: 40px;
+  }
+  .wrap{max-width: 560px; margin: 0 auto; padding: 0 16px;}
+
+  header{
+    padding: 28px 16px 18px;
+    text-align:center;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing: 0.25em;
+    color: var(--brass);
+    text-transform: uppercase;
+  }
+  h1{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    font-size: 26px;
+    margin: 6px 0 2px;
+    letter-spacing: 0.04em;
+  }
+  .sub{
+    font-size:12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* region tabs */
+  .tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding: 4px 16px 18px;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto;
+    padding:9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-dim);
+    font-size:13.5px;
+    font-weight:500;
+    cursor:pointer;
+    transition: all .2s ease;
+    white-space:nowrap;
+  }
+  .tab.active{
+    background: var(--brass);
+    border-color: var(--brass);
+    color: #1b1610;
+    font-weight:700;
+  }
+
+  /* week nav */
+  .weeknav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 16px 14px;
+  }
+  .weeknav .range{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color: var(--text-dim);
+  }
+  .weeknav button{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    width:32px; height:32px;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+  }
+  .weeknav button:active{background: var(--surface-2);}
+
+  /* table card */
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow:hidden;
+    margin: 0 16px;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
+  }
+  .table-scroll{
+    overflow-x:auto;
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
+    min-width: 460px;
+  }
+  thead th{
+    position:sticky; top:0;
+    background: var(--surface-2);
+    font-weight:500;
+    font-size:12px;
+    color: var(--text-dim);
+    padding: 10px 4px;
+    text-align:center;
+    border-bottom: 1px solid var(--line);
+  }
+  thead th .dow{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:10px;
+    color: var(--text-faint);
+    margin-top:2px;
+  }
+  thead th.sat{ color: #6fa8dc; }
+  thead th.sat .dow{ color: #6fa8dc; }
+  thead th.sun{ color: #e06666; }
+  thead th.sun .dow{ color: #e06666; }
+  thead th.today{ color: var(--brass); }
+  thead th.today .dow{ color: var(--brass); }
+
+  th.name-col, td.name-cell{
+    position:sticky; left:0;
+    background: var(--surface);
+    text-align:left;
+    padding: 12px 14px;
+    font-size:13.5px;
+    font-weight:700;
+    border-right: 1px solid var(--line);
+    z-index:2;
+    min-width: 96px;
+  }
+  thead th.name-col{ z-index:3; background: var(--surface-2); }
+
+  tbody tr{ border-bottom: 1px solid var(--line); }
+  tbody tr:last-child{ border-bottom:none; }
+
+  td{
+    text-align:center;
+    padding: 8px 4px;
+    vertical-align:middle;
+  }
+  td.today-col{ background: rgba(201,154,63,0.05); }
+
+  .cell{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+  .cell.on{
+    background: var(--brass-soft);
+    border: 1.5px solid var(--brass);
+  }
+  .cell .mark{
+    font-size:16px;
+    font-weight:700;
+    color: var(--brass);
+    line-height:1;
+  }
+  .cell.off{
+    border: 1.5px solid var(--line);
+  }
+  .cell.off .mark{ color: var(--text-faint); }
+
+  footer{
+    text-align:center;
+    padding: 22px 16px 4px;
+    font-size:11px;
+    color: var(--text-faint);
+    letter-spacing:0.04em;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card{ animation: rise .5s ease both; }
+    @keyframes rise{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">SHIFT LOOKUP</div>
+    <h1>出勤早見表</h1>
+    <div class="sub" id="statusMsg">読み込み中…</div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="card">
+    <div class="table-scroll">
+      <table id="shiftTable"></table>
+    </div>
+  </div>
+
+  <footer>データは毎日自動更新されます</footer>
+</div>
+
+<script>
+// ---- 実データ読み込み ----
+let regions = {};
+let currentRegion = null;
+const dows = ["日","月","火","水","木","金","土"];
+
+function isSameDate(a,b){
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+
+function parseDateStr(s){
+  // "2026-08-11" -> Date
+  const [y,m,d] = s.split('-').map(Number);
+  return new Date(y, m-1, d);
+}
+
+function fmtRange(dates){
+  const f = d => `${d.getMonth()+1}/${d.getDate()}`;
+  return `${f(dates[0])} – ${f(dates[dates.length-1])}`;
+}
+
+async function loadData(){
+  const statusEl = document.getElementById('statusMsg');
+  try{
+    const res = await fetch('data.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('data.json not found');
+    const json = await res.json();
+    regions = json.regions || {};
+    currentRegion = Object.keys(regions)[0] || null;
+    if(statusEl){
+      const updated = json.generated_at ? new Date(json.generated_at) : null;
+      statusEl.textContent = updated
+        ? `最終更新: ${updated.getMonth()+1}/${updated.getDate()} ${String(updated.getHours()).padStart(2,'0')}:${String(updated.getMinutes()).padStart(2,'0')}`
+        : '';
+    }
+    render();
+  }catch(e){
+    if(statusEl) statusEl.textContent = 'データを読み込めませんでした（data.jsonが見つかりません）';
+    console.error(e);
+  }
+}
+
+function renderTabs(){
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  Object.keys(regions).forEach(region=>{
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (region===currentRegion ? ' active' : '');
+    btn.textContent = region;
+    btn.onclick = () => { currentRegion = region; render(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function render(){
+  renderTabs();
+  const data = regions[currentRegion];
+  const table = document.getElementById('shiftTable');
+  table.innerHTML = '';
+
+  if(!data || !data.dates || data.dates.length === 0){
+    table.innerHTML = '<tr><td style="padding:20px;color:var(--text-dim)">この地域のデータがまだありません</td></tr>';
+    return;
+  }
+
+  const dateObjs = data.dates.map(parseDateStr);
+  const today = new Date();
+
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  const nameTh = document.createElement('th');
+  nameTh.className = 'name-col';
+  nameTh.textContent = 'セラピスト';
+  headRow.appendChild(nameTh);
+  dateObjs.forEach(d=>{
+    const th = document.createElement('th');
+    if(d.getDay()===6) th.classList.add('sat');
+    if(d.getDay()===0) th.classList.add('sun');
+    if(isSameDate(d, today)) th.classList.add('today');
+    th.innerHTML = `${d.getDate()}<span class="dow">${dows[d.getDay()]}</span>`;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  data.therapists.forEach(t=>{
+    const tr = document.createElement('tr');
+    const nameTd = document.createElement('td');
+    nameTd.className = 'name-cell';
+    nameTd.innerHTML = `${t.name}<br><span style="font-weight:400;font-size:10.5px;color:var(--text-faint)">${t.shop || ''}</span>`;
+    tr.appendChild(nameTd);
+
+    data.dates.forEach((dateStr, idx)=>{
+      const d = dateObjs[idx];
+      const td = document.createElement('td');
+      if(isSameDate(d, today)) td.classList.add('today-col');
+      const dayMap = data.schedule[dateStr] || {};
+      const worked = !!dayMap[t.name];
+      const cell = document.createElement('div');
+      cell.className = 'cell ' + (worked ? 'on' : 'off');
+      cell.innerHTML = `<span class="mark">${worked ? '○' : '−'}</span>`;
+      td.appendChild(cell);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+}
+
+loadData();
+</script>
+</body>
+</html>
