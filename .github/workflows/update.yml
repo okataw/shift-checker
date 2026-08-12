@@ -33,6 +33,9 @@ jobs:
       - name: アロマモアを取得
         run: python scrape_aromamore.py
 
+      - name: トキョプラを取得
+        run: python scrape_tokyopla.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
