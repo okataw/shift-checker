@@ -30,16 +30,15 @@ OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "data", "offsuit.json")
 # 名前ではない宣伝用の文言（見つかったら随時ここに追加していく）
 EXCLUDE_NAMES = {"エリアNo", "新人割"}
 
-NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12}(?:\s[ぁ-んァ-ヶ一-龠ー]{1,12})?)\s*[\(（](\d{2})[\)）]')
+NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12}(?:\s[ぁ-んァ-ヶ一-龠ー]{1,12})?)\s*[\(（](\d{2})歳?[\)）]')
 
 WEEKDAY_KANJI = ["日", "月", "火", "水", "木", "金", "土"]
 
 
 def fetch_day(page, date_obj, is_first):
     """指定日のタブをクリックして、出勤者名リストを返す"""
-    # 日本式の曜日インデックス（日=0, 月=1, ... 土=6）に変換してラベルを組み立てる
-    weekday_index = (date_obj.weekday() + 1) % 7
-    label = f"{date_obj.month}月{date_obj.day}日 ({WEEKDAY_KANJI[weekday_index]})"
+    # 曜日の表記ゆれ（空白の有無など）に影響されないよう、日付部分だけで探す
+    label = f"{date_obj.month}月{date_obj.day}日"
 
     if not is_first:
         tab = page.get_by_text(label, exact=False).first
