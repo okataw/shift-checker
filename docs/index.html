@@ -84,29 +84,6 @@
     font-weight:700;
   }
 
-  /* week nav */
-  .weeknav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 0 16px 14px;
-  }
-  .weeknav .range{
-    font-family:'Space Mono', monospace;
-    font-size:13px;
-    color: var(--text-dim);
-  }
-  .weeknav button{
-    background: var(--surface);
-    border: 1px solid var(--line);
-    color: var(--text);
-    width:32px; height:32px;
-    border-radius:8px;
-    font-size:15px;
-    cursor:pointer;
-  }
-  .weeknav button:active{background: var(--surface-2);}
-
   /* table card */
   .card{
     background: var(--surface);
@@ -202,6 +179,120 @@
     letter-spacing:0.04em;
   }
 
+  /* filter bar */
+  .filterbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 16px 14px;
+    gap:10px;
+  }
+  .filterbtn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size:13px;
+    font-weight:500;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor:pointer;
+  }
+  .filterbtn .star{ color: var(--brass); }
+  .filter-toggle{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12.5px;
+    color: var(--text-dim);
+  }
+  .switch{
+    position:relative;
+    width:38px; height:22px;
+    border-radius:999px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+  .switch::after{
+    content:'';
+    position:absolute;
+    top:2px; left:2px;
+    width:16px; height:16px;
+    border-radius:50%;
+    background: var(--text-faint);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .switch.on{ background: var(--brass-soft); border-color: var(--brass); }
+  .switch.on::after{ transform: translateX(16px); background: var(--brass); }
+
+  .name-cell{ cursor:pointer; }
+  .name-cell .star-mark{
+    display:inline-block;
+    margin-right:4px;
+    color: var(--line);
+    font-size:13px;
+  }
+  .name-cell.fav .star-mark{ color: var(--brass); }
+
+  /* modal */
+  .modal-backdrop{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,0.55);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:50;
+  }
+  .modal-backdrop.open{ display:flex; }
+  .modal{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px 16px 0 0;
+    width:100%;
+    max-width:560px;
+    max-height:75vh;
+    overflow-y:auto;
+    padding: 18px 16px 28px;
+  }
+  .modal h2{
+    font-family:'Shippori Mincho', serif;
+    font-size:17px;
+    margin: 0 0 12px;
+  }
+  .modal-list{ display:flex; flex-direction:column; gap:2px; }
+  .modal-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--line);
+    font-size:14px;
+  }
+  .modal-row .star-mark{ color: var(--line); font-size:16px; }
+  .modal-row.fav .star-mark{ color: var(--brass); }
+  .modal-row .area-tag{
+    margin-left:auto;
+    font-size:11px;
+    color: var(--text-faint);
+  }
+  .modal-close{
+    display:block;
+    width:100%;
+    margin-top:16px;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    background: var(--brass);
+    color: #1b1610;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+  }
+
   @media (prefers-reduced-motion: no-preference){
     .card{ animation: rise .5s ease both; }
     @keyframes rise{
@@ -221,13 +312,29 @@
 
   <div class="tabs" id="tabs"></div>
 
+  <div class="filterbar">
+    <button class="filterbtn" id="openFilter"><span class="star">★</span>セラピストを選ぶ</button>
+    <label class="filter-toggle">
+      選択のみ表示
+      <span class="switch" id="favToggle"></span>
+    </label>
+  </div>
+
   <div class="card">
     <div class="table-scroll">
       <table id="shiftTable"></table>
     </div>
   </div>
 
-  <footer>データは毎日自動更新されます</footer>
+  <footer>データは毎日自動更新されます・名前の★タップでも登録できます</footer>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <h2>セラピストを選ぶ</h2>
+    <div class="modal-list" id="modalList"></div>
+    <button class="modal-close" id="modalClose">閉じる</button>
+  </div>
 </div>
 
 <script>
@@ -235,6 +342,27 @@
 let regions = {};
 let currentRegion = null;
 const dows = ["日","月","火","水","木","金","土"];
+
+// ---- お気に入り管理（タブレット内に保存） ----
+const FAV_KEY = 'shiftapp_favorites';
+const FILTER_KEY = 'shiftapp_filter_on';
+
+function loadFavorites(){
+  try{
+    return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || '[]'));
+  }catch(e){ return new Set(); }
+}
+function saveFavorites(set){
+  localStorage.setItem(FAV_KEY, JSON.stringify([...set]));
+}
+let favorites = loadFavorites();
+let filterOn = localStorage.getItem(FILTER_KEY) === '1';
+
+function toggleFavorite(name){
+  if(favorites.has(name)) favorites.delete(name);
+  else favorites.add(name);
+  saveFavorites(favorites);
+}
 
 function isSameDate(a,b){
   return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
@@ -316,11 +444,28 @@ function render(){
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  data.therapists.forEach(t=>{
+  const visibleTherapists = filterOn
+    ? data.therapists.filter(t => favorites.has(t.name))
+    : data.therapists;
+
+  if(visibleTherapists.length === 0){
+    const tr = document.createElement('tr');
+    const td = document.createElement('td');
+    td.colSpan = data.dates.length + 1;
+    td.style.cssText = 'padding:24px;color:var(--text-dim);text-align:center;';
+    td.textContent = filterOn ? '選択されたセラピストがいません。「セラピストを選ぶ」から登録してください。' : '表示するデータがありません';
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    table.appendChild(tbody);
+    return;
+  }
+
+  visibleTherapists.forEach(t=>{
     const tr = document.createElement('tr');
     const nameTd = document.createElement('td');
-    nameTd.className = 'name-cell';
-    nameTd.innerHTML = `${t.name}<br><span style="font-weight:400;font-size:10.5px;color:var(--text-faint)">${t.shop || ''}</span>`;
+    nameTd.className = 'name-cell' + (favorites.has(t.name) ? ' fav' : '');
+    nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}<br><span style="font-weight:400;font-size:10.5px;color:var(--text-faint)">${t.shop || ''}</span>`;
+    nameTd.onclick = () => { toggleFavorite(t.name); render(); };
     tr.appendChild(nameTd);
 
     data.dates.forEach((dateStr, idx)=>{
@@ -339,6 +484,48 @@ function render(){
   });
   table.appendChild(tbody);
 }
+
+// ---- フィルタートグル ----
+const favToggleEl = document.getElementById('favToggle');
+function syncToggleUI(){
+  favToggleEl.classList.toggle('on', filterOn);
+}
+favToggleEl.onclick = () => {
+  filterOn = !filterOn;
+  localStorage.setItem(FILTER_KEY, filterOn ? '1' : '0');
+  syncToggleUI();
+  render();
+};
+syncToggleUI();
+
+// ---- 選択モーダル ----
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalList = document.getElementById('modalList');
+
+function openModal(){
+  const data = regions[currentRegion];
+  modalList.innerHTML = '';
+  if(data && data.therapists){
+    data.therapists.forEach(t=>{
+      const row = document.createElement('div');
+      row.className = 'modal-row' + (favorites.has(t.name) ? ' fav' : '');
+      row.innerHTML = `<span class="star-mark">★</span><span>${t.name}</span><span class="area-tag">${t.area || ''}</span>`;
+      row.onclick = () => {
+        toggleFavorite(t.name);
+        row.classList.toggle('fav', favorites.has(t.name));
+      };
+      modalList.appendChild(row);
+    });
+  }
+  modalBackdrop.classList.add('open');
+}
+function closeModal(){
+  modalBackdrop.classList.remove('open');
+  render();
+}
+document.getElementById('openFilter').onclick = openModal;
+document.getElementById('modalClose').onclick = closeModal;
+modalBackdrop.onclick = (e) => { if(e.target === modalBackdrop) closeModal(); };
 
 loadData();
 </script>
