@@ -36,6 +36,9 @@ jobs:
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
+      - name: Offsuitを取得
+        run: python scrape_offsuit.py
+
       - name: データをまとめる
         run: python merge_data.py
 
