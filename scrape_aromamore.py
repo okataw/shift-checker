@@ -31,8 +31,8 @@ HEADERS = {
                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 }
 
-# 「名前(年齢)」の形の文字列を拾う正規表現
-NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\((\d{2})\)')
+# 「名前(年齢)」の形の文字列を拾う正規表現（名前と括弧の間に空白が入る場合にも対応）
+NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\s*[\(（](\d{2})[\)）]')
 
 
 def get_week_dates():
