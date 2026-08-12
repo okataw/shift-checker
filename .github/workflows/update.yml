@@ -30,6 +30,9 @@ jobs:
       - name: ラビット空間を取得
         run: python scrape_rabbitspace.py
 
+      - name: アロマモアを取得
+        run: python scrape_aromamore.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
