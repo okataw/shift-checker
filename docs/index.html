@@ -396,9 +396,9 @@ function saveFavorites(set){
 let favorites = loadFavorites();
 let filterOn = localStorage.getItem(FILTER_KEY) === '1';
 
-function toggleFavorite(name){
-  if(favorites.has(name)) favorites.delete(name);
-  else favorites.add(name);
+function toggleFavorite(key){
+  if(favorites.has(key)) favorites.delete(key);
+  else favorites.add(key);
   saveFavorites(favorites);
 }
 
@@ -497,10 +497,10 @@ function render(){
   // 今週のデータに載っている★登録者の店舗情報（地域も含めて）を記憶しておく
   let metaChanged = false;
   data.therapists.forEach(t=>{
-    if(favorites.has(t.name)){
-      const prev = favMeta[t.name];
-      if(!prev || prev.shop !== t.shop || prev.area !== t.area || prev.region !== currentRegion){
-        favMeta[t.name] = { shop: t.shop || '', area: t.area || '', region: currentRegion };
+    if(favorites.has(t.key)){
+      const prev = favMeta[t.key];
+      if(!prev || prev.shop !== t.shop || prev.area !== t.area || prev.region !== currentRegion || prev.name !== t.name){
+        favMeta[t.key] = { name: t.name, shop: t.shop || '', area: t.area || '', region: currentRegion };
         metaChanged = true;
       }
     }
@@ -508,18 +508,18 @@ function render(){
   if(metaChanged) saveFavMeta(favMeta);
 
   let baseList = filterOn
-    ? data.therapists.filter(t => favorites.has(t.name))
+    ? data.therapists.filter(t => favorites.has(t.key))
     : data.therapists;
 
   // ★登録済みだが今週のデータに載っていない人を、出勤なしの状態で補う
   // （同じ地域に登録されていた人だけを対象にする）
   if(filterOn){
-    const presentNames = new Set(data.therapists.map(t => t.name));
-    favorites.forEach(name => {
-      if(!presentNames.has(name)){
-        const meta = favMeta[name];
+    const presentKeys = new Set(data.therapists.map(t => t.key));
+    favorites.forEach(key => {
+      if(!presentKeys.has(key)){
+        const meta = favMeta[key];
         if(!meta || meta.region !== currentRegion) return; // 別の地域の★は表示しない
-        baseList = [...baseList, { name, shop: meta.shop || '（今週の掲載なし）', area: meta.area || '', absentThisWeek: true }];
+        baseList = [...baseList, { key, name: meta.name || key, shop: meta.shop || '（今週の掲載なし）', area: meta.area || '', absentThisWeek: true }];
       }
     });
   }
@@ -560,9 +560,9 @@ function render(){
     const tr = document.createElement('tr');
     if(t.absentThisWeek) tr.style.opacity = '0.55';
     const nameTd = document.createElement('td');
-    nameTd.className = 'name-cell' + (favorites.has(t.name) ? ' fav' : '');
+    nameTd.className = 'name-cell' + (favorites.has(t.key) ? ' fav' : '');
     nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}`;
-    nameTd.onclick = () => { toggleFavorite(t.name); render(); };
+    nameTd.onclick = () => { toggleFavorite(t.key); render(); };
     tr.appendChild(nameTd);
 
     data.dates.forEach((dateStr, idx)=>{
@@ -570,7 +570,7 @@ function render(){
       const td = document.createElement('td');
       if(isSameDate(d, today)) td.classList.add('today-col');
       const dayMap = data.schedule[dateStr] || {};
-      const worked = !!dayMap[t.name];
+      const worked = !!dayMap[t.key];
       const cell = document.createElement('div');
       cell.className = 'cell ' + (worked ? 'on' : 'off');
       cell.innerHTML = `<span class="mark">${worked ? '○' : '−'}</span>`;
@@ -605,11 +605,11 @@ function openModal(){
   if(data && data.therapists){
     data.therapists.forEach(t=>{
       const row = document.createElement('div');
-      row.className = 'modal-row' + (favorites.has(t.name) ? ' fav' : '');
-      row.innerHTML = `<span class="star-mark">★</span><span>${t.name}</span><span class="area-tag">${t.area || ''}</span>`;
+      row.className = 'modal-row' + (favorites.has(t.key) ? ' fav' : '');
+      row.innerHTML = `<span class="star-mark">★</span><span>${t.name}</span><span class="area-tag">${t.shop || ''}</span>`;
       row.onclick = () => {
-        toggleFavorite(t.name);
-        row.classList.toggle('fav', favorites.has(t.name));
+        toggleFavorite(t.key);
+        row.classList.toggle('fav', favorites.has(t.key));
       };
       modalList.appendChild(row);
     });
