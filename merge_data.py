@@ -33,16 +33,21 @@ def main():
             regions[region]["dates"] = shop_data["dates"]
 
         for t in shop_data["therapists"]:
+            shop_name = shop_data.get("shop", "")
+            key = f"{shop_name}::{t['name']}"
             regions[region]["therapists"].append({
+                "key": key,
                 "name": t["name"],
                 "area": t.get("area", ""),
-                "shop": shop_data.get("shop", ""),
+                "shop": shop_name,
             })
 
+        shop_name = shop_data.get("shop", "")
         for date_str, names in shop_data.get("schedule", {}).items():
             regions[region]["schedule"].setdefault(date_str, {})
             for name in names:
-                regions[region]["schedule"][date_str][name] = True
+                key = f"{shop_name}::{name}"
+                regions[region]["schedule"][date_str][key] = True
 
     output = {
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
