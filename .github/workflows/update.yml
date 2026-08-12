@@ -27,6 +27,9 @@ jobs:
       - name: エステの気分を取得
         run: python scrape_kibun.py
 
+      - name: ラビット空間を取得
+        run: python scrape_rabbitspace.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
