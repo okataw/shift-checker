@@ -84,6 +84,29 @@
     font-weight:700;
   }
 
+  /* week nav */
+  .weeknav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 16px 14px;
+  }
+  .weeknav .range{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color: var(--text-dim);
+  }
+  .weeknav button{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    width:32px; height:32px;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+  }
+  .weeknav button:active{background: var(--surface-2);}
+
   /* table card */
   .card{
     background: var(--surface);
@@ -471,13 +494,13 @@ function render(){
 
   const tbody = document.createElement('tbody');
 
-  // 今週のデータに載っている★登録者の店舗情報を記憶しておく
+  // 今週のデータに載っている★登録者の店舗情報（地域も含めて）を記憶しておく
   let metaChanged = false;
   data.therapists.forEach(t=>{
     if(favorites.has(t.name)){
       const prev = favMeta[t.name];
-      if(!prev || prev.shop !== t.shop || prev.area !== t.area){
-        favMeta[t.name] = { shop: t.shop || '', area: t.area || '' };
+      if(!prev || prev.shop !== t.shop || prev.area !== t.area || prev.region !== currentRegion){
+        favMeta[t.name] = { shop: t.shop || '', area: t.area || '', region: currentRegion };
         metaChanged = true;
       }
     }
@@ -489,11 +512,13 @@ function render(){
     : data.therapists;
 
   // ★登録済みだが今週のデータに載っていない人を、出勤なしの状態で補う
+  // （同じ地域に登録されていた人だけを対象にする）
   if(filterOn){
     const presentNames = new Set(data.therapists.map(t => t.name));
     favorites.forEach(name => {
       if(!presentNames.has(name)){
-        const meta = favMeta[name] || {};
+        const meta = favMeta[name];
+        if(!meta || meta.region !== currentRegion) return; // 別の地域の★は表示しない
         baseList = [...baseList, { name, shop: meta.shop || '（今週の掲載なし）', area: meta.area || '', absentThisWeek: true }];
       }
     });
