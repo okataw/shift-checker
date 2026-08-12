@@ -45,6 +45,12 @@ def fetch_day(offset):
     url = BASE_URL if offset == 0 else f"{BASE_URL}DayAfter-{offset}/"
     res = requests.get(url, headers=HEADERS, timeout=15)
     res.raise_for_status()
+
+    # デバッグ用：取得できた内容のサイズと、期待する文言が含まれているか確認
+    print(f"  status={res.status_code} bytes={len(res.text)} "
+          f"contains_shop_name={'アロマモア' in res.text} "
+          f"contains_schedule_word={'出勤スケジュール' in res.text}")
+
     soup = BeautifulSoup(res.text, "html.parser")
 
     # スケジュール一覧が含まれるメインエリアのテキストから名前を抽出
