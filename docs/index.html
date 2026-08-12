@@ -379,6 +379,17 @@ function toggleFavorite(name){
   saveFavorites(favorites);
 }
 
+// ★登録した人の店舗名を覚えておく（今週のデータに出てこなくなっても表示を続けるため）
+const FAV_META_KEY = 'shiftapp_fav_meta';
+function loadFavMeta(){
+  try{ return JSON.parse(localStorage.getItem(FAV_META_KEY) || '{}'); }
+  catch(e){ return {}; }
+}
+function saveFavMeta(meta){
+  localStorage.setItem(FAV_META_KEY, JSON.stringify(meta));
+}
+let favMeta = loadFavMeta();
+
 function isSameDate(a,b){
   return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
 }
@@ -459,9 +470,34 @@ function render(){
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
+
+  // 今週のデータに載っている★登録者の店舗情報を記憶しておく
+  let metaChanged = false;
+  data.therapists.forEach(t=>{
+    if(favorites.has(t.name)){
+      const prev = favMeta[t.name];
+      if(!prev || prev.shop !== t.shop || prev.area !== t.area){
+        favMeta[t.name] = { shop: t.shop || '', area: t.area || '' };
+        metaChanged = true;
+      }
+    }
+  });
+  if(metaChanged) saveFavMeta(favMeta);
+
   let baseList = filterOn
     ? data.therapists.filter(t => favorites.has(t.name))
     : data.therapists;
+
+  // ★登録済みだが今週のデータに載っていない人を、出勤なしの状態で補う
+  if(filterOn){
+    const presentNames = new Set(data.therapists.map(t => t.name));
+    favorites.forEach(name => {
+      if(!presentNames.has(name)){
+        const meta = favMeta[name] || {};
+        baseList = [...baseList, { name, shop: meta.shop || '（今週の掲載なし）', area: meta.area || '', absentThisWeek: true }];
+      }
+    });
+  }
 
   // 店舗名でグループ化されるよう並べ替え（同じ店舗が連続するように）
   const visibleTherapists = [...baseList].sort((a, b) => {
@@ -497,6 +533,7 @@ function render(){
     }
 
     const tr = document.createElement('tr');
+    if(t.absentThisWeek) tr.style.opacity = '0.55';
     const nameTd = document.createElement('td');
     nameTd.className = 'name-cell' + (favorites.has(t.name) ? ' fav' : '');
     nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}`;
