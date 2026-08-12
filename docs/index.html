@@ -152,18 +152,18 @@
     position:sticky; left:0;
     background: var(--surface);
     text-align:left;
-    padding: 8px 8px;
-    font-size:12px;
+    padding: 6px 8px;
+    font-size:11.5px;
     font-weight:700;
+    line-height:1.2;
     border-right: 1px solid var(--line);
     z-index:2;
-    min-width: 56px;
-    max-width: 64px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    width: 78px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    white-space:normal;
   }
-  thead th.name-col{ z-index:3; background: var(--surface-2); }
+  thead th.name-col{ z-index:3; background: var(--surface-2); white-space:nowrap; }
 
   tbody tr{ border-bottom: 1px solid var(--line); }
   tbody tr:last-child{ border-bottom:none; }
@@ -412,6 +412,29 @@ function saveFavMeta(meta){
   localStorage.setItem(FAV_META_KEY, JSON.stringify(meta));
 }
 let favMeta = loadFavMeta();
+
+// 以前の「名前だけ」で管理していた古い形式のデータが残っていると
+// 同じ人が二重に表示されてしまうため、読み込み時に取り除く
+// （正しいキーは必ず「店舗名::名前」の形＝"::"を含む）
+(function migrateOldFavorites(){
+  let changed = false;
+  [...favorites].forEach(key => {
+    if(!key.includes('::')){
+      favorites.delete(key);
+      changed = true;
+    }
+  });
+  Object.keys(favMeta).forEach(key => {
+    if(!key.includes('::')){
+      delete favMeta[key];
+      changed = true;
+    }
+  });
+  if(changed){
+    saveFavorites(favorites);
+    saveFavMeta(favMeta);
+  }
+})();
 
 function isSameDate(a,b){
   return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
