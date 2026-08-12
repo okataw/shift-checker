@@ -99,15 +99,15 @@
   table{
     border-collapse:collapse;
     width:100%;
-    min-width: 460px;
+    min-width: 320px;
   }
   thead th{
     position:sticky; top:0;
     background: var(--surface-2);
     font-weight:500;
-    font-size:12px;
+    font-size:11px;
     color: var(--text-dim);
-    padding: 10px 4px;
+    padding: 8px 2px;
     text-align:center;
     border-bottom: 1px solid var(--line);
   }
@@ -129,12 +129,16 @@
     position:sticky; left:0;
     background: var(--surface);
     text-align:left;
-    padding: 12px 14px;
-    font-size:13.5px;
+    padding: 8px 8px;
+    font-size:12px;
     font-weight:700;
     border-right: 1px solid var(--line);
     z-index:2;
-    min-width: 96px;
+    min-width: 56px;
+    max-width: 64px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
   thead th.name-col{ z-index:3; background: var(--surface-2); }
 
@@ -143,7 +147,7 @@
 
   td{
     text-align:center;
-    padding: 8px 4px;
+    padding: 6px 1px;
     vertical-align:middle;
   }
   td.today-col{ background: rgba(201,154,63,0.05); }
@@ -152,8 +156,8 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
   }
   .cell.on{
@@ -161,7 +165,7 @@
     border: 1.5px solid var(--brass);
   }
   .cell .mark{
-    font-size:16px;
+    font-size:12px;
     font-weight:700;
     color: var(--brass);
     line-height:1;
@@ -229,6 +233,17 @@
   .switch.on{ background: var(--brass-soft); border-color: var(--brass); }
   .switch.on::after{ transform: translateX(16px); background: var(--brass); }
 
+  .shop-row td{
+    background: var(--surface-2);
+    text-align:left;
+    padding: 5px 10px;
+    font-size:10.5px;
+    font-weight:700;
+    color: var(--brass);
+    letter-spacing:0.03em;
+    border-bottom: 1px solid var(--line);
+    position:sticky; left:0;
+  }
   .name-cell{ cursor:pointer; }
   .name-cell .star-mark{
     display:inline-block;
@@ -444,9 +459,17 @@ function render(){
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  const visibleTherapists = filterOn
+  let baseList = filterOn
     ? data.therapists.filter(t => favorites.has(t.name))
     : data.therapists;
+
+  // 店舗名でグループ化されるよう並べ替え（同じ店舗が連続するように）
+  const visibleTherapists = [...baseList].sort((a, b) => {
+    const sa = a.shop || '';
+    const sb = b.shop || '';
+    return sa === sb ? 0 : sa.localeCompare(sb, 'ja');
+  });
+  let lastShop = null;
 
   if(visibleTherapists.length === 0){
     const tr = document.createElement('tr');
@@ -460,11 +483,23 @@ function render(){
     return;
   }
 
-  visibleTherapists.forEach(t=>{
+  visibleTherapists.forEach((t, i)=>{
+    // 店舗が切り替わるタイミングで見出し行を挿入
+    if(t.shop && t.shop !== lastShop){
+      const shopTr = document.createElement('tr');
+      shopTr.className = 'shop-row';
+      const shopTd = document.createElement('td');
+      shopTd.colSpan = data.dates.length + 1;
+      shopTd.textContent = t.shop;
+      shopTr.appendChild(shopTd);
+      tbody.appendChild(shopTr);
+      lastShop = t.shop;
+    }
+
     const tr = document.createElement('tr');
     const nameTd = document.createElement('td');
     nameTd.className = 'name-cell' + (favorites.has(t.name) ? ' fav' : '');
-    nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}<br><span style="font-weight:400;font-size:10.5px;color:var(--text-faint)">${t.shop || ''}</span>`;
+    nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}`;
     nameTd.onclick = () => { toggleFavorite(t.name); render(); };
     tr.appendChild(nameTd);
 
