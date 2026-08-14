@@ -17,6 +17,8 @@ import datetime
 import time
 import os
 
+JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
+
 SHOP_NAME = "エステの気分"
 REGION = "東京"
 BASE_URL = "https://estheno-kibun.com/schedule/"
@@ -30,7 +32,7 @@ HEADERS = {
 
 def get_week_dates():
     """今日から7日分の日付リスト(YYYY-MM-DD)を返す"""
-    today = datetime.date.today()
+    today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
     return [(today + datetime.timedelta(days=i)).isoformat() for i in range(7)]
 
 
@@ -92,7 +94,7 @@ def main():
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
-        "updated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "dates": week_dates,
         "therapists": therapists,
         "schedule": schedule_by_date,  # { "2026-08-11": ["こはる", "みお", ...], ... }
