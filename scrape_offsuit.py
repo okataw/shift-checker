@@ -20,6 +20,8 @@ import re
 import datetime
 import time
 import os
+
+JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
 from playwright.sync_api import sync_playwright
 
 SHOP_NAME = "Offsuit"
@@ -62,7 +64,7 @@ def fetch_day(page, date_obj, is_first):
 
 def main():
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    today = datetime.date.today()
+    today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
     week_dates = [(today + datetime.timedelta(days=i)) for i in range(7)]
 
     schedule_by_date = {}
@@ -97,7 +99,7 @@ def main():
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
-        "updated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "dates": [d.isoformat() for d in week_dates],
         "therapists": therapists,
         "schedule": schedule_by_date,
