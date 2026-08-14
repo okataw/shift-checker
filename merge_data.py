@@ -12,6 +12,8 @@ import os
 import glob
 import datetime
 
+JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "docs", "data.json")
 
@@ -50,7 +52,7 @@ def main():
                 regions[region]["schedule"][date_str][key] = True
 
     output = {
-        "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "generated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "regions": regions,
     }
 
