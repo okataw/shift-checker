@@ -21,6 +21,8 @@ import datetime
 import time
 import os
 
+JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
+
 SHOP_NAME = "アロマモア"
 REGION = "東京"
 BASE_URL = "https://www.es-maniax.com/shop/t291962/s_shift/"
@@ -36,7 +38,7 @@ NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\s*[\(（](\d{2})[
 
 
 def get_week_dates():
-    today = datetime.date.today()
+    today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
     return [(today + datetime.timedelta(days=i)).isoformat() for i in range(7)]
 
 
@@ -90,7 +92,7 @@ def main():
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
-        "updated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+        "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "dates": week_dates,
         "therapists": therapists,
         "schedule": schedule_by_date,
