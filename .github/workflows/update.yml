@@ -12,6 +12,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15  # 万が一止まっても15分で強制終了する安全装置
     steps:
       - uses: actions/checkout@v4
 
@@ -20,6 +21,8 @@ jobs:
           python-version: '3.11'
 
       - name: 必要なライブラリをインストール
+        env:
+          DEBIAN_FRONTEND: noninteractive  # インストール中に確認待ちで止まらないようにする
         run: |
           pip install requests beautifulsoup4 playwright
           playwright install --with-deps chromium
