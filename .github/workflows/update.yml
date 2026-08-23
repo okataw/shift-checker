@@ -39,6 +39,9 @@ jobs:
       - name: トキョプラを取得
         run: python scrape_tokyopla.py
 
+      - name: Tiggerを取得
+        run: python scrape_tigger.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
