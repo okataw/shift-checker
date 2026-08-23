@@ -42,6 +42,9 @@ jobs:
       - name: Tiggerを取得
         run: python scrape_tigger.py
 
+      - name: アマテラス横浜を取得
+        run: python scrape_amaterasu.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
