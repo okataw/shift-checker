@@ -41,6 +41,12 @@ def fetch_day(date_str):
     url = f"{BASE_URL}?works={date_str}"
     res = requests.get(url, headers=HEADERS, timeout=15)
     res.raise_for_status()
+
+    # デバッグ用：取得できた内容のサイズと、期待する文言が含まれているか確認
+    print(f"  status={res.status_code} bytes={len(res.text)} "
+          f"contains_shop_name={'エステの気分' in res.text} "
+          f"h3_count={res.text.count('<h3')}")
+
     soup = BeautifulSoup(res.text, "html.parser")
 
     results = []
