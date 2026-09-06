@@ -3,7 +3,7 @@
 「ラビット空間」(https://esthe-rabbitspace.com/schedule/) の出勤データを取得するスクリプト。
 
 ・日付ごとに ?works=YYYY-MM-DD というURLがあるので、1週間分アクセスして回る
-・各ページから「セラピスト名」「ルーム（秋葉原/新橋）」を抜き出す
+・各ページから「セラピスト名」「エリア（秋葉原/新橋/赤坂）」「その日出勤しているか」を抜き出す
 ・結果を data/rabbitspace.json に保存する
 
 ※ 注意：このスクリプトはサイトの見た目のHTML構造をもとに作成していますが、
@@ -31,6 +31,7 @@ HEADERS = {
 
 
 def get_week_dates():
+    """今日から7日分の日付リスト(YYYY-MM-DD)を返す"""
     today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
     return [(today + datetime.timedelta(days=i)).isoformat() for i in range(7)]
 
@@ -40,6 +41,12 @@ def fetch_day(date_str):
     url = f"{BASE_URL}?works={date_str}"
     res = requests.get(url, headers=HEADERS, timeout=15)
     res.raise_for_status()
+
+    # デバッグ用：取得できた内容のサイズと、期待する文言が含まれているか確認
+    print(f"  status={res.status_code} bytes={len(res.text)} "
+          f"contains_shop_name={'ラビット空間' in res.text} "
+          f"h3_count={res.text.count('<h3')}")
+
     soup = BeautifulSoup(res.text, "html.parser")
 
     results = []
@@ -71,7 +78,7 @@ def main():
     week_dates = get_week_dates()
 
     schedule_by_date = {}
-    all_names = {}
+    all_names = {}  # name -> area
 
     for date_str in week_dates:
         try:
@@ -85,7 +92,7 @@ def main():
             all_names[p["name"]] = p["area"]
 
         print(f"{date_str}: {len(day_people)}名 出勤確認")
-        time.sleep(1.5)
+        time.sleep(1.5)  # サイトへの負荷を抑えるため間隔を空ける
 
     therapists = [{"name": name, "area": area} for name, area in sorted(all_names.items())]
 
@@ -95,7 +102,7 @@ def main():
         "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "dates": week_dates,
         "therapists": therapists,
-        "schedule": schedule_by_date,
+        "schedule": schedule_by_date,  # { "2026-08-11": ["こはる", "みお", ...], ... }
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
