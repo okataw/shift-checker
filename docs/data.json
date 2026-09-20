@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T23:22:23+09:00",
+  "generated_at": "2026-09-20T23:34:04+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -647,17 +647,17 @@
         "2026-09-20": {
           "アマテラス横浜::ゆうり": true,
           "アマテラス横浜::ここ": true,
-          "アマテラス横浜::あみ": true,
-          "アマテラス横浜::むむ": true,
-          "アマテラス横浜::うみ": true,
+          "アマテラス横浜::ここあ": true,
           "アマテラス横浜::あず": true,
           "アマテラス横浜::かりな": true,
           "アマテラス横浜::こもも": true,
-          "アマテラス横浜::さな": true,
           "アマテラス横浜::あやな": true,
-          "アマテラス横浜::ここあ": true,
           "アマテラス横浜::れいか": true,
           "アマテラス横浜::るる": true,
+          "アマテラス横浜::あみ": true,
+          "アマテラス横浜::むむ": true,
+          "アマテラス横浜::さな": true,
+          "アマテラス横浜::うみ": true,
           "アマテラス横浜::りま": true,
           "アマテラス横浜::みか": true,
           "アマテラス横浜::みつり": true,
@@ -669,12 +669,12 @@
           "アマテラス横浜::ひな": true,
           "アマテラス横浜::ゆめ": true,
           "アマテラス横浜::ほのか": true,
+          "Tigger::めぐ": true,
           "Tigger::ここ": true,
           "Tigger::ゆい": true,
           "Tigger::みこと": true,
           "Tigger::きらら": true,
           "Tigger::ちか": true,
-          "Tigger::めぐ": true,
           "Tigger::ゆか": true,
           "Tigger::れい": true,
           "Tigger::らむ": true,
@@ -703,7 +703,6 @@
           "アマテラス横浜::のあ": true,
           "アマテラス横浜::ひまり": true,
           "アマテラス横浜::あず": true,
-          "アマテラス横浜::この": true,
           "アマテラス横浜::ゆうり": true,
           "アマテラス横浜::わかな": true,
           "アマテラス横浜::かなえ": true,
@@ -2217,6 +2216,228 @@
           "shop": "エステの気分"
         },
         {
+          "key": "LINDA SPA::三ツ矢るり",
+          "name": "三ツ矢るり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::中村あい",
+          "name": "中村あい",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::及川さくら",
+          "name": "及川さくら",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::喜多島あかり",
+          "name": "喜多島あかり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::堺ゆり",
+          "name": "堺ゆり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::壇おと",
+          "name": "壇おと",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::夏音りぜ",
+          "name": "夏音りぜ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::天塚みはる",
+          "name": "天塚みはる",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::如月りり",
+          "name": "如月りり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::安藤そら",
+          "name": "安藤そら",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::希崎せりか",
+          "name": "希崎せりか",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::恵美えな",
+          "name": "恵美えな",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::日夜梨ひな",
+          "name": "日夜梨ひな",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::日比野くるみ",
+          "name": "日比野くるみ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::有栖もも",
+          "name": "有栖もも",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::有森りら",
+          "name": "有森りら",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::有馬みさき",
+          "name": "有馬みさき",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::本多りお",
+          "name": "本多りお",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::柴崎さやか",
+          "name": "柴崎さやか",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::森川りの",
+          "name": "森川りの",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::榎本もか",
+          "name": "榎本もか",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::橋本まなみ",
+          "name": "橋本まなみ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::満島あかり",
+          "name": "満島あかり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::白金じゅりあ",
+          "name": "白金じゅりあ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::真島きらり",
+          "name": "真島きらり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::福岡ひかり",
+          "name": "福岡ひかり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::秋山ゆかり",
+          "name": "秋山ゆかり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::篠崎じゅり",
+          "name": "篠崎じゅり",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::緒川はるみ",
+          "name": "緒川はるみ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::荻野もも",
+          "name": "荻野もも",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::菊池うみ",
+          "name": "菊池うみ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::西村ゆめ",
+          "name": "西村ゆめ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::辰巳りな",
+          "name": "辰巳りな",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::青山めぐ",
+          "name": "青山めぐ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::飯島なつ",
+          "name": "飯島なつ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::鷲見りな",
+          "name": "鷲見りな",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
+          "key": "LINDA SPA::黒川あやめ",
+          "name": "黒川あやめ",
+          "area": "",
+          "shop": "LINDA SPA"
+        },
+        {
           "key": "NEW+PLUS::のあ",
           "name": "のあ",
           "area": "秋葉原/新橋/恵比寿/北千住",
@@ -2851,7 +3072,6 @@
           "アロマモア::天城かなで": true,
           "アロマモア::愛蘭みあ": true,
           "アロマモア::有馬ゆあ": true,
-          "アロマモア::広末みさ": true,
           "アロマモア::白花ゆか": true,
           "アロマモア::南雲みさと": true,
           "アロマモア::四葉かなの": true,
@@ -2866,6 +3086,7 @@
           "アロマモア::藤原みお": true,
           "アロマモア::月島えり": true,
           "アロマモア::常盤るか": true,
+          "アロマモア::広末みさ": true,
           "アロマモア::日南いろは": true,
           "アロマモア::立花るい": true,
           "アロマモア::新垣ひかり": true,
@@ -2901,10 +3122,10 @@
           "アロマモア::玉響くれあ": true,
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
-          "アロマモア::桃波はづき": true,
           "アロマモア::みお": true,
-          "アロマモア::あい": true,
           "アロマモア::のあ": true,
+          "アロマモア::あい": true,
+          "アロマモア::桃波はづき": true,
           "エステの気分::2000雨割": true,
           "エステの気分::ありす": true,
           "エステの気分::るき": true,
@@ -3006,8 +3227,8 @@
           "アロマモア::白花ゆか": true,
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
-          "アロマモア::のあ": true,
           "アロマモア::みお": true,
+          "アロマモア::のあ": true,
           "アロマモア::桃波はづき": true,
           "アロマモア::あい": true,
           "エステの気分::ありす": true,
@@ -3039,6 +3260,25 @@
           "エステの気分::なみ": true,
           "エステの気分::ももか": true,
           "エステの気分::すい": true,
+          "LINDA SPA::秋山ゆかり": true,
+          "LINDA SPA::恵美えな": true,
+          "LINDA SPA::日比野くるみ": true,
+          "LINDA SPA::天塚みはる": true,
+          "LINDA SPA::三ツ矢るり": true,
+          "LINDA SPA::有栖もも": true,
+          "LINDA SPA::緒川はるみ": true,
+          "LINDA SPA::飯島なつ": true,
+          "LINDA SPA::白金じゅりあ": true,
+          "LINDA SPA::夏音りぜ": true,
+          "LINDA SPA::本多りお": true,
+          "LINDA SPA::青山めぐ": true,
+          "LINDA SPA::中村あい": true,
+          "LINDA SPA::荻野もも": true,
+          "LINDA SPA::堺ゆり": true,
+          "LINDA SPA::福岡ひかり": true,
+          "LINDA SPA::安藤そら": true,
+          "LINDA SPA::真島きらり": true,
+          "LINDA SPA::壇おと": true,
           "NEW+PLUS::髙橋はるか": true,
           "NEW+PLUS::藤堂ゆり": true,
           "NEW+PLUS::桃園めぐみ": true,
@@ -3123,9 +3363,9 @@
           "アロマモア::星空ありさ": true,
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
+          "アロマモア::あい": true,
           "アロマモア::みお": true,
           "アロマモア::桃波はづき": true,
-          "アロマモア::あい": true,
           "アロマモア::のあ": true,
           "エステの気分::ありす": true,
           "エステの気分::みき": true,
@@ -3251,10 +3491,10 @@
           "アロマモア::星空ありさ": true,
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
-          "アロマモア::あい": true,
-          "アロマモア::桃波はづき": true,
           "アロマモア::のあ": true,
           "アロマモア::みお": true,
+          "アロマモア::桃波はづき": true,
+          "アロマモア::あい": true,
           "エステの気分::ひなた": true,
           "エステの気分::まゆ": true,
           "エステの気分::ゆな": true,
@@ -3287,6 +3527,31 @@
           "エステの気分::あいす": true,
           "エステの気分::るりは": true,
           "エステの気分::えりか": true,
+          "LINDA SPA::榎本もか": true,
+          "LINDA SPA::喜多島あかり": true,
+          "LINDA SPA::柴崎さやか": true,
+          "LINDA SPA::森川りの": true,
+          "LINDA SPA::三ツ矢るり": true,
+          "LINDA SPA::菊池うみ": true,
+          "LINDA SPA::有馬みさき": true,
+          "LINDA SPA::有栖もも": true,
+          "LINDA SPA::天塚みはる": true,
+          "LINDA SPA::飯島なつ": true,
+          "LINDA SPA::有森りら": true,
+          "LINDA SPA::鷲見りな": true,
+          "LINDA SPA::夏音りぜ": true,
+          "LINDA SPA::如月りり": true,
+          "LINDA SPA::及川さくら": true,
+          "LINDA SPA::希崎せりか": true,
+          "LINDA SPA::西村ゆめ": true,
+          "LINDA SPA::日夜梨ひな": true,
+          "LINDA SPA::篠崎じゅり": true,
+          "LINDA SPA::黒川あやめ": true,
+          "LINDA SPA::満島あかり": true,
+          "LINDA SPA::橋本まなみ": true,
+          "LINDA SPA::中村あい": true,
+          "LINDA SPA::福岡ひかり": true,
+          "LINDA SPA::辰巳りな": true,
           "NEW+PLUS::清水りり": true,
           "NEW+PLUS::森下すず": true,
           "NEW+PLUS::内藤あいり": true,
@@ -3373,9 +3638,9 @@
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
           "アロマモア::のあ": true,
-          "アロマモア::みお": true,
           "アロマモア::桃波はづき": true,
           "アロマモア::あい": true,
+          "アロマモア::みお": true,
           "エステの気分::みあ": true,
           "エステの気分::ひなた": true,
           "エステの気分::さや": true,
@@ -3492,9 +3757,9 @@
           "アロマモア::桐谷れいな": true,
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
-          "アロマモア::のあ": true,
           "アロマモア::桃波はづき": true,
           "アロマモア::あい": true,
+          "アロマモア::のあ": true,
           "アロマモア::みお": true,
           "エステの気分::ありす": true,
           "エステの気分::かえで": true,
@@ -3623,9 +3888,9 @@
           "アロマモア::まいこ": true,
           "アロマモア::宇佐美せいら": true,
           "アロマモア::みお": true,
-          "アロマモア::のあ": true,
-          "アロマモア::桃波はづき": true,
           "アロマモア::あい": true,
+          "アロマモア::桃波はづき": true,
+          "アロマモア::のあ": true,
           "エステの気分::ありす": true,
           "エステの気分::みき": true,
           "エステの気分::えり": true,
