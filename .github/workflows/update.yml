@@ -48,6 +48,9 @@ jobs:
       - name: アマテラス横浜を取得
         run: python scrape_amaterasu.py
 
+      - name: LINDA SPAを取得
+        run: python scrape_lindaspa.py
+
       - name: NEW+PLUSを取得
         run: python scrape_newplus.py
 
