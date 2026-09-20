@@ -137,4 +137,17 @@ def main():
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
-        "updated_at": datetim
+        "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
+        "dates": [d.isoformat() for d in week_dates],
+        "therapists": therapists,
+        "schedule": schedule_by_date,
+    }
+
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+
+    print(f"保存しました: {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
