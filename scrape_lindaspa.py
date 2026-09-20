@@ -34,6 +34,10 @@ HEADERS = {
 CAST_LINK_PATTERN = re.compile(r'^/cast/\d+/?$')
 ROOM_CANDIDATES = ["中目黒", "恵比寿", "麻布十番", "目黒駅", "三軒茶屋"]
 
+# 「名前(年齢)」の直前の名前部分だけを取り出す正規表現
+# （リンクの文字列に店舗名やTwitterの有無、出勤時間などが混ざっているため）
+NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\(\d{2}\)')
+
 
 def get_week_dates():
     today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
@@ -56,7 +60,7 @@ def fetch_day(date_obj):
     soup = BeautifulSoup(res.text, "html.parser")
 
     results = []
-    seen_hrefs = set()
+    seen_names = set()
     current_room = "不明"
 
     # ページ内をH2見出し（ルーム名）とキャストへのリンクの出現順にたどる
@@ -73,15 +77,20 @@ def fetch_day(date_obj):
         path = href.replace("https://linda-spa.com", "")
         if not CAST_LINK_PATTERN.match(path):
             continue
-        if href in seen_hrefs:
-            continue
-        seen_hrefs.add(href)
 
         full_text = el.get_text(strip=True)
-        # リンクの文字列は「名前【店舗名】...」という形なので、【の手前までを名前とする
-        name = full_text.split("【")[0].strip()
-        if not name:
+        # リンクの文字列には店舗名や出勤時間なども混ざっているため、
+        # 「名前(年齢)」のパターンから名前だけを正確に取り出す
+        match = NAME_PATTERN.search(full_text)
+        if not match:
             continue
+        name = match.group(1)
+
+        # 同じ人が同じ日に複数の時間帯で出勤している場合、
+        # サイト側に項目が複数回出てくることがあるため、名前で重複を防ぐ
+        if name in seen_names:
+            continue
+        seen_names.add(name)
 
         results.append({"name": name, "area": current_room})
 
