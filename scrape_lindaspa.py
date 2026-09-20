@@ -52,11 +52,24 @@ def date_to_dt_param(date_obj):
 
 
 def fetch_day(date_obj):
-    """指定日の出勤者一覧を取得して [{'name':..., 'area':...}, ...] を返す"""
+    """指定日の出勤者一覧を取得して [{'name':..., 'area':...}, ...] を返す
+    （一時的な通信エラーに備え、最大3回まで再試行する）"""
     dt_param = date_to_dt_param(date_obj)
     url = f"{BASE_URL}?dt={dt_param}"
-    res = requests.get(url, headers=HEADERS, timeout=15)
-    res.raise_for_status()
+
+    last_error = None
+    for attempt in range(1, 4):
+        try:
+            res = requests.get(url, headers=HEADERS, timeout=20)
+            res.raise_for_status()
+            break
+        except Exception as e:
+            last_error = e
+            print(f"  [再試行 {attempt}/3] {e}")
+            time.sleep(3)
+    else:
+        raise last_error
+
     soup = BeautifulSoup(res.text, "html.parser")
 
     results = []
@@ -124,17 +137,4 @@ def main():
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
-        "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
-        "dates": [d.isoformat() for d in week_dates],
-        "therapists": therapists,
-        "schedule": schedule_by_date,
-    }
-
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-
-    print(f"保存しました: {OUTPUT_PATH}")
-
-
-if __name__ == "__main__":
-    main()
+        "updated_at": datetim
