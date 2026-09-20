@@ -1,43 +1,41 @@
 # -*- coding: utf-8 -*-
 """
-「LINDA SPA」の出勤データを、掲載サイト「メンズリラク」経由で取得するスクリプト。
+「LINDA SPA」(https://linda-spa.com/schedule/) の出勤データを取得するスクリプト。
 
-(店舗公式サイト linda-spa.com が、GitHub側からのアクセスをブロックしている
- ようだったため、同じ情報が載っている掲載サイトを利用しています)
+このサイトは、通常のプログラムからのアクセス(requestsライブラリ)だと
+接続がタイムアウトしてしまう(サイト側がブロックしている可能性がある)ため、
+実際のブラウザとして振る舞う Playwright を使って取得している。
 
-・当日は https://menesth.jp/8/shop/26522/schedule/
-・翌日以降は末尾に ?date=1 〜 ?date=6 を付けたURLで1週間分を巡回する
-・在籍人数が多い日は「2ページ目」に分かれることがあるため、
-  ページがある限り(最大5ページまで)続けて読みに行く
+・日付ごとに ?dt=<タイムスタンプ> というURLがあるので、1週間分アクセスして回る
+  （タイムスタンプは、その日のUTC 6:00＝日本時間15:00に対応する値になっている）
+・各ページから「セラピスト名」「ルーム（中目黒/恵比寿/麻布十番/目黒駅/三軒茶屋）」を抜き出す
 ・結果を data/lindaspa.json に保存する
 
-※ 注意：ページの見た目をもとに作成しています。サイト側の構造が変わると
-  動かなくなることがあります。初回実行時に0件だったり、名前が
-  おかしい形で取れる場合は、その旨教えてください。
+※ 注意：このスクリプトはサイトの見た目のHTML構造をもとに作成していますが、
+  実際にサイト側でHTMLの作りが変わると動かなくなることがあります。
+  初回実行時にエラーが出たり、0件しか取れなかった場合は、その旨を教えてください。
 """
-import requests
-from bs4 import BeautifulSoup
 import re
 import json
 import datetime
 import time
 import os
+from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright
 
 JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
 
 SHOP_NAME = "LINDA SPA"
 REGION = "東京"
-SHOP_PATH = "/8/shop/26522"
-BASE_URL = f"https://menesth.jp{SHOP_PATH}/schedule/"
+BASE_URL = "https://linda-spa.com/schedule/"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "data", "lindaspa.json")
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-}
+CAST_LINK_PATTERN = re.compile(r'^/cast/\d+/?$')
+ROOM_CANDIDATES = ["中目黒", "恵比寿", "麻布十番", "目黒駅", "三軒茶屋"]
 
-CAST_LINK_PATTERN = re.compile(rf'^{re.escape(SHOP_PATH)}/\d+/?$')
-MAX_PAGES = 5
+# 「名前(年齢)」の直前の名前部分だけを取り出す正規表現
+# （リンクの文字列に店舗名やTwitterの有無、出勤時間などが混ざっているため）
+NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\(\d{2}\)')
 
 
 def get_week_dates():
@@ -45,53 +43,60 @@ def get_week_dates():
     return [(today + datetime.timedelta(days=i)) for i in range(7)]
 
 
-def fetch_page(offset, page):
-    """指定日・指定ページの出勤者名リストを返す"""
-    url = f"{BASE_URL}page{page}/" if page > 1 else BASE_URL
-    params = {}
-    if offset > 0:
-        params["date"] = offset
+def date_to_dt_param(date_obj):
+    """日付を、このサイトのURLパラメータ形式（その日のUTC6:00のタイムスタンプ）に変換する"""
+    return int(datetime.datetime(
+        date_obj.year, date_obj.month, date_obj.day, 6, 0, 0, tzinfo=datetime.timezone.utc
+    ).timestamp())
 
-    res = requests.get(url, headers=HEADERS, params=params, timeout=20)
-    res.raise_for_status()
-    soup = BeautifulSoup(res.text, "html.parser")
 
-    names = []
-    seen = set()
-    for a in soup.find_all("a", href=True):
-        path = a["href"].replace("https://menesth.jp", "")
+def parse_people(html):
+    """ページのHTMLから [{'name':..., 'area':...}, ...] を抜き出す"""
+    soup = BeautifulSoup(html, "html.parser")
+
+    results = []
+    seen_names = set()
+    current_room = "不明"
+
+    for el in soup.find_all(["h2", "a"]):
+        if el.name == "h2":
+            heading_text = el.get_text(strip=True)
+            for candidate in ROOM_CANDIDATES:
+                if candidate in heading_text:
+                    current_room = candidate
+                    break
+            continue
+
+        href = el.get("href", "")
+        path = href.replace("https://linda-spa.com", "")
         if not CAST_LINK_PATTERN.match(path):
             continue
-        name = a.get_text(strip=True)
-        if not name or name in seen:
+
+        full_text = el.get_text(strip=True)
+        match = NAME_PATTERN.search(full_text)
+        if not match:
             continue
-        seen.add(name)
-        names.append(name)
+        name = match.group(1)
 
-    return names
+        # 同じ人が同じ日に複数の時間帯で出勤している場合、
+        # サイト側に項目が複数回出てくることがあるため、名前で重複を防ぐ
+        if name in seen_names:
+            continue
+        seen_names.add(name)
+
+        results.append({"name": name, "area": current_room})
+
+    return results
 
 
-def fetch_day(offset):
-    """指定日(0=今日, 1=明日...)の出勤者名リストを、ページをまたいで全部集める"""
-    all_names = []
-    for page in range(1, MAX_PAGES + 1):
-        try:
-            names = fetch_page(offset, page)
-        except requests.exceptions.HTTPError as e:
-            if page > 1 and e.response is not None and e.response.status_code == 404:
-                # 2ページ目以降が存在しない(=最後まで読み終えた)だけなので、エラー扱いにしない
-                break
-            raise  # 1ページ目自体が失敗した場合など、それ以外のエラーはそのまま伝える
-
-        if not names:
-            break
-        all_names.extend(names)
-        if len(names) < 8:
-            # このサイトは1ページ十数名程度で区切られる想定のため、
-            # 少ない件数のページが来たら「最後のページ」とみなして打ち切る
-            break
-        time.sleep(1)
-    return all_names
+def fetch_day(page, date_obj):
+    """指定日の出勤者一覧を取得して [{'name':..., 'area':...}, ...] を返す"""
+    dt_param = date_to_dt_param(date_obj)
+    url = f"{BASE_URL}?dt={dt_param}"
+    page.goto(url, wait_until="networkidle", timeout=30000)
+    page.wait_for_timeout(1000)
+    html = page.content()
+    return parse_people(html)
 
 
 def main():
@@ -99,22 +104,33 @@ def main():
     week_dates = get_week_dates()
 
     schedule_by_date = {}
-    all_names = set()
+    all_names = {}
 
-    for offset, date_obj in enumerate(week_dates):
-        date_str = date_obj.isoformat()
-        try:
-            names = fetch_day(offset)
-        except Exception as e:
-            print(f"[警告] {date_str} の取得に失敗しました: {e}")
-            names = []
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(user_agent=(
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+        ))
 
-        schedule_by_date[date_str] = names
-        all_names.update(names)
-        print(f"{date_str}: {len(names)}名 出勤確認")
-        time.sleep(2)
+        for date_obj in week_dates:
+            date_str = date_obj.isoformat()
+            try:
+                day_people = fetch_day(page, date_obj)
+            except Exception as e:
+                print(f"[警告] {date_str} の取得に失敗しました: {e}")
+                day_people = []
 
-    therapists = [{"name": name, "area": ""} for name in sorted(all_names)]
+            schedule_by_date[date_str] = [p_["name"] for p_ in day_people]
+            for p_ in day_people:
+                all_names[p_["name"]] = p_["area"]
+
+            print(f"{date_str}: {len(day_people)}名 出勤確認")
+            time.sleep(2)
+
+        browser.close()
+
+    therapists = [{"name": name, "area": area} for name, area in sorted(all_names.items())]
 
     output = {
         "shop": SHOP_NAME,
