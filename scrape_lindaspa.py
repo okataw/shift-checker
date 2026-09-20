@@ -75,7 +75,14 @@ def fetch_day(offset):
     """指定日(0=今日, 1=明日...)の出勤者名リストを、ページをまたいで全部集める"""
     all_names = []
     for page in range(1, MAX_PAGES + 1):
-        names = fetch_page(offset, page)
+        try:
+            names = fetch_page(offset, page)
+        except requests.exceptions.HTTPError as e:
+            if page > 1 and e.response is not None and e.response.status_code == 404:
+                # 2ページ目以降が存在しない(=最後まで読み終えた)だけなので、エラー扱いにしない
+                break
+            raise  # 1ページ目自体が失敗した場合など、それ以外のエラーはそのまま伝える
+
         if not names:
             break
         all_names.extend(names)
