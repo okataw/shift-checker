@@ -39,6 +39,10 @@ jobs:
       - name: アロマモアを取得
         run: python scrape_aromamore.py
 
+      - name: アロマモア公式サイトの調査（一時的）
+        continue-on-error: true
+        run: python debug_aromamore.py
+
       - name: トキョプラを取得
         run: python scrape_tokyopla.py
 
