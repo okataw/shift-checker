@@ -1,99 +1,117 @@
 # -*- coding: utf-8 -*-
 """
-「アロマモア」の出勤データを、掲載サイト「メンズエステマニアックス」経由で取得するスクリプト。
-(店舗公式サイト aromamore.tokyo は自動アクセスを禁止していたため、
- 自動アクセスが許可されているこちらの掲載ページを利用しています)
+「アロマモア」(https://aromamore.tokyo/scheduleAll.html) の出勤データを、
+公式サイトから取得するスクリプト。
 
-・当日は https://www.es-maniax.com/shop/t291962/s_shift/
-・翌日以降は末尾に /DayAfter-1/ 〜 /DayAfter-6/ を付けたURLで1週間分を巡回する
-・各ページから「セラピスト名(年齢)」の形の文字列を抜き出す
+このサイトは日付の切り替えが「タブをクリックする」形になっているため、
+Playwright（実際にブラウザを操作するライブラリ）でタブを順にクリックしながら
+1週間分を読み取っている。
+
+・日付タブ（「9 26 土」のような表記）を順にクリックする
+・画面に表示されているセラピストのリンク（「名前(25歳)」の形）から名前を抜き出す
 ・結果を data/aromamore.json に保存する
 
 ※ 注意：ページの見た目をもとに作成しています。サイト側の構造が変わると
-  動かなくなることがあります。初回実行時に0件だったり、名前が
-  おかしい形で取れる場合は、その旨教えてください。
+  動かなくなることがあります。0件だったり、名前がおかしい形で取れる場合は教えてください。
 """
-import requests
-from bs4 import BeautifulSoup
 import re
 import json
 import datetime
 import time
 import os
+from playwright.sync_api import sync_playwright
 
 JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
 
 SHOP_NAME = "アロマモア"
 REGION = "東京"
-BASE_URL = "https://www.es-maniax.com/shop/t291962/s_shift/"
+BASE_URL = "https://aromamore.tokyo/scheduleAll.html"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "data", "aromamore.json")
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-}
+# 「名前(25歳)」から名前部分だけを取り出す
+NAME_PATTERN = re.compile(r'^(.+?)\s*[\(（]\d{2}歳?[\)）]')
 
-# 「名前(年齢)」の形の文字列を拾う正規表現（名前と括弧の間に空白が入る場合にも対応）
-NAME_PATTERN = re.compile(r'([ぁ-んァ-ヶ一-龠ー]{2,12})\s*[\(（](\d{2})[\)）]')
+# 画面に「表示されている」セラピストのリンク文字列だけを集めるJavaScript
+# （他の日の分がページ内に隠れて入っている場合でも、選択中の日だけを拾うため）
+JS_VISIBLE_NAMES = """
+els => els
+  .filter(e => e.offsetParent !== null)
+  .map(e => e.innerText.trim())
+  .filter(t => t.length > 0)
+"""
 
 
-def get_week_dates():
-    today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
-    return [(today + datetime.timedelta(days=i)).isoformat() for i in range(7)]
+def click_date_tab(page, date_obj):
+    """指定日の日付タブを探してクリックする"""
+    target = f"{date_obj.month} {date_obj.day} "
+    tabs = page.locator('a[href="javascript:void(0);"]')
+    for i in range(tabs.count()):
+        text = re.sub(r"\s+", " ", tabs.nth(i).inner_text()).strip() + " "
+        if text.startswith(target):
+            tabs.nth(i).click()
+            page.wait_for_timeout(1500)
+            return True
+    return False
 
 
-def fetch_day(offset):
-    """指定日(0=今日, 1=明日...)の出勤者名リストを返す"""
-    url = BASE_URL if offset == 0 else f"{BASE_URL}DayAfter-{offset}/"
-    res = requests.get(url, headers=HEADERS, timeout=15)
-    res.raise_for_status()
-
-    # デバッグ用：取得できた内容のサイズと、期待する文言が含まれているか確認
-    print(f"  status={res.status_code} bytes={len(res.text)} "
-          f"contains_shop_name={'アロマモア' in res.text} "
-          f"contains_schedule_word={'出勤スケジュール' in res.text}")
-
-    soup = BeautifulSoup(res.text, "html.parser")
-
-    # スケジュール一覧が含まれるメインエリアのテキストから名前を抽出
-    text = soup.get_text(" ", strip=True)
-    names = NAME_PATTERN.findall(text)
-
+def read_names(page):
+    texts = page.eval_on_selector_all('a[href^="/item_"]', JS_VISIBLE_NAMES)
+    names = []
     seen = set()
-    result = []
-    for name, age in names:
-        if name not in seen:
+    for t in texts:
+        m = NAME_PATTERN.match(t)
+        if not m:
+            continue
+        name = m.group(1).strip()
+        if name and name not in seen:
             seen.add(name)
-            result.append(name)
-    return result
+            names.append(name)
+    return names
 
 
 def main():
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    week_dates = get_week_dates()
+    today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
+    week_dates = [(today + datetime.timedelta(days=i)) for i in range(7)]
 
     schedule_by_date = {}
     all_names = set()
 
-    for offset, date_str in enumerate(week_dates):
-        try:
-            names = fetch_day(offset)
-        except Exception as e:
-            print(f"[警告] {date_str} の取得に失敗しました: {e}")
-            names = []
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(user_agent=(
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+        ))
+        page.goto(BASE_URL, wait_until="networkidle", timeout=30000)
+        page.wait_for_timeout(2000)
 
-        schedule_by_date[date_str] = names
-        all_names.update(names)
-        print(f"{date_str}: {len(names)}名 出勤確認")
-        time.sleep(1.5)
+        for date_obj in week_dates:
+            date_str = date_obj.isoformat()
+            try:
+                if not click_date_tab(page, date_obj):
+                    print(f"[警告] {date_str} の日付タブが見つかりませんでした")
+                    names = []
+                else:
+                    names = read_names(page)
+            except Exception as e:
+                print(f"[警告] {date_str} の取得に失敗しました: {e}")
+                names = []
 
-    therapists = [{"name": name, "area": "新宿/東新宿/高田馬場/恵比寿/銀座/日本橋"} for name in sorted(all_names)]
+            schedule_by_date[date_str] = names
+            all_names.update(names)
+            print(f"{date_str}: {len(names)}名 出勤確認")
+            time.sleep(1.0)
+
+        browser.close()
+
+    therapists = [{"name": name, "area": ""} for name in sorted(all_names)]
 
     output = {
         "shop": SHOP_NAME,
         "region": REGION,
         "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
-        "dates": week_dates,
+        "dates": [d.isoformat() for d in week_dates],
         "therapists": therapists,
         "schedule": schedule_by_date,
     }
