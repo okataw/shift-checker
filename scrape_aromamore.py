@@ -51,7 +51,7 @@ def click_date_tab(page, date_obj):
             # 画面上部の固定メニューなどがタブに重なってクリックが遮られることがあるため、
             # 画面上の位置に関係なく、タブ自体に直接クリック命令を送る
             tabs.nth(i).evaluate("e => e.click()")
-            page.wait_for_timeout(1500)
+            page.wait_for_timeout(500)
             return True
     return False
 
@@ -68,6 +68,18 @@ def read_names(page):
         if name and name not in seen:
             seen.add(name)
             names.append(name)
+    return names
+
+
+def wait_for_names(page, prev_names):
+    """タブを押した後、リストが表示され、前日の内容から切り替わるまで最大10秒待つ
+    （切り替わり途中で読み取ると、0件になったり前日の内容を読んでしまうため）"""
+    names = []
+    for _ in range(20):
+        names = read_names(page)
+        if names and names != prev_names:
+            return names
+        page.wait_for_timeout(500)
     return names
 
 
@@ -88,17 +100,25 @@ def main():
         page.goto(BASE_URL, wait_until="networkidle", timeout=30000)
         page.wait_for_timeout(2000)
 
+        prev_names = None
         for date_obj in week_dates:
             date_str = date_obj.isoformat()
             try:
-                if not click_date_tab(page, date_obj):
-                    print(f"[警告] {date_str} の日付タブが見つかりませんでした")
-                    names = []
-                else:
-                    names = read_names(page)
+                names = []
+                for attempt in range(2):  # 0件なら1回だけタブを押し直して再挑戦
+                    if not click_date_tab(page, date_obj):
+                        print(f"[警告] {date_str} の日付タブが見つかりませんでした")
+                        break
+                    names = wait_for_names(page, prev_names)
+                    if names:
+                        break
+                    print(f"  [再試行] {date_str} が0件だったため、タブを押し直します")
             except Exception as e:
                 print(f"[警告] {date_str} の取得に失敗しました: {e}")
                 names = []
+
+            if names:
+                prev_names = names
 
             schedule_by_date[date_str] = names
             all_names.update(names)
