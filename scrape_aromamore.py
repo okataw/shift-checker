@@ -48,7 +48,9 @@ def click_date_tab(page, date_obj):
     for i in range(tabs.count()):
         text = re.sub(r"\s+", " ", tabs.nth(i).inner_text()).strip() + " "
         if text.startswith(target):
-            tabs.nth(i).click()
+            # 画面上部の固定メニューなどがタブに重なってクリックが遮られることがあるため、
+            # 画面上の位置に関係なく、タブ自体に直接クリック命令を送る
+            tabs.nth(i).evaluate("e => e.click()")
             page.wait_for_timeout(1500)
             return True
     return False
