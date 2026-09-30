@@ -57,6 +57,9 @@ jobs:
       - name: Offsuitを取得
         run: python scrape_offsuit.py
 
+      - name: Queendomを取得
+        run: python scrape_queendom.py
+
       - name: データをまとめる
         run: python merge_data.py
 
