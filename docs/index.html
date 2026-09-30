@@ -381,6 +381,14 @@ let regions = {};
 let currentRegion = null;
 const dows = ["日","月","火","水","木","金","土"];
 
+// タブの表示順（ここに無い地域は、後ろにそのまま並ぶ）
+const REGION_ORDER = ["東京", "多摩", "神奈川", "埼玉"];
+function orderedRegionNames(){
+  const names = Object.keys(regions);
+  const rank = r => { const i = REGION_ORDER.indexOf(r); return i === -1 ? 999 : i; };
+  return names.sort((a, b) => rank(a) - rank(b));
+}
+
 // ---- お気に入り管理（タブレット内に保存） ----
 const FAV_KEY = 'shiftapp_favorites';
 const FILTER_KEY = 'shiftapp_filter_on';
@@ -458,7 +466,7 @@ async function loadData(){
     if(!res.ok) throw new Error('data.json not found');
     const json = await res.json();
     regions = json.regions || {};
-    currentRegion = Object.keys(regions)[0] || null;
+    currentRegion = orderedRegionNames()[0] || null;
     if(statusEl){
       const updated = json.generated_at ? new Date(json.generated_at) : null;
       statusEl.textContent = updated
@@ -475,7 +483,7 @@ async function loadData(){
 function renderTabs(){
   const tabsEl = document.getElementById('tabs');
   tabsEl.innerHTML = '';
-  Object.keys(regions).forEach(region=>{
+  orderedRegionNames().forEach(region=>{
     const btn = document.createElement('button');
     btn.className = 'tab' + (region===currentRegion ? ' active' : '');
     btn.textContent = region;
