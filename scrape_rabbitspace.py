@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-「ラビット空間」(https://esthe-rabbitspace.com/schedule/) の出勤データを取得するスクリプト。
+「ウサじょ学園」(https://usajyo-gakuen.com/schedule/) の出勤データを取得するスクリプト。
+（旧店名：ラビット空間。ファイル名は以前のまま使っている）
 
 ・日付ごとに ?works=YYYY-MM-DD というURLがあるので、1週間分アクセスして回る
-・各ページから「セラピスト名」「エリア（秋葉原/新橋/赤坂）」「その日出勤しているか」を抜き出す
+・各ページから「セラピスト名」「ルーム（秋葉原/新橋）」を抜き出す
 ・結果を data/rabbitspace.json に保存する
 
 ※ 注意：このスクリプトはサイトの見た目のHTML構造をもとに作成していますが、
@@ -19,9 +20,9 @@ import os
 
 JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
 
-SHOP_NAME = "ラビット空間"
+SHOP_NAME = "ウサじょ学園"
 REGION = "東京"
-BASE_URL = "https://esthe-rabbitspace.com/schedule/"
+BASE_URL = "https://usajyo-gakuen.com/schedule/"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "data", "rabbitspace.json")
 
 HEADERS = {
@@ -44,7 +45,7 @@ def fetch_day(date_str):
 
     # デバッグ用：取得できた内容のサイズと、期待する文言が含まれているか確認
     print(f"  status={res.status_code} bytes={len(res.text)} "
-          f"contains_shop_name={'ラビット空間' in res.text} "
+          f"contains_shop_name={'ウサじょ学園' in res.text} "
           f"h3_count={res.text.count('<h3')}")
 
     soup = BeautifulSoup(res.text, "html.parser")
@@ -102,7 +103,7 @@ def main():
         "updated_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
         "dates": week_dates,
         "therapists": therapists,
-        "schedule": schedule_by_date,  # { "2026-08-11": ["こはる", "みお", ...], ... }
+        "schedule": schedule_by_date,
     }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
