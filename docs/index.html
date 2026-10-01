@@ -424,8 +424,34 @@ let favMeta = loadFavMeta();
 // 以前の「名前だけ」で管理していた古い形式のデータが残っていると
 // 同じ人が二重に表示されてしまうため、読み込み時に取り除く
 // （正しいキーは必ず「店舗名::名前」の形＝"::"を含む）
+// 店名が変わった店舗の★登録を、新しい店名に引き継ぐための対応表（旧店名 → 新店名）
+const SHOP_RENAMES = {
+  "ラビット空間": "ウサじょ学園",
+};
+
 (function migrateOldFavorites(){
   let changed = false;
+
+  // 店名変更の引き継ぎ
+  Object.entries(SHOP_RENAMES).forEach(([oldShop, newShop]) => {
+    const prefix = oldShop + '::';
+    [...favorites].forEach(key => {
+      if(key.startsWith(prefix)){
+        favorites.delete(key);
+        favorites.add(newShop + '::' + key.slice(prefix.length));
+        changed = true;
+      }
+    });
+    Object.keys(favMeta).forEach(key => {
+      if(key.startsWith(prefix)){
+        const meta = favMeta[key];
+        delete favMeta[key];
+        favMeta[newShop + '::' + key.slice(prefix.length)] = { ...meta, shop: newShop };
+        changed = true;
+      }
+    });
+  });
+
   [...favorites].forEach(key => {
     if(!key.includes('::')){
       favorites.delete(key);
