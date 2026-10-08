@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T22:42:36+09:00",
+  "generated_at": "2026-10-08T22:53:12+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -561,13 +561,13 @@
       ],
       "schedule": {
         "2026-10-08": {
+          "アマテラス横浜::しずく": true,
           "アマテラス横浜::みらい": true,
+          "アマテラス横浜::るな": true,
           "アマテラス横浜::りり": true,
           "アマテラス横浜::あず": true,
           "アマテラス横浜::れいか": true,
           "アマテラス横浜::あやな": true,
-          "アマテラス横浜::しずく": true,
-          "アマテラス横浜::るな": true,
           "アマテラス横浜::なつき": true,
           "アマテラス横浜::えみり": true,
           "アマテラス横浜::かなえ": true,
@@ -4657,7 +4657,6 @@
           "Offsuit::末永　もえか": true,
           "Queendom::東雲けい": true,
           "Queendom::宮城ゆき": true,
-          "Queendom::佐々木ほのか": true,
           "Queendom::川崎りさ": true,
           "Queendom::小栗ゆりな": true,
           "Queendom::瀬戸ののか": true,
@@ -4681,6 +4680,7 @@
           "Queendom::池田かりな": true,
           "Queendom::天城まりあ": true,
           "Queendom::麗日あん": true,
+          "Queendom::佐々木ほのか": true,
           "Queendom::宇多田かほ": true,
           "Queendom::渚かおる": true
         },
