@@ -77,6 +77,8 @@ def collect_text(page):
         page.mouse.wheel(0, 4000)
         page.wait_for_timeout(700)
     body = page.inner_text("body")
+    # 画像のalt・title、リンクの文字、ページ全体のHTML内の文字も集める
+    # （名前が画像だけ・リンクの中だけに書かれているサイトにも対応するため）
     extra = page.evaluate(
         """() => {
             const out = [];
@@ -84,6 +86,11 @@ def collect_text(page):
                 if (el.alt) out.push(el.alt);
                 if (el.title) out.push(el.title);
             });
+            document.querySelectorAll('a').forEach(a => {
+                const t = (a.textContent || '').trim();
+                if (t) out.push(t);
+            });
+            out.push(document.body ? (document.body.textContent || '') : '');
             return out;
         }"""
     )
@@ -91,12 +98,39 @@ def collect_text(page):
     pieces = []
     for p in parts:
         p = p.strip()
-        if not p or len(p) > 120:
+        if not p:
             continue
         if not re.search(r"[ぁ-んァ-ヶ一-龠]", p):
             continue
         pieces.append(norm(p))
     return pieces
+
+
+def debug_page(browser, url):
+    """判定できなかった店舗について、原因を探るためにページの様子を表示する"""
+    page = browser.new_page()
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=30000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=10000)
+        except Exception:
+            pass
+        body = page.inner_text("body")
+        lines = [l.strip() for l in body.split("\n") if l.strip()]
+        links = page.evaluate(
+            "() => Array.from(document.querySelectorAll('a[href]')).map(a => a.getAttribute('href') + ' | ' + (a.textContent||'').trim().slice(0,30))"
+        )
+        print(f"    [調査] 表示されたURL: {page.url}")
+        print(f"    [調査] ページタイトル: {page.title()}")
+        print(f"    [調査] 本文の行数: {len(lines)} / リンク数: {len(links)}")
+        for l in lines[:25]:
+            print(f"    [調査] 本文: {l[:80]}")
+        for l in links[:40]:
+            print(f"    [調査] リンク: {l[:100]}")
+    except Exception as e:
+        print(f"    [調査] 失敗: {e}")
+    finally:
+        page.close()
 
 
 def pagination_links(page, base_url):
@@ -202,6 +236,8 @@ def main():
             )
             if missing:
                 print(f"    一覧で見つからなかった名前: {'、'.join(missing[:30])}")
+            if not ok:
+                debug_page(browser, url)
 
             if not ok and shop in previous and previous[shop].get("ok"):
                 print("    → 今回は確認が不十分なため、前回のデータを使います")
