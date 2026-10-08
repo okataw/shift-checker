@@ -276,6 +276,15 @@
   }
   .name-cell.fav .star-mark{ color: var(--brass); }
 
+  /* 退店済の表示 */
+  td.retired-cell{
+    text-align:center;
+    color: #e06666;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.2em;
+  }
+
   /* modal */
   .modal-backdrop{
     position:fixed; inset:0;
@@ -404,10 +413,18 @@ function saveFavorites(set){
 let favorites = loadFavorites();
 let filterOn = localStorage.getItem(FILTER_KEY) === '1';
 
-function toggleFavorite(key){
-  if(favorites.has(key)) favorites.delete(key);
-  else favorites.add(key);
+// ★の登録・解除（解除のときだけ確認ポップを出す）
+// 戻り値: 実際に変更したら true、キャンセルしたら false
+function toggleFavorite(key, name){
+  if(favorites.has(key)){
+    const label = name || (key.split('::')[1] || key);
+    if(!confirm(`${label}をお気に入りから削除しますか？`)) return false;
+    favorites.delete(key);
+  }else{
+    favorites.add(key);
+  }
   saveFavorites(favorites);
+  return true;
 }
 
 // ★登録した人の店舗名を覚えておく（今週のデータに出てこなくなっても表示を続けるため）
@@ -485,7 +502,38 @@ function fmtRange(dates){
   return `${f(dates[0])} – ${f(dates[dates.length-1])}`;
 }
 
+// ---- 在籍一覧（退店チェック用） ----
+let rosters = {};
+const NON_NAME_RE = /[^ぁ-んァ-ヶー一-龠々〆\u3400-\u9fffA-Za-z0-9Ａ-Ｚａ-ｚ０-９]+/g;
+function normName(s){
+  return (s || '').replace(/[\s\u3000]+/g, '').replace(NON_NAME_RE, '|').replace(/^\|+|\|+$/g, '');
+}
+function escapeRegExp(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function nameInRoster(name, text){
+  const n = normName(name);
+  if(!n) return true;
+  const re = new RegExp(`(?<![ぁ-ん])${escapeRegExp(n)}(?![ぁ-んァ-ヶー一-龠々\u3400-\u9fff])`);
+  return re.test(text);
+}
+// 退店済かどうか（在籍一覧を確認できた店舗で、名前が見つからない場合のみ true）
+function isRetired(t){
+  const r = rosters[t.shop];
+  if(!r || !r.ok || !r.text) return false;
+  return !nameInRoster(t.name, r.text);
+}
+async function loadRosters(){
+  try{
+    const res = await fetch('rosters.json', { cache: 'no-store' });
+    if(!res.ok) return;
+    const json = await res.json();
+    rosters = json.shops || {};
+  }catch(e){
+    rosters = {};
+  }
+}
+
 async function loadData(){
+  await loadRosters();
   const statusEl = document.getElementById('statusMsg');
   try{
     const res = await fetch('data.json', { cache: 'no-store' });
@@ -619,8 +667,21 @@ function render(){
     const nameTd = document.createElement('td');
     nameTd.className = 'name-cell' + (favorites.has(t.key) ? ' fav' : '');
     nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}`;
-    nameTd.onclick = () => { toggleFavorite(t.key); render(); };
+    nameTd.onclick = () => { if(toggleFavorite(t.key, t.name)) render(); };
     tr.appendChild(nameTd);
+
+    // 退店済の人は、予定欄に赤字で「退店済」とだけ表示する
+    if(t.absentThisWeek && isRetired(t)){
+      tr.style.opacity = '1';
+      nameTd.style.opacity = '0.55';
+      const td = document.createElement('td');
+      td.colSpan = data.dates.length;
+      td.className = 'retired-cell';
+      td.textContent = '退店済';
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      return;
+    }
 
     data.dates.forEach((dateStr, idx)=>{
       const d = dateObjs[idx];
@@ -665,8 +726,9 @@ function openModal(){
       row.className = 'modal-row' + (favorites.has(t.key) ? ' fav' : '');
       row.innerHTML = `<span class="star-mark">★</span><span>${t.name}</span><span class="area-tag">${t.shop || ''}</span>`;
       row.onclick = () => {
-        toggleFavorite(t.key);
-        row.classList.toggle('fav', favorites.has(t.key));
+        if(toggleFavorite(t.key, t.name)){
+          row.classList.toggle('fav', favorites.has(t.key));
+        }
       };
       modalList.appendChild(row);
     });
