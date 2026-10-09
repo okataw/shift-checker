@@ -42,6 +42,7 @@ def main():
                 "name": t["name"],
                 "area": t.get("area", ""),
                 "shop": shop_name,
+                "url": t.get("url", ""),  # セラピスト個人ページ（分かる店舗のみ）
             })
 
         shop_name = shop_data.get("shop", "")
