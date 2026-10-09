@@ -139,11 +139,29 @@ def debug_page(browser, url):
 def collect_profile_links(page, base_url):
     """一覧ページ内のリンクのうち、名前らしき文字を含むものを [文字, URL] で集める"""
     host = urlparse(base_url).netloc
+    # リンク自体に名前が書かれていない場合（写真だけのリンクなど）は、
+    # そのリンクを囲む枠（同じ人のリンクしか含まない範囲）の文字を名前の手がかりにする
     items = page.evaluate(
-        """() => Array.from(document.querySelectorAll('a[href]')).map(a => {
-            const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
-            return [((a.innerText || '') + ' ' + alts).trim(), a.href];
-        })"""
+        """() => {
+            const jp = /[ぁ-んァ-ヶ一-龠]/;
+            const ownText = a => {
+                const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
+                return ((a.innerText || '') + ' ' + alts).trim();
+            };
+            return Array.from(document.querySelectorAll('a[href]')).map(a => {
+                let text = ownText(a);
+                if (!jp.test(text)) {
+                    let el = a.parentElement;
+                    for (let depth = 0; el && depth < 5; depth++, el = el.parentElement) {
+                        const hrefs = new Set(Array.from(el.querySelectorAll('a[href]')).map(x => x.href));
+                        if (hrefs.size > 1) break;   // 他の人のリンクまで含む範囲になったら止める
+                        const t = (el.innerText || '').trim();
+                        if (jp.test(t)) { text = t; break; }
+                    }
+                }
+                return [text, a.href];
+            });
+        }"""
     )
     links = []
     base = base_url.rstrip("/")
