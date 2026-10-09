@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T22:11:32+09:00",
+  "generated_at": "2026-10-09T22:26:59+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -3624,6 +3624,7 @@
           "エステの気分::るき": true,
           "エステの気分::もえか": true,
           "エステの気分::ひかる": true,
+          "エステの気分::あき": true,
           "LINDA SPA::一条かえで": true,
           "LINDA SPA::藤森ありさ": true,
           "LINDA SPA::戸倉このは": true,
@@ -3646,13 +3647,13 @@
           "LINDA SPA::十条せいら": true,
           "LINDA SPA::春日なな": true,
           "LINDA SPA::三田もなみ": true,
-          "LINDA SPA::水山ゆうり": true,
           "LINDA SPA::西島れい": true,
           "LINDA SPA::桐生あや": true,
           "LINDA SPA::希崎せりか": true,
           "LINDA SPA::喜多島あかり": true,
           "LINDA SPA::菜月まりな": true,
           "LINDA SPA::花宮もも": true,
+          "LINDA SPA::水山ゆうり": true,
           "LINDA SPA::佐山ひなの": true,
           "LINDA SPA::白金じゅりあ": true,
           "LINDA SPA::安藤そら": true,
@@ -3789,6 +3790,7 @@
           "エステの気分::あいり": true,
           "エステの気分::みりあ": true,
           "エステの気分::あいす": true,
+          "エステの気分::あき": true,
           "エステの気分::りな": true,
           "LINDA SPA::神谷すずね": true,
           "LINDA SPA::百合川みら": true,
