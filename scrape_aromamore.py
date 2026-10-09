@@ -9,6 +9,7 @@ Playwright（実際にブラウザを操作するライブラリ）でタブを�
 
 ・日付タブ（「9 26 土」のような表記）を順にクリックする
 ・画面に表示されているセラピストのリンク（「名前(25歳)」の形）から名前を抜き出す
+・あわせて、そのリンク先（セラピスト個人ページのURL）も保存する
 ・結果を data/aromamore.json に保存する
 
 ※ 注意：ページの見た目をもとに作成しています。サイト側の構造が変わると
@@ -26,6 +27,7 @@ JST = datetime.timezone(datetime.timedelta(hours=9))  # 日本時間
 SHOP_NAME = "アロマモア"
 REGION = "東京"
 BASE_URL = "https://aromamore.tokyo/scheduleAll.html"
+SITE_ROOT = "https://aromamore.tokyo"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "data", "aromamore.json")
 
 # 「名前(25歳)」から名前部分だけを取り出す
@@ -36,8 +38,8 @@ NAME_PATTERN = re.compile(r'^(.+?)\s*[\(（]\d{2}歳?[\)）]')
 JS_VISIBLE_NAMES = """
 els => els
   .filter(e => e.offsetParent !== null)
-  .map(e => e.innerText.trim())
-  .filter(t => t.length > 0)
+  .map(e => [e.innerText.trim(), e.getAttribute('href') || ''])
+  .filter(x => x[0].length > 0)
 """
 
 
@@ -56,11 +58,15 @@ def click_date_tab(page, date_obj):
     return False
 
 
+# 名前 → 個人ページURL（読み取ったものをここに貯めていく）
+PROFILE_URLS = {}
+
+
 def read_names(page):
-    texts = page.eval_on_selector_all('a[href^="/item_"]', JS_VISIBLE_NAMES)
+    items = page.eval_on_selector_all('a[href^="/item_"]', JS_VISIBLE_NAMES)
     names = []
     seen = set()
-    for t in texts:
+    for t, href in items:
         m = NAME_PATTERN.match(t)
         if not m:
             continue
@@ -68,6 +74,8 @@ def read_names(page):
         if name and name not in seen:
             seen.add(name)
             names.append(name)
+            if href:
+                PROFILE_URLS[name] = SITE_ROOT + href if href.startswith("/") else href
     return names
 
 
@@ -127,7 +135,8 @@ def main():
 
         browser.close()
 
-    therapists = [{"name": name, "area": ""} for name in sorted(all_names)]
+    therapists = [{"name": name, "area": "", "url": PROFILE_URLS.get(name, "")}
+                  for name in sorted(all_names)]
 
     output = {
         "shop": SHOP_NAME,
