@@ -270,9 +270,16 @@
   .name-cell{ cursor:pointer; }
   .name-cell .star-mark{
     display:inline-block;
-    margin-right:4px;
+    /* ★の押せる範囲を見た目より広くする */
+    padding: 8px 5px 8px 6px;
+    margin: -8px 1px -8px -6px;
     color: var(--line);
     font-size:13px;
+  }
+  .name-cell .name-text.has-link{
+    text-decoration: underline dotted;
+    text-decoration-color: var(--text-faint);
+    text-underline-offset: 2px;
   }
   .name-cell.fav .star-mark{ color: var(--brass); }
 
@@ -373,7 +380,7 @@
     </div>
   </div>
 
-  <footer>データは毎日自動更新されます・名前の★タップでも登録できます</footer>
+  <footer>データは毎日自動更新されます・★タップでお気に入り登録／名前タップで個人ページ</footer>
 </div>
 
 <div class="modal-backdrop" id="modalBackdrop">
@@ -521,6 +528,32 @@ function isRetired(t){
   if(!r || !r.ok || !r.text) return false;
   return !nameInRoster(t.name, r.text);
 }
+// 在籍一覧ページのリンクから、その人の個人ページURLを探す
+function rosterLink(shop, name){
+  const r = rosters[shop];
+  if(!r || !Array.isArray(r.links)) return '';
+  let best = null;
+  r.links.forEach(([text, href]) => {
+    if(!text || !href) return;
+    if(nameInRoster(name, '|' + text + '|')){
+      if(!best || text.length < best.text.length) best = { text, href };
+    }
+  });
+  return best ? best.href : '';
+}
+// 個人ページのURL（出勤表から取れたもの → ★登録時に覚えたもの → 在籍一覧から探したもの の順）
+function profileUrl(t){
+  return t.url || (favMeta[t.key] && favMeta[t.key].url) || rosterLink(t.shop, t.name) || '';
+}
+function openProfile(t){
+  const url = profileUrl(t);
+  if(url){
+    window.open(url, '_blank', 'noopener');
+  }else{
+    alert(`${t.name}の個人ページが見つかりませんでした`);
+  }
+}
+
 async function loadRosters(){
   try{
     const res = await fetch('rosters.json', { cache: 'no-store' });
@@ -604,8 +637,9 @@ function render(){
   data.therapists.forEach(t=>{
     if(favorites.has(t.key)){
       const prev = favMeta[t.key];
-      if(!prev || prev.shop !== t.shop || prev.area !== t.area || prev.region !== currentRegion || prev.name !== t.name){
-        favMeta[t.key] = { name: t.name, shop: t.shop || '', area: t.area || '', region: currentRegion };
+      const url = t.url || rosterLink(t.shop, t.name) || (prev && prev.url) || '';
+      if(!prev || prev.shop !== t.shop || prev.area !== t.area || prev.region !== currentRegion || prev.name !== t.name || (prev.url || '') !== url){
+        favMeta[t.key] = { name: t.name, shop: t.shop || '', area: t.area || '', region: currentRegion, url };
         metaChanged = true;
       }
     }
@@ -666,8 +700,14 @@ function render(){
     if(t.absentThisWeek) tr.style.opacity = '0.55';
     const nameTd = document.createElement('td');
     nameTd.className = 'name-cell' + (favorites.has(t.key) ? ' fav' : '');
-    nameTd.innerHTML = `<span class="star-mark">★</span>${t.name}`;
-    nameTd.onclick = () => { if(toggleFavorite(t.key, t.name)) render(); };
+    const linkClass = profileUrl(t) ? ' has-link' : '';
+    nameTd.innerHTML = `<span class="star-mark">★</span><span class="name-text${linkClass}">${t.name}</span>`;
+    // ★の部分をタップ → お気に入りの登録・解除／名前の部分をタップ → 個人ページを開く
+    nameTd.querySelector('.star-mark').onclick = (e) => {
+      e.stopPropagation();
+      if(toggleFavorite(t.key, t.name)) render();
+    };
+    nameTd.onclick = () => openProfile(t);
     tr.appendChild(nameTd);
 
     // 退店済の人は、予定欄に赤字で「退店済」とだけ表示する
