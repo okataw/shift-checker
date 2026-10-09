@@ -4,6 +4,8 @@
 
 アプリ側では、★登録しているのに今週の出勤表に載っていない人について、
 この一覧に名前が無ければ「退店済」と赤字で表示する。
+また、一覧ページにある「名前 → 個人ページ」のリンクも保存し、
+アプリで名前をタップしたときに個人ページを開けるようにする。
 
 安全装置:
   ・今週の出勤表に載っている人の 80% 以上が一覧で見つかった店舗だけ
@@ -29,7 +31,7 @@ OUTPUT_PATH = os.path.join(BASE_DIR, "docs", "rosters.json")
 ROSTER_URLS = {
     "エステの気分": "https://estheno-kibun.com/cast/",
     "ウサじょ学園": "https://usajyo-gakuen.com/cast/",
-    "アロマモア": "https://aromamore.tokyo/itemList.html",
+    # アロマモアは一覧ページが外部からのアクセスを拒否（403 Forbidden）しているため対象外
     "トキョプラ": "https://tokyopla.com/therapist",
     "Tigger": "https://tigger-esthe.com/therapist",
     "アマテラス横浜": "https://amaterasu-yokohama.com/therapist",
@@ -40,6 +42,7 @@ ROSTER_URLS = {
 }
 
 MAX_PAGES = 10          # 1店舗あたり最大何ページまで「次のページ」をたどるか
+MAX_ATTEMPTS = 2        # 読み込みに失敗したときに何回まで試すか
 MIN_COVERAGE = 0.8      # 今週の出勤者のうち何割が一覧で見つかれば「判定する」にするか
 PAGINATION_PATTERN = re.compile(r"/page/\d+|[?&](page|p|pg|paged)=\d+")
 
@@ -133,6 +136,31 @@ def debug_page(browser, url):
         page.close()
 
 
+def collect_profile_links(page, base_url):
+    """一覧ページ内のリンクのうち、名前らしき文字を含むものを [文字, URL] で集める"""
+    host = urlparse(base_url).netloc
+    items = page.evaluate(
+        """() => Array.from(document.querySelectorAll('a[href]')).map(a => {
+            const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
+            return [((a.innerText || '') + ' ' + alts).trim(), a.href];
+        })"""
+    )
+    links = []
+    base = base_url.rstrip("/")
+    for text, href in items:
+        if not href or href.startswith("javascript"):
+            continue
+        href = href.split("#")[0]
+        if urlparse(href).netloc != host or href.rstrip("/") == base:
+            continue
+        if PAGINATION_PATTERN.search(href):
+            continue
+        if not text or len(text) > 200 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
+            continue
+        links.append([norm(text).strip("|"), href])
+    return links
+
+
 def pagination_links(page, base_url):
     host = urlparse(base_url).netloc
     hrefs = page.evaluate(
@@ -154,6 +182,7 @@ def fetch_roster(browser, url):
     page = browser.new_page()
     page.set_default_timeout(30000)
     pieces = []
+    links = []
     visited = set()
     queue = [url]
     try:
@@ -162,12 +191,13 @@ def fetch_roster(browser, url):
             if target in visited:
                 continue
             visited.add(target)
-            page.goto(target, wait_until="domcontentloaded", timeout=30000)
+            page.goto(target, wait_until="domcontentloaded", timeout=45000)
             try:
                 page.wait_for_load_state("networkidle", timeout=10000)
             except Exception:
                 pass
             pieces.extend(collect_text(page))
+            links.extend(collect_profile_links(page, url))
             for link in pagination_links(page, url):
                 if link not in visited and link not in queue:
                     queue.append(link)
@@ -180,7 +210,14 @@ def fetch_roster(browser, url):
         if p not in seen:
             seen.add(p)
             uniq.append(p)
-    return "|" + "|".join(uniq) + "|", len(visited)
+    # リンクも重複を除く
+    seen_links = set()
+    uniq_links = []
+    for text, href in links:
+        if (text, href) not in seen_links:
+            seen_links.add((text, href))
+            uniq_links.append([text, href])
+    return "|" + "|".join(uniq) + "|", uniq_links, len(visited)
 
 
 def load_schedule_names():
@@ -216,12 +253,20 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         for shop, url in ROSTER_URLS.items():
-            try:
-                text, pages = fetch_roster(browser, url)
-            except Exception as e:
-                print(f"{shop}: 読み込み失敗 → 前回のデータを使います（{e}）")
+            text, links, pages, error = None, [], 0, None
+            for attempt in range(1, MAX_ATTEMPTS + 1):
+                try:
+                    text, links, pages = fetch_roster(browser, url)
+                    break
+                except Exception as e:
+                    error = str(e).split("\n")[0]
+                    print(f"  [再試行 {attempt}/{MAX_ATTEMPTS}] {shop}: {error}")
+            if text is None:
                 if shop in previous:
+                    print(f"{shop}: 読み込み失敗 → 前回のデータを使います")
                     shops[shop] = previous[shop]
+                else:
+                    print(f"{shop}: 読み込み失敗（前回のデータも無いため、今回は判定しません）")
                 continue
 
             names = sorted(schedule_names.get(shop, set()))
@@ -230,9 +275,11 @@ def main():
             coverage = (len(found) / len(names)) if names else 0.0
             ok = len(names) > 0 and coverage >= MIN_COVERAGE
 
+            linked = [n for n in names if any(name_found(n, "|" + t + "|") for t, _ in links)]
             print(
                 f"{shop}: {pages}ページ読込 / 今週の出勤者 {len(found)}/{len(names)}名 が一覧に存在"
                 f"（{coverage:.0%}）→ {'判定する' if ok else '判定しない'}"
+                f" / 個人ページのリンク {len(linked)}/{len(names)}名"
             )
             if missing:
                 print(f"    一覧で見つからなかった名前: {'、'.join(missing[:30])}")
@@ -250,6 +297,7 @@ def main():
                 "coverage": round(coverage, 3),
                 "checked_at": datetime.datetime.now(JST).isoformat(timespec="seconds"),
                 "text": text,
+                "links": links,
             }
         browser.close()
 
