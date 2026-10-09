@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T22:01:34+09:00",
+  "generated_at": "2026-10-09T22:11:32+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -754,10 +754,10 @@
           "アマテラス横浜::あみ": true,
           "アマテラス横浜::にこ": true,
           "Tigger::まりな": true,
-          "Tigger::さくや": true,
           "Tigger::ゆい": true,
           "Tigger::いろは": true,
           "Tigger::れい": true,
+          "Tigger::さくや": true,
           "Tigger::天使りん": true,
           "Tigger::ゆのん": true,
           "Tigger::ゆり": true,
@@ -3553,6 +3553,7 @@
       ],
       "schedule": {
         "2026-10-09": {
+          "アロマモア::南雲みさと": true,
           "アロマモア::恋仲もも": true,
           "アロマモア::桃愛りこ": true,
           "アロマモア::瀬名かえで": true,
@@ -3574,7 +3575,6 @@
           "アロマモア::椎名あかり": true,
           "アロマモア::白花ゆか": true,
           "アロマモア::加賀美ゆり": true,
-          "アロマモア::南雲みさと": true,
           "アロマモア::藤原みお": true,
           "アロマモア::白羽せいら": true,
           "アロマモア::愛川めぐ": true,
@@ -3666,7 +3666,6 @@
           "LINDA SPA::柊あやか": true,
           "LINDA SPA::稲森すず": true,
           "LINDA SPA::高梨みな": true,
-          "NEW+PLUS::水城さくら": true,
           "NEW+PLUS::九条かなえ": true,
           "NEW+PLUS::伊織らえ": true,
           "NEW+PLUS::篠崎なつ": true,
@@ -3680,6 +3679,7 @@
           "NEW+PLUS::黒崎ひめか": true,
           "NEW+PLUS::片瀬ありす": true,
           "NEW+PLUS::流川すい": true,
+          "NEW+PLUS::水城さくら": true,
           "NEW+PLUS::音海かりん": true,
           "NEW+PLUS::高瀬さゆり": true,
           "NEW+PLUS::真白にこり": true,
