@@ -223,7 +223,9 @@ def collect_profile_links(page, base_url):
             continue
         if PAGINATION_PATTERN.search(href):
             continue
-        if not text or len(text) > 200 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
+        # カード全体がリンクになっていて、紹介文などで長くなる店舗もあるため、
+        # 1500文字まではそのまま使う（それより長いものはページ全体などとみなして捨てる）
+        if not text or len(text) > 1500 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
             continue
         text = norm(text).strip("|")
         if not direct:
