@@ -177,9 +177,12 @@ def collect_profile_links(page, base_url):
     items = page.evaluate(
         """() => {
             const jp = /[ぁ-んァ-ヶ一-龠]/;
+            // 画面に表示されている文字（innerText）に加えて、まだ表示されていない文字（textContent）も使う
+            // （スクロールするまで隠れているカードや、ふわっと表示されるカードにも対応するため）
+            const allText = el => ((el.innerText || '') + ' | ' + (el.textContent || '')).trim();
             const ownText = a => {
                 const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
-                return ((a.innerText || '') + ' ' + alts).trim();
+                return (allText(a) + ' | ' + alts).trim();
             };
             // 「数字の部分だけが違うリンク」を同じ種類（＝別のセラピストの個人ページ）とみなす
             // （SNSや予約ボタンなど、種類の違うリンクが同じ枠にあっても気にしない）
@@ -196,7 +199,7 @@ def collect_profile_links(page, base_url):
                             .map(x => x.href)
                             .filter(h => h !== a.href && kind(h) === myKind));
                         if (others.size > 0) break;   // 他の人の個人ページまで含む範囲になったら止める
-                        const t = (el.innerText || '').trim();
+                        const t = allText(el);
                         if (jp.test(t)) { text = t; break; }
                     }
                 }
@@ -224,8 +227,8 @@ def collect_profile_links(page, base_url):
         if PAGINATION_PATTERN.search(href):
             continue
         # カード全体がリンクになっていて、紹介文などで長くなる店舗もあるため、
-        # 1500文字まではそのまま使う（それより長いものはページ全体などとみなして捨てる）
-        if not text or len(text) > 1500 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
+        # 3000文字まではそのまま使う（それより長いものはページ全体などとみなして捨てる）
+        if not text or len(text) > 3000 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
             continue
         text = norm(text).strip("|")
         if not direct:
