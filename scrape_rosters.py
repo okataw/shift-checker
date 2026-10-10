@@ -136,6 +136,39 @@ def debug_page(browser, url):
         page.close()
 
 
+def debug_link_html(browser, url, names):
+    """個人ページのリンクが見つからなかった人について、名前の周りのHTMLを表示する（原因調査用）"""
+    page = browser.new_page()
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=10000)
+        except Exception:
+            pass
+        for name in names:
+            html = page.evaluate(
+                """(name) => {
+                    const key = name.replace(/\\s/g, '');
+                    const has = el => (el.textContent || '').replace(/\\s/g, '').includes(key);
+                    // 名前を含む一番内側の要素を探す
+                    let hit = null;
+                    for (const el of document.body.querySelectorAll('*')) {
+                        if (has(el) && !Array.from(el.children).some(has)) { hit = el; break; }
+                    }
+                    if (!hit) return '(名前がページ内に見つかりません)';
+                    let box = hit;
+                    for (let i = 0; i < 3 && box.parentElement; i++) box = box.parentElement;
+                    return box.outerHTML.replace(/\\s+/g, ' ').slice(0, 900);
+                }""",
+                name,
+            )
+            print(f"    [リンク調査] {name}: {html}")
+    except Exception as e:
+        print(f"    [リンク調査] 失敗: {e}")
+    finally:
+        page.close()
+
+
 def collect_profile_links(page, base_url):
     """一覧ページ内のリンクのうち、名前らしき文字を含むものを [文字, URL] で集める"""
     host = urlparse(base_url).netloc
@@ -328,6 +361,10 @@ def main():
             )
             if missing:
                 print(f"    一覧で見つからなかった名前: {'、'.join(missing[:30])}")
+            no_link = [n for n in names if n not in linked]
+            if no_link:
+                print(f"    個人ページのリンクが見つからなかった名前: {'、'.join(no_link[:30])}")
+                debug_link_html(browser, url, no_link[:2])
             if not ok:
                 debug_page(browser, url)
 
