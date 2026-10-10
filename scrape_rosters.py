@@ -148,24 +148,41 @@ def collect_profile_links(page, base_url):
                 const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
                 return ((a.innerText || '') + ' ' + alts).trim();
             };
+            // 「数字の部分だけが違うリンク」を同じ種類（＝別のセラピストの個人ページ）とみなす
+            // （SNSや予約ボタンなど、種類の違うリンクが同じ枠にあっても気にしない）
+            const kind = h => h.replace(/[0-9]+/g, '#');
             return Array.from(document.querySelectorAll('a[href]')).map(a => {
                 let text = ownText(a);
+                let direct = true;
                 if (!jp.test(text)) {
+                    direct = false;
+                    const myKind = kind(a.href);
                     let el = a.parentElement;
-                    for (let depth = 0; el && depth < 5; depth++, el = el.parentElement) {
-                        const hrefs = new Set(Array.from(el.querySelectorAll('a[href]')).map(x => x.href));
-                        if (hrefs.size > 1) break;   // 他の人のリンクまで含む範囲になったら止める
+                    for (let depth = 0; el && depth < 6; depth++, el = el.parentElement) {
+                        const others = new Set(Array.from(el.querySelectorAll('a[href]'))
+                            .map(x => x.href)
+                            .filter(h => h !== a.href && kind(h) === myKind));
+                        if (others.size > 0) break;   // 他の人の個人ページまで含む範囲になったら止める
                         const t = (el.innerText || '').trim();
                         if (jp.test(t)) { text = t; break; }
                     }
                 }
-                return [text, a.href];
+                return [text, a.href, direct];
             });
         }"""
     )
+    # 同じ形のリンク（数字だけ違う）がページ内に何回出てくるか数える
+    # （個人ページは人数分あるが、「予約」「トップ」などは1回しか出てこない）
+    def kind(h):
+        return re.sub(r"[0-9]+", "#", h or "")
+    kind_counts = {}
+    for _, href, _ in items:
+        kind_counts[kind(href)] = kind_counts.get(kind(href), 0) + 1
+
     links = []
+    fallback_texts = set()
     base = base_url.rstrip("/")
-    for text, href in items:
+    for text, href, direct in items:
         if not href or href.startswith("javascript"):
             continue
         href = href.split("#")[0]
@@ -175,7 +192,17 @@ def collect_profile_links(page, base_url):
             continue
         if not text or len(text) > 200 or not re.search(r"[ぁ-んァ-ヶ一-龠]", text):
             continue
-        links.append([norm(text).strip("|"), href])
+        text = norm(text).strip("|")
+        if not direct:
+            # 枠の文字から名前を拾ったリンクは、
+            #  ・ページ内に3回以上出てくる形のリンクだけ使う
+            #  ・同じ枠の中では最初のリンク（ふつうは写真＝個人ページ）だけ使う
+            if kind_counts.get(kind(href), 0) < 3:
+                continue
+            if text in fallback_texts:
+                continue
+            fallback_texts.add(text)
+        links.append([text, href])
     return links
 
 
