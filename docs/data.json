@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T16:10:48+09:00",
+  "generated_at": "2026-10-10T16:18:53+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -697,8 +697,8 @@
           "アマテラス横浜::みつり": true,
           "アマテラス横浜::みさき": true,
           "アマテラス横浜::まみ": true,
-          "アマテラス横浜::あやな": true,
           "アマテラス横浜::ひな": true,
+          "アマテラス横浜::あやな": true,
           "アマテラス横浜::ここあ": true,
           "アマテラス横浜::みらい": true,
           "アマテラス横浜::かれん": true,
@@ -729,9 +729,9 @@
           "Tigger::ふみか": true,
           "Tigger::めぐ": true,
           "Tigger::ここ": true,
-          "Tigger::わかな": true,
           "Tigger::ゆい": true,
           "Tigger::いろは": true,
+          "Tigger::わかな": true,
           "Tigger::ゆり": true,
           "Tigger::こいと": true,
           "Tigger::きょう": true,
@@ -741,11 +741,11 @@
           "Tigger::さくや": true
         },
         "2026-10-11": {
-          "アマテラス横浜::まこ": true,
           "アマテラス横浜::みお": true,
           "アマテラス横浜::せり": true,
           "アマテラス横浜::ゆうり": true,
           "アマテラス横浜::のん": true,
+          "アマテラス横浜::まこ": true,
           "アマテラス横浜::みつり": true,
           "アマテラス横浜::れいか": true,
           "アマテラス横浜::みらい": true,
@@ -4140,7 +4140,6 @@
           "LINDA SPA::緒川はるみ": true,
           "LINDA SPA::青山めぐ": true,
           "LINDA SPA::有森りら": true,
-          "LINDA SPA::新藤なな": true,
           "LINDA SPA::一条かえで": true,
           "LINDA SPA::鷲見りな": true,
           "LINDA SPA::福岡ひかり": true,
