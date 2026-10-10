@@ -53,8 +53,10 @@ SPACE_RE = re.compile(r"[\s\u3000]+")
 
 
 def norm(text):
-    """空白を詰め、名前に使わない記号は区切り「|」に置き換える（アプリ側と同じルール）"""
-    text = SPACE_RE.sub("", text or "")
+    """空白を詰め、名前に使わない記号は区切り「|」に置き換える（アプリ側と同じルール）
+    ただし改行は「|」にする（キャッチコピーと名前が別の行にある場合に、くっつけてしまわないため）"""
+    text = re.sub(r"[\r\n]+", "|", text or "")
+    text = SPACE_RE.sub("", text)
     text = NON_NAME_RE.sub("|", text)
     return text
 
@@ -193,7 +195,15 @@ def collect_profile_links(page, base_url):
             const jp = /[ぁ-んァ-ヶ一-龠]/;
             // 画面に表示されている文字（innerText）に加えて、まだ表示されていない文字（textContent）も使う
             // （スクロールするまで隠れているカードや、ふわっと表示されるカードにも対応するため）
-            const allText = el => ((el.innerText || '') + ' | ' + (el.textContent || '')).trim();
+            // まだ表示されていない文字は、文字のかたまりごとに改行で区切って集める
+            // （「…導きます」と「月影しう」のように別々の場所にある文字がくっつかないようにする）
+            const hiddenText = el => {
+                const parts = [];
+                const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+                while (walker.nextNode()) parts.push(walker.currentNode.nodeValue);
+                return parts.join(String.fromCharCode(10));
+            };
+            const allText = el => ((el.innerText || '') + ' | ' + hiddenText(el)).trim();
             const ownText = a => {
                 const alts = Array.from(a.querySelectorAll('img[alt]')).map(i => i.alt).join(' ');
                 return (allText(a) + ' | ' + alts).trim();
@@ -343,7 +353,7 @@ def load_previous():
 
 
 def main():
-    print("scrape_rosters.py（2026-10-10 版D）")
+    print("scrape_rosters.py（2026-10-10 版E）")
     schedule_names = load_schedule_names()
     previous = load_previous()
     shops = {}
