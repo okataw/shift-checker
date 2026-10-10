@@ -136,8 +136,8 @@ def debug_page(browser, url):
         page.close()
 
 
-def debug_link_html(browser, url, names):
-    """個人ページのリンクが見つからなかった人について、名前の周りのHTMLを表示する（原因調査用）"""
+def debug_link_html(browser, url, names, links):
+    """個人ページのリンクが見つからなかった人について、原因を詳しく表示する（原因調査用）"""
     page = browser.new_page()
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=45000)
@@ -146,23 +146,37 @@ def debug_link_html(browser, url, names):
         except Exception:
             pass
         for name in names:
-            html = page.evaluate(
+            info = page.evaluate(
                 """(name) => {
                     const key = name.replace(/\\s/g, '');
                     const has = el => (el.textContent || '').replace(/\\s/g, '').includes(key);
-                    // 名前を含む一番内側の要素を探す
-                    let hit = null;
+                    const kind = h => h.replace(/[0-9]+/g, '#');
+                    const hits = [];
                     for (const el of document.body.querySelectorAll('*')) {
-                        if (has(el) && !Array.from(el.children).some(has)) { hit = el; break; }
+                        if (has(el) && !Array.from(el.children).some(has)) hits.push(el);
                     }
-                    if (!hit) return '(名前がページ内に見つかりません)';
-                    let box = hit;
-                    for (let i = 0; i < 3 && box.parentElement; i++) box = box.parentElement;
-                    return box.outerHTML.replace(/\\s+/g, ' ').slice(0, 900);
+                    const out = ['名前を含む場所: ' + hits.length + 'か所'];
+                    hits.slice(0, 2).forEach((hit, i) => {
+                        out.push('[' + (i + 1) + '] ' + hit.outerHTML.replace(/\\s+/g, ' ').slice(0, 200));
+                        const a = hit.closest('a[href]');
+                        out.push('   囲んでいるリンク: ' + (a ? a.href : 'なし'));
+                        let el = hit;
+                        for (let d = 1; d <= 6 && el.parentElement; d++) {
+                            el = el.parentElement;
+                            const hrefs = Array.from(new Set(Array.from(el.querySelectorAll('a[href]')).map(x => x.href)));
+                            out.push('   ' + d + '段上 <' + el.tagName.toLowerCase() + ' class="' + (el.className || '') + '"> リンク' + hrefs.length + '種: ' + hrefs.slice(0, 4).join(' , '));
+                        }
+                    });
+                    return out;
                 }""",
                 name,
             )
-            print(f"    [リンク調査] {name}: {html}")
+            print(f"    [リンク調査] {name}")
+            for line in info:
+                print(f"        {line[:300]}")
+            key = norm_name(name)[:2]
+            similar = [f"{t[:40]} -> {h}" for t, h in links if key and key in t][:3]
+            print(f"        保存したリンクの中で「{key}」を含むもの: {similar if similar else 'なし'}")
     except Exception as e:
         print(f"    [リンク調査] 失敗: {e}")
     finally:
@@ -329,6 +343,7 @@ def load_previous():
 
 
 def main():
+    print("scrape_rosters.py（2026-10-10 版D）")
     schedule_names = load_schedule_names()
     previous = load_previous()
     shops = {}
@@ -369,7 +384,7 @@ def main():
             no_link = [n for n in names if n not in linked]
             if no_link:
                 print(f"    個人ページのリンクが見つからなかった名前: {'、'.join(no_link[:30])}")
-                debug_link_html(browser, url, no_link[:2])
+                debug_link_html(browser, url, no_link[:2], links)
             if not ok:
                 debug_page(browser, url)
 
