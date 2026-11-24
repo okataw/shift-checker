@@ -57,9 +57,12 @@ JS_CLICK_DATE = """
   if (cands.length === 0) return false;
   // 一番内側（文字が短い）のものを選んでクリック
   cands.sort((a, b) => (a.innerText || '').length - (b.innerText || '').length);
-  const target = cands[0].closest('a, button') || cands[0];
+  // 押せる部品（a / button）を選ぶ。li の場合は、中にある a / button を押す
+  // （li 自体を押しても、中のリンクの動作は起きないため）
+  const c = cands[0];
+  const target = (c.matches('a, button') ? c : null) || c.querySelector('a, button') || c.closest('a, button') || c;
   target.click();
-  return true;
+  return (target.outerHTML || '').replace(/\\s+/g, ' ').slice(0, 160);
 }
 """
 
@@ -69,10 +72,11 @@ PROFILE_URLS = {}
 
 def click_date_tab(page, date_obj):
     """指定日の日付ボタンを探してクリックする"""
-    ok = page.evaluate(JS_CLICK_DATE, [str(date_obj.day), WEEKDAYS[date_obj.weekday()]])
-    if ok:
+    clicked = page.evaluate(JS_CLICK_DATE, [str(date_obj.day), WEEKDAYS[date_obj.weekday()]])
+    if clicked:
+        print(f"    押したボタン: {clicked}")
         page.wait_for_timeout(500)
-    return ok
+    return bool(clicked)
 
 
 def read_names(page):
@@ -135,6 +139,31 @@ def debug_page(page):
         print(f"    [調査] 失敗: {e}")
 
 
+def debug_structure(page):
+    """毎日同じ人数・同じ名前になったときに、ページの作りを表示する（原因調査用）"""
+    try:
+        info = page.evaluate("""() => {
+            const all = Array.from(document.querySelectorAll('a[href*="item_"]'));
+            const vis = all.filter(e => e.offsetParent !== null);
+            const out = ['セラピストのリンク: 全部で' + all.length + '個 / 画面に表示' + vis.length + '個'];
+            const first = vis[0] || all[0];
+            if (first) {
+                out.push('最初のリンク: ' + first.outerHTML.replace(/\\s+/g, ' ').slice(0, 200));
+                let el = first;
+                for (let d = 1; d <= 6 && el.parentElement; d++) {
+                    el = el.parentElement;
+                    const n = el.querySelectorAll('a[href*="item_"]').length;
+                    out.push('  ' + d + '段上 <' + el.tagName.toLowerCase() + ' id="' + (el.id || '') + '" class="' + (el.className || '') + '"> 中のリンク' + n + '個');
+                }
+            }
+            return out;
+        }""")
+        for line in info:
+            print(f"    [調査] {line[:300]}")
+    except Exception as e:
+        print(f"    [調査] 失敗: {e}")
+
+
 def main():
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     today = datetime.datetime.now(JST).date()  # 日本時間の「今日」
@@ -156,6 +185,8 @@ def main():
         page.wait_for_timeout(2000)
 
         prev_names = None
+        prev_day_names = None
+        structure_shown = False
         for date_obj in week_dates:
             date_str = date_obj.isoformat()
             names = []
@@ -179,9 +210,15 @@ def main():
             if names:
                 prev_names = names
 
+            same = bool(names) and names == prev_day_names
             schedule_by_date[date_str] = names
             all_names.update(names)
-            print(f"{date_str}: {len(names)}名 出勤確認")
+            print(f"{date_str}: {len(names)}名 出勤確認  例: {'、'.join(names[:5])}"
+                  + ("  ※前日とまったく同じ顔ぶれ" if same else ""))
+            if same and not structure_shown:
+                debug_structure(page)
+                structure_shown = True
+            prev_day_names = names
             time.sleep(1.0)
 
         browser.close()
