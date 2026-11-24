@@ -398,7 +398,7 @@ let currentRegion = null;
 const dows = ["日","月","火","水","木","金","土"];
 
 // タブの表示順（ここに無い地域は、後ろにそのまま並ぶ）
-const REGION_ORDER = ["東京", "多摩", "神奈川", "埼玉"];
+const REGION_ORDER = ["東京", "多摩", "神奈川", "埼玉", "千葉"];
 function orderedRegionNames(){
   const names = Object.keys(regions);
   const rank = r => { const i = REGION_ORDER.indexOf(r); return i === -1 ? 999 : i; };
