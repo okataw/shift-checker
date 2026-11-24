@@ -2,20 +2,27 @@ name: 出勤データ更新
 
 on:
   schedule:
-    # 毎日 日本時間 9:17 / 12:17 / 15:17 に実行（いずれか1回でも発火すれば更新される）
-    # GitHub側の予約実行は混雑等で飛ぶことがあるため、時間を分けて成功率を上げている
-    - cron: '17 0 * * *'
+    # 毎日 日本時間 6:17 / 8:17 / 10:17 / 12:17 に実行（どれか1回でも動けば更新される）
+    # GitHub側の予約実行は混雑で1～2時間遅れたり、飛ばされたりすることがあるため、
+    # 朝から昼にかけて何回かに分けて予約している
+    - cron: '17 21 * * *'
+    - cron: '17 23 * * *'
+    - cron: '17 1 * * *'
     - cron: '17 3 * * *'
-    - cron: '17 6 * * *'
   workflow_dispatch: {}  # 手動実行ボタン用
 
 permissions:
   contents: write
 
+# 同時に2つ動いて、書き込みがぶつからないようにする（後から来た方は前の方が終わるまで待つ）
+concurrency:
+  group: shift-update
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20  # 万が一止まっても20分で強制終了する安全装置
+    timeout-minutes: 25  # 万が一止まっても25分で強制終了する安全装置
     steps:
       - uses: actions/checkout@v4
 
@@ -33,7 +40,7 @@ jobs:
       - name: エステの気分を取得
         run: python scrape_kibun.py
 
-      - name: ラビット空間を取得
+      - name: ウサじょ学園を取得
         run: python scrape_rabbitspace.py
 
       - name: アロマモアを取得
@@ -60,12 +67,16 @@ jobs:
       - name: Queendomを取得
         run: python scrape_queendom.py
 
+      - name: ささやきを取得
+        continue-on-error: true  # 新しく追加した店舗のため、失敗しても他の店舗の更新は止めない
+        run: python scrape_sasayaki.py
+
       - name: データをまとめる
         run: python merge_data.py
 
       - name: 在籍一覧を取得（退店チェック用）
         continue-on-error: true  # ここで失敗しても出勤データの更新は止めない
-        timeout-minutes: 6
+        timeout-minutes: 7
         run: python scrape_rosters.py
 
       - name: 変更をコミット
@@ -74,5 +85,8 @@ jobs:
           git config user.email "shift-bot@users.noreply.github.com"
           git add data/ docs/data.json
           if [ -f docs/rosters.json ]; then git add docs/rosters.json; fi
-          git diff --staged --quiet && echo "変更なし" || git commit -m "出勤データ自動更新"
+          git diff --staged --quiet && echo "変更なし" && exit 0
+          git commit -m "出勤データ自動更新"
+          # 実行中にファイルが編集されていても失敗しないよう、最新の状態を取り込んでから送る
+          git pull --rebase -X theirs origin "${GITHUB_REF_NAME}"
           git push
