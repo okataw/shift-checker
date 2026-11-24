@@ -111,6 +111,13 @@ def wait_for_names(page, prev_names):
 def debug_page(page):
     """名前が取れなかったときに、原因を探るためにページの様子を表示する"""
     try:
+        print(f"    [調査] 表示されたURL: {page.url}")
+        print(f"    [調査] ページタイトル: {page.title()}")
+        body = page.evaluate("() => document.body ? document.body.innerText : ''")
+        lines = [l.strip() for l in body.split("\n") if l.strip()]
+        print(f"    [調査] 本文の行数: {len(lines)} / 枠（iframe）の数: {len(page.frames) - 1}")
+        for l in lines[:20]:
+            print(f"    [調査] 本文: {l[:80]}")
         dates = page.evaluate(
             "() => Array.from(document.querySelectorAll('a, li, button'))"
             ".map(e => (e.innerText || '').replace(/\\s+/g, ' ').trim())"
@@ -140,7 +147,8 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
-        page.goto(BASE_URL, wait_until="networkidle", timeout=30000)
+        response = page.goto(BASE_URL, wait_until="networkidle", timeout=30000)
+        print(f"ページの応答: {response.status if response else '不明'}")
         page.wait_for_timeout(2000)
 
         prev_names = None
