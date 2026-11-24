@@ -146,7 +146,11 @@ def main():
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page()
+        # お店の許可を得たうえで、アロマモアと同じく普通のブラウザ（Chrome）として名乗る
+        page = browser.new_page(user_agent=(
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+        ))
         response = page.goto(BASE_URL, wait_until="networkidle", timeout=30000)
         print(f"ページの応答: {response.status if response else '不明'}")
         page.wait_for_timeout(2000)
