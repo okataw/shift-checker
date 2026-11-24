@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T11:18:11+09:00",
+  "generated_at": "2026-11-24T11:27:58+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -726,7 +726,6 @@
           "アマテラス横浜::ここ": true,
           "アマテラス横浜::あず": true,
           "アマテラス横浜::りりさ": true,
-          "アマテラス横浜::ゆめ": true,
           "アマテラス横浜::かりな": true,
           "アマテラス横浜::のあ": true,
           "アマテラス横浜::るる": true,
@@ -734,18 +733,19 @@
           "アマテラス横浜::なえ": true,
           "アマテラス横浜::にこ": true,
           "アマテラス横浜::ほのか": true,
-          "Tigger::いちか": true,
+          "アマテラス横浜::ゆめ": true,
           "Tigger::さくや": true,
           "Tigger::天使りん": true,
           "Tigger::きらら": true,
           "Tigger::ちか": true,
           "Tigger::ほたる": true,
           "Tigger::めぐ": true,
+          "Tigger::いちか": true,
           "Tigger::ひかり": true,
           "Tigger::りお": true,
-          "Tigger::せな": true,
           "Tigger::ゆか": true,
           "Tigger::れい": true,
+          "Tigger::せな": true,
           "Tigger::きょう": true,
           "Tigger::ゆら": true
         },
@@ -3955,7 +3955,6 @@
           "アロマモア::夏美ゆあ": true,
           "アロマモア::麻美りん": true,
           "アロマモア::愛原めい": true,
-          "アロマモア::茜まり": true,
           "アロマモア::立花るい": true,
           "アロマモア::櫻ななお": true,
           "アロマモア::有馬ゆあ": true,
@@ -3970,6 +3969,7 @@
           "アロマモア::寿まい": true,
           "アロマモア::椛りり": true,
           "アロマモア::緋色れい": true,
+          "アロマモア::茜まり": true,
           "アロマモア::春咲ななせ": true,
           "アロマモア::道枝みう": true,
           "アロマモア::神宮れいか": true,
@@ -5298,6 +5298,13 @@
           "url": ""
         },
         {
+          "key": "Offsuit::鈴音　えり",
+          "name": "鈴音　えり",
+          "area": "大宮/浦和/赤羽",
+          "shop": "Offsuit",
+          "url": ""
+        },
+        {
           "key": "Offsuit::陽向まりい",
           "name": "陽向まりい",
           "area": "大宮/浦和/赤羽",
@@ -5321,6 +5328,13 @@
         {
           "key": "Offsuit::高峰　まや",
           "name": "高峰　まや",
+          "area": "大宮/浦和/赤羽",
+          "shop": "Offsuit",
+          "url": ""
+        },
+        {
+          "key": "Offsuit::高梨　もえ",
+          "name": "高梨　もえ",
           "area": "大宮/浦和/赤羽",
           "shop": "Offsuit",
           "url": ""
@@ -5853,28 +5867,27 @@
           "Queendom::白石なぎさ": true
         },
         "2026-11-25": {
-          "Offsuit::白石　えま": true,
-          "Offsuit::月見　あむ": true,
-          "Offsuit::進藤　果林": true,
-          "Offsuit::水嶋　あおい": true,
-          "Offsuit::相原　しの": true,
-          "Offsuit::綾瀬　りな": true,
-          "Offsuit::桃瀬　えれな": true,
+          "Offsuit::白羽うゆ": true,
           "Offsuit::桜羽　もも": true,
-          "Offsuit::れむ": true,
-          "Offsuit::永野　らん": true,
-          "Offsuit::西沢　はる": true,
-          "Offsuit::神楽　ゆん": true,
-          "Offsuit::高峰　まや": true,
-          "Offsuit::月城　さら": true,
-          "Offsuit::天使　ひめな": true,
-          "Offsuit::りお": true,
-          "Offsuit::前田　せな": true,
-          "Offsuit::瀬名 いおり": true,
+          "Offsuit::相原　しの": true,
+          "Offsuit::上原　あかね": true,
+          "Offsuit::桃瀬　えれな": true,
+          "Offsuit::結城　みおん": true,
           "Offsuit::加藤　ゆな": true,
-          "Offsuit::吉岡　みれい": true,
-          "Offsuit::白雪　ゆうこ": true,
-          "Offsuit::森川　すず": true,
+          "Offsuit::清野　ちひろ": true,
+          "Offsuit::今井　蛍": true,
+          "Offsuit::青山　ねね": true,
+          "Offsuit::真鍋　りりか": true,
+          "Offsuit::芳根　ひより": true,
+          "Offsuit::高梨　もえ": true,
+          "Offsuit::芹沢　あいみ": true,
+          "Offsuit::神楽　ゆん": true,
+          "Offsuit::りお": true,
+          "Offsuit::瀬名 いおり": true,
+          "Offsuit::金築　みんと": true,
+          "Offsuit::駒月　みらん": true,
+          "Offsuit::鈴音　えり": true,
+          "Offsuit::桃園　かれん": true,
           "Offsuit::夏川りんね": true,
           "Queendom::野咲ののか": true,
           "Queendom::北斗ゆりあ": true,
@@ -5913,6 +5926,7 @@
           "Offsuit::白雪　ゆうこ": true,
           "Offsuit::陽向まりい": true,
           "Offsuit::上原　あかね": true,
+          "Offsuit::森川　すず": true,
           "Offsuit::れむ": true,
           "Offsuit::清野　ちひろ": true,
           "Offsuit::永野　らん": true,
@@ -5927,7 +5941,6 @@
           "Offsuit::末永　もえか": true,
           "Offsuit::前田　せな": true,
           "Offsuit::黒木　ゆみ": true,
-          "Offsuit::森川　すず": true,
           "Offsuit::時国　しゅり": true,
           "Offsuit::夏川りんね": true,
           "Queendom::三崎なこ": true,
@@ -6118,6 +6131,20 @@
     "千葉": {
       "therapists": [
         {
+          "key": "ささやき::一ノ瀬のあ",
+          "name": "一ノ瀬のあ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10038661.html"
+        },
+        {
+          "key": "ささやき::一色ももか",
+          "name": "一色ももか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10030624.html"
+        },
+        {
           "key": "ささやき::七海りの",
           "name": "七海りの",
           "area": "",
@@ -6153,6 +6180,27 @@
           "url": "https://sasayaki-esthe.com/item_10029229.html"
         },
         {
+          "key": "ささやき::今野さつき",
+          "name": "今野さつき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10038676.html"
+        },
+        {
+          "key": "ささやき::佐山ひおり",
+          "name": "佐山ひおり",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029212.html"
+        },
+        {
+          "key": "ささやき::倉田みほ",
+          "name": "倉田みほ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039408.html"
+        },
+        {
           "key": "ささやき::北園らん",
           "name": "北園らん",
           "area": "",
@@ -6165,6 +6213,76 @@
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10030558.html"
+        },
+        {
+          "key": "ささやき::吉田えな",
+          "name": "吉田えな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10030271.html"
+        },
+        {
+          "key": "ささやき::四季いちか",
+          "name": "四季いちか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029216.html"
+        },
+        {
+          "key": "ささやき::夏目りく",
+          "name": "夏目りく",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10031199.html"
+        },
+        {
+          "key": "ささやき::夜野はづき",
+          "name": "夜野はづき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039623.html"
+        },
+        {
+          "key": "ささやき::夢咲ふう",
+          "name": "夢咲ふう",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039520.html"
+        },
+        {
+          "key": "ささやき::姫坂のあ",
+          "name": "姫坂のあ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029235.html"
+        },
+        {
+          "key": "ささやき::宮野しほ",
+          "name": "宮野しほ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039171.html"
+        },
+        {
+          "key": "ささやき::小倉ゆうな",
+          "name": "小倉ゆうな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10040389.html"
+        },
+        {
+          "key": "ささやき::小宮もな",
+          "name": "小宮もな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10041162.html"
+        },
+        {
+          "key": "ささやき::小野田ゆら",
+          "name": "小野田ゆら",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029202.html"
         },
         {
           "key": "ささやき::岡咲まき",
@@ -6181,11 +6299,25 @@
           "url": "https://sasayaki-esthe.com/item_10029206.html"
         },
         {
+          "key": "ささやき::平松りんか",
+          "name": "平松りんか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10032421.html"
+        },
+        {
           "key": "ささやき::彩音さら",
           "name": "彩音さら",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10043404.html"
+        },
+        {
+          "key": "ささやき::御子柴むぎ",
+          "name": "御子柴むぎ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029243.html"
         },
         {
           "key": "ささやき::志乃りさ",
@@ -6195,6 +6327,27 @@
           "url": "https://sasayaki-esthe.com/item_10043234.html"
         },
         {
+          "key": "ささやき::恋宵るな",
+          "name": "恋宵るな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10041251.html"
+        },
+        {
+          "key": "ささやき::愛染あみ",
+          "name": "愛染あみ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10036839.html"
+        },
+        {
+          "key": "ささやき::折本かおり",
+          "name": "折本かおり",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029203.html"
+        },
+        {
           "key": "ささやき::持田るい",
           "name": "持田るい",
           "area": "",
@@ -6202,11 +6355,46 @@
           "url": "https://sasayaki-esthe.com/item_10037198.html"
         },
         {
+          "key": "ささやき::新山れな",
+          "name": "新山れな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029228.html"
+        },
+        {
           "key": "ささやき::日向なつ",
           "name": "日向なつ",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10030089.html"
+        },
+        {
+          "key": "ささやき::早瀬ゆい",
+          "name": "早瀬ゆい",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029233.html"
+        },
+        {
+          "key": "ささやき::星野りあ",
+          "name": "星野りあ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029238.html"
+        },
+        {
+          "key": "ささやき::春ことは",
+          "name": "春ことは",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10038677.html"
+        },
+        {
+          "key": "ささやき::月城みかぜ",
+          "name": "月城みかぜ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10042592.html"
         },
         {
           "key": "ささやき::月砂れいら",
@@ -6223,11 +6411,39 @@
           "url": "https://sasayaki-esthe.com/item_10041372.html"
         },
         {
+          "key": "ささやき::望月りな",
+          "name": "望月りな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10043063.html"
+        },
+        {
+          "key": "ささやき::未来ねね",
+          "name": "未来ねね",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10037667.html"
+        },
+        {
+          "key": "ささやき::朱沢えみ",
+          "name": "朱沢えみ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029194.html"
+        },
+        {
           "key": "ささやき::東雲なの",
           "name": "東雲なの",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10034053.html"
+        },
+        {
+          "key": "ささやき::柚木りお",
+          "name": "柚木りお",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10043405.html"
         },
         {
           "key": "ささやき::桃井ゆめ",
@@ -6237,11 +6453,60 @@
           "url": "https://sasayaki-esthe.com/item_10043501.html"
         },
         {
+          "key": "ささやき::桜てん",
+          "name": "桜てん",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10034404.html"
+        },
+        {
+          "key": "ささやき::森れい",
+          "name": "森れい",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039193.html"
+        },
+        {
+          "key": "ささやき::水無月 ゆめ",
+          "name": "水無月 ゆめ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029245.html"
+        },
+        {
           "key": "ささやき::氷室きょうか",
           "name": "氷室きょうか",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10037400.html"
+        },
+        {
+          "key": "ささやき::江黒あんな",
+          "name": "江黒あんな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029199.html"
+        },
+        {
+          "key": "ささやき::波多野うい",
+          "name": "波多野うい",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10030686.html"
+        },
+        {
+          "key": "ささやき::浜崎せいら",
+          "name": "浜崎せいら",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10030953.html"
+        },
+        {
+          "key": "ささやき::涼音さき",
+          "name": "涼音さき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10037569.html"
         },
         {
           "key": "ささやき::湊みらい",
@@ -6251,11 +6516,32 @@
           "url": "https://sasayaki-esthe.com/item_10036503.html"
         },
         {
+          "key": "ささやき::瀬川こと",
+          "name": "瀬川こと",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10043579.html"
+        },
+        {
           "key": "ささやき::琴音めい",
           "name": "琴音めい",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10032844.html"
+        },
+        {
+          "key": "ささやき::甘密みさき",
+          "name": "甘密みさき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10037649.html"
+        },
+        {
+          "key": "ささやき::田中あいこ",
+          "name": "田中あいこ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029223.html"
         },
         {
           "key": "ささやき::白石あゆ",
@@ -6265,11 +6551,60 @@
           "url": "https://sasayaki-esthe.com/item_10029218.html"
         },
         {
+          "key": "ささやき::白羽りこ",
+          "name": "白羽りこ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10043406.html"
+        },
+        {
+          "key": "ささやき::白金れいな",
+          "name": "白金れいな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10041160.html"
+        },
+        {
+          "key": "ささやき::白雪つむぎ",
+          "name": "白雪つむぎ",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10043105.html"
+        },
+        {
+          "key": "ささやき::白鳥れいか",
+          "name": "白鳥れいか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10031208.html"
+        },
+        {
+          "key": "ささやき::神楽そら",
+          "name": "神楽そら",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10042597.html"
+        },
+        {
           "key": "ささやき::福原みこと",
           "name": "福原みこと",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10043052.html"
+        },
+        {
+          "key": "ささやき::秋山れんか",
+          "name": "秋山れんか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10034855.html"
+        },
+        {
+          "key": "ささやき::美谷さや",
+          "name": "美谷さや",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10029244.html"
         },
         {
           "key": "ささやき::羽衣すず",
@@ -6293,6 +6628,20 @@
           "url": "https://sasayaki-esthe.com/item_10043298.html"
         },
         {
+          "key": "ささやき::茉白ひびき",
+          "name": "茉白ひびき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10042580.html"
+        },
+        {
+          "key": "ささやき::鏡のえる",
+          "name": "鏡のえる",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10039112.html"
+        },
+        {
           "key": "ささやき::鏡花あやめ",
           "name": "鏡花あやめ",
           "area": "",
@@ -6314,6 +6663,13 @@
           "url": "https://sasayaki-esthe.com/item_10037871.html"
         },
         {
+          "key": "ささやき::霞ゆうき",
+          "name": "霞ゆうき",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10041664.html"
+        },
+        {
           "key": "ささやき::青空あみか",
           "name": "青空あみか",
           "area": "",
@@ -6326,6 +6682,27 @@
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10043205.html"
+        },
+        {
+          "key": "ささやき::高島ちな",
+          "name": "高島ちな",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10031253.html"
+        },
+        {
+          "key": "ささやき::黒崎ゆあん",
+          "name": "黒崎ゆあん",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10042154.html"
+        },
+        {
+          "key": "ささやき::龍宮もか",
+          "name": "龍宮もか",
+          "area": "",
+          "shop": "ささやき",
+          "url": "https://sasayaki-esthe.com/item_10040382.html"
         }
       ],
       "dates": [
@@ -6371,197 +6748,167 @@
           "ささやき::琴音めい": true
         },
         "2026-11-25": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
-          "ささやき::桃井ゆめ": true,
-          "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::福原みこと": true,
-          "ささやき::羽衣すず": true,
-          "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
-          "ささやき::二宮しんり": true,
-          "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
+          "ささやき::浜崎せいら": true,
+          "ささやき::春ことは": true,
+          "ささやき::新山れな": true,
           "ささやき::月青ひすい": true,
+          "ささやき::須藤みさ": true,
+          "ささやき::彩音さら": true,
+          "ささやき::琴音めい": true,
+          "ささやき::星野りあ": true,
+          "ささやき::朱沢えみ": true,
+          "ささやき::望月りな": true,
+          "ささやき::御子柴むぎ": true,
+          "ささやき::青空あみか": true,
+          "ささやき::小倉ゆうな": true,
+          "ささやき::吉田えな": true,
+          "ささやき::未来ねね": true,
+          "ささやき::宮野しほ": true,
           "ささやき::持田るい": true,
-          "ささやき::雛えがお": true,
           "ささやき::白石あゆ": true,
           "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
+          "ささやき::雛えがお": true,
+          "ささやき::折本かおり": true,
           "ささやき::三浦わかな": true,
+          "ささやき::夏目りく": true,
+          "ささやき::湊みらい": true,
+          "ささやき::一色ももか": true,
+          "ささやき::白羽りこ": true,
           "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
+          "ささやき::高島ちな": true,
+          "ささやき::姫坂のあ": true,
+          "ささやき::霞ゆうき": true
         },
         "2026-11-26": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
-          "ささやき::桃井ゆめ": true,
+          "ささやき::浜崎せいら": true,
+          "ささやき::白羽りこ": true,
           "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
+          "ささやき::田中あいこ": true,
+          "ささやき::桜てん": true,
+          "ささやき::琴音めい": true,
           "ささやき::福原みこと": true,
-          "ささやき::羽衣すず": true,
-          "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
           "ささやき::二宮しんり": true,
+          "ささやき::夏目りく": true,
+          "ささやき::四季いちか": true,
           "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::持田るい": true,
-          "ささやき::雛えがお": true,
-          "ささやき::白石あゆ": true,
+          "ささやき::黒崎ゆあん": true,
+          "ささやき::早瀬ゆい": true,
+          "ささやき::小倉ゆうな": true,
+          "ささやき::未来ねね": true,
+          "ささやき::夢咲ふう": true,
+          "ささやき::湊みらい": true,
+          "ささやき::九条かよ": true,
+          "ささやき::甘密みさき": true,
+          "ささやき::鏡のえる": true,
           "ささやき::月砂れいら": true,
           "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
+          "ささやき::倉田みほ": true,
+          "ささやき::姫坂のあ": true,
+          "ささやき::春ことは": true,
           "ささやき::須藤みさ": true,
           "ささやき::三浦わかな": true,
-          "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
+          "ささやき::月青ひすい": true,
+          "ささやき::高島ちな": true
         },
         "2026-11-27": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
+          "ささやき::白羽りこ": true,
           "ささやき::桃井ゆめ": true,
+          "ささやき::朱沢えみ": true,
           "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::福原みこと": true,
-          "ささやき::羽衣すず": true,
+          "ささやき::星野りあ": true,
+          "ささやき::小宮もな": true,
+          "ささやき::桜てん": true,
           "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
+          "ささやき::美谷さや": true,
           "ささやき::二宮しんり": true,
-          "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::持田るい": true,
-          "ささやき::雛えがお": true,
-          "ささやき::白石あゆ": true,
+          "ささやき::恋宵るな": true,
+          "ささやき::小倉ゆうな": true,
+          "ささやき::白雪つむぎ": true,
+          "ささやき::黒崎ゆあん": true,
+          "ささやき::鏡のえる": true,
+          "ささやき::鏡花あやめ": true,
+          "ささやき::秋山れんか": true,
+          "ささやき::吉田えな": true,
+          "ささやき::神楽そら": true,
           "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
           "ささやき::三浦わかな": true,
+          "ささやき::九条かよ": true,
+          "ささやき::夜野はづき": true,
+          "ささやき::月城みかぜ": true,
+          "ささやき::愛染あみ": true,
+          "ささやき::南あや": true,
+          "ささやき::龍宮もか": true,
+          "ささやき::白金れいな": true,
+          "ささやき::須藤みさ": true,
           "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
+          "ささやき::志乃りさ": true
         },
         "2026-11-28": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
-          "ささやき::桃井ゆめ": true,
-          "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::福原みこと": true,
-          "ささやき::羽衣すず": true,
+          "ささやき::秋山れんか": true,
+          "ささやき::柚木りお": true,
+          "ささやき::一ノ瀬のあ": true,
+          "ささやき::甘密みさき": true,
+          "ささやき::今野さつき": true,
+          "ささやき::白鳥れいか": true,
+          "ささやき::九条かよ": true,
+          "ささやき::田中あいこ": true,
           "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
+          "ささやき::倉田みほ": true,
+          "ささやき::恋宵るな": true,
           "ささやき::二宮しんり": true,
-          "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::持田るい": true,
-          "ささやき::雛えがお": true,
+          "ささやき::江黒あんな": true,
+          "ささやき::愛染あみ": true,
+          "ささやき::黒崎ゆあん": true,
+          "ささやき::平松りんか": true,
+          "ささやき::茉白ひびき": true,
+          "ささやき::間宮かりん": true,
           "ささやき::白石あゆ": true,
           "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
+          "ささやき::夏目りく": true,
+          "ささやき::新山れな": true,
+          "ささやき::美谷さや": true,
+          "ささやき::白羽りこ": true,
           "ささやき::三浦わかな": true,
-          "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
+          "ささやき::志乃りさ": true,
+          "ささやき::南あや": true,
+          "ささやき::水無月 ゆめ": true,
+          "ささやき::羽衣すず": true,
+          "ささやき::小野田ゆら": true
         },
         "2026-11-29": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
-          "ささやき::桃井ゆめ": true,
-          "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::福原みこと": true,
+          "ささやき::瀬川こと": true,
+          "ささやき::一ノ瀬のあ": true,
+          "ささやき::今野さつき": true,
+          "ささやき::江黒あんな": true,
+          "ささやき::神楽そら": true,
+          "ささやき::田中あいこ": true,
+          "ささやき::小宮もな": true,
           "ささやき::羽衣すず": true,
-          "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
-          "ささやき::二宮しんり": true,
-          "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::持田るい": true,
+          "ささやき::春ことは": true,
+          "ささやき::佐山ひおり": true,
+          "ささやき::倉田みほ": true,
+          "ささやき::平松りんか": true,
+          "ささやき::月城みかぜ": true,
+          "ささやき::茉白ひびき": true,
+          "ささやき::朱沢えみ": true,
+          "ささやき::涼音さき": true,
           "ささやき::雛えがお": true,
-          "ささやき::白石あゆ": true,
           "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
+          "ささやき::白石あゆ": true,
+          "ささやき::甘密みさき": true,
+          "ささやき::新山れな": true,
+          "ささやき::桜てん": true,
           "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
-          "ささやき::三浦わかな": true,
-          "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
+          "ささやき::氷室きょうか": true,
+          "ささやき::龍宮もか": true,
+          "ささやき::宮野しほ": true,
+          "ささやき::月青ひすい": true,
+          "ささやき::高島ちな": true,
+          "ささやき::波多野うい": true,
+          "ささやき::小野田ゆら": true,
+          "ささやき::森れい": true
         },
-        "2026-11-30": {
-          "ささやき::北園らん": true,
-          "ささやき::花宮める": true,
-          "ささやき::彩音さら": true,
-          "ささやき::桃井ゆめ": true,
-          "ささやき::茅野きく": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::福原みこと": true,
-          "ささやき::羽衣すず": true,
-          "ささやき::七海りの": true,
-          "ささやき::岡咲まき": true,
-          "ささやき::二宮しんり": true,
-          "ささやき::青空あみか": true,
-          "ささやき::東雲なの": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::持田るい": true,
-          "ささやき::雛えがお": true,
-          "ささやき::白石あゆ": true,
-          "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::湊みらい": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
-          "ささやき::三浦わかな": true,
-          "ささやき::乙ノ井より": true,
-          "ささやき::琴音めい": true
-        }
+        "2026-11-30": {}
       }
     },
     "多摩": {

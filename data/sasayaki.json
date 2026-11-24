@@ -1,7 +1,7 @@
 {
   "shop": "ささやき",
   "region": "千葉",
-  "updated_at": "2026-11-24T11:18:11+09:00",
+  "updated_at": "2026-11-24T11:27:58+09:00",
   "dates": [
     "2026-11-24",
     "2026-11-25",
@@ -12,6 +12,16 @@
     "2026-11-30"
   ],
   "therapists": [
+    {
+      "name": "一ノ瀬のあ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10038661.html"
+    },
+    {
+      "name": "一色ももか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10030624.html"
+    },
     {
       "name": "七海りの",
       "area": "",
@@ -38,6 +48,21 @@
       "url": "https://sasayaki-esthe.com/item_10029229.html"
     },
     {
+      "name": "今野さつき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10038676.html"
+    },
+    {
+      "name": "佐山ひおり",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029212.html"
+    },
+    {
+      "name": "倉田みほ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039408.html"
+    },
+    {
       "name": "北園らん",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10042318.html"
@@ -46,6 +71,56 @@
       "name": "南あや",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10030558.html"
+    },
+    {
+      "name": "吉田えな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10030271.html"
+    },
+    {
+      "name": "四季いちか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029216.html"
+    },
+    {
+      "name": "夏目りく",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10031199.html"
+    },
+    {
+      "name": "夜野はづき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039623.html"
+    },
+    {
+      "name": "夢咲ふう",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039520.html"
+    },
+    {
+      "name": "姫坂のあ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029235.html"
+    },
+    {
+      "name": "宮野しほ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039171.html"
+    },
+    {
+      "name": "小倉ゆうな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10040389.html"
+    },
+    {
+      "name": "小宮もな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10041162.html"
+    },
+    {
+      "name": "小野田ゆら",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029202.html"
     },
     {
       "name": "岡咲まき",
@@ -58,9 +133,19 @@
       "url": "https://sasayaki-esthe.com/item_10029206.html"
     },
     {
+      "name": "平松りんか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10032421.html"
+    },
+    {
       "name": "彩音さら",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10043404.html"
+    },
+    {
+      "name": "御子柴むぎ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029243.html"
     },
     {
       "name": "志乃りさ",
@@ -68,14 +153,54 @@
       "url": "https://sasayaki-esthe.com/item_10043234.html"
     },
     {
+      "name": "恋宵るな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10041251.html"
+    },
+    {
+      "name": "愛染あみ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10036839.html"
+    },
+    {
+      "name": "折本かおり",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029203.html"
+    },
+    {
       "name": "持田るい",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10037198.html"
     },
     {
+      "name": "新山れな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029228.html"
+    },
+    {
       "name": "日向なつ",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10030089.html"
+    },
+    {
+      "name": "早瀬ゆい",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029233.html"
+    },
+    {
+      "name": "星野りあ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029238.html"
+    },
+    {
+      "name": "春ことは",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10038677.html"
+    },
+    {
+      "name": "月城みかぜ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10042592.html"
     },
     {
       "name": "月砂れいら",
@@ -88,9 +213,29 @@
       "url": "https://sasayaki-esthe.com/item_10041372.html"
     },
     {
+      "name": "望月りな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10043063.html"
+    },
+    {
+      "name": "未来ねね",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10037667.html"
+    },
+    {
+      "name": "朱沢えみ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029194.html"
+    },
+    {
       "name": "東雲なの",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10034053.html"
+    },
+    {
+      "name": "柚木りお",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10043405.html"
     },
     {
       "name": "桃井ゆめ",
@@ -98,9 +243,44 @@
       "url": "https://sasayaki-esthe.com/item_10043501.html"
     },
     {
+      "name": "桜てん",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10034404.html"
+    },
+    {
+      "name": "森れい",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039193.html"
+    },
+    {
+      "name": "水無月 ゆめ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029245.html"
+    },
+    {
       "name": "氷室きょうか",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10037400.html"
+    },
+    {
+      "name": "江黒あんな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029199.html"
+    },
+    {
+      "name": "波多野うい",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10030686.html"
+    },
+    {
+      "name": "浜崎せいら",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10030953.html"
+    },
+    {
+      "name": "涼音さき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10037569.html"
     },
     {
       "name": "湊みらい",
@@ -108,9 +288,24 @@
       "url": "https://sasayaki-esthe.com/item_10036503.html"
     },
     {
+      "name": "瀬川こと",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10043579.html"
+    },
+    {
       "name": "琴音めい",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10032844.html"
+    },
+    {
+      "name": "甘密みさき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10037649.html"
+    },
+    {
+      "name": "田中あいこ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029223.html"
     },
     {
       "name": "白石あゆ",
@@ -118,9 +313,44 @@
       "url": "https://sasayaki-esthe.com/item_10029218.html"
     },
     {
+      "name": "白羽りこ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10043406.html"
+    },
+    {
+      "name": "白金れいな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10041160.html"
+    },
+    {
+      "name": "白雪つむぎ",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10043105.html"
+    },
+    {
+      "name": "白鳥れいか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10031208.html"
+    },
+    {
+      "name": "神楽そら",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10042597.html"
+    },
+    {
       "name": "福原みこと",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10043052.html"
+    },
+    {
+      "name": "秋山れんか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10034855.html"
+    },
+    {
+      "name": "美谷さや",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10029244.html"
     },
     {
       "name": "羽衣すず",
@@ -138,6 +368,16 @@
       "url": "https://sasayaki-esthe.com/item_10043298.html"
     },
     {
+      "name": "茉白ひびき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10042580.html"
+    },
+    {
+      "name": "鏡のえる",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10039112.html"
+    },
+    {
       "name": "鏡花あやめ",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10037781.html"
@@ -153,6 +393,11 @@
       "url": "https://sasayaki-esthe.com/item_10037871.html"
     },
     {
+      "name": "霞ゆうき",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10041664.html"
+    },
+    {
       "name": "青空あみか",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10042415.html"
@@ -161,6 +406,21 @@
       "name": "須藤みさ",
       "area": "",
       "url": "https://sasayaki-esthe.com/item_10043205.html"
+    },
+    {
+      "name": "高島ちな",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10031253.html"
+    },
+    {
+      "name": "黒崎ゆあん",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10042154.html"
+    },
+    {
+      "name": "龍宮もか",
+      "area": "",
+      "url": "https://sasayaki-esthe.com/item_10040382.html"
     }
   ],
   "schedule": {
@@ -197,196 +457,166 @@
       "琴音めい"
     ],
     "2026-11-25": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
-      "桃井ゆめ",
-      "茅野きく",
-      "鏡花あやめ",
-      "福原みこと",
-      "羽衣すず",
-      "七海りの",
-      "岡咲まき",
-      "二宮しんり",
-      "青空あみか",
-      "東雲なの",
+      "浜崎せいら",
+      "春ことは",
+      "新山れな",
       "月青ひすい",
+      "須藤みさ",
+      "彩音さら",
+      "琴音めい",
+      "星野りあ",
+      "朱沢えみ",
+      "望月りな",
+      "御子柴むぎ",
+      "青空あみか",
+      "小倉ゆうな",
+      "吉田えな",
+      "未来ねね",
+      "宮野しほ",
       "持田るい",
-      "雛えがお",
       "白石あゆ",
       "月砂れいら",
-      "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
-      "岸本ゆうり",
-      "須藤みさ",
+      "雛えがお",
+      "折本かおり",
       "三浦わかな",
+      "夏目りく",
+      "湊みらい",
+      "一色ももか",
+      "白羽りこ",
       "乙ノ井より",
-      "琴音めい"
+      "高島ちな",
+      "姫坂のあ",
+      "霞ゆうき"
     ],
     "2026-11-26": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
-      "桃井ゆめ",
+      "浜崎せいら",
+      "白羽りこ",
       "茅野きく",
-      "鏡花あやめ",
+      "田中あいこ",
+      "桜てん",
+      "琴音めい",
       "福原みこと",
-      "羽衣すず",
-      "七海りの",
-      "岡咲まき",
       "二宮しんり",
+      "夏目りく",
+      "四季いちか",
       "青空あみか",
-      "東雲なの",
-      "月青ひすい",
-      "持田るい",
-      "雛えがお",
-      "白石あゆ",
+      "黒崎ゆあん",
+      "早瀬ゆい",
+      "小倉ゆうな",
+      "未来ねね",
+      "夢咲ふう",
+      "湊みらい",
+      "九条かよ",
+      "甘密みさき",
+      "鏡のえる",
       "月砂れいら",
       "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
-      "岸本ゆうり",
+      "倉田みほ",
+      "姫坂のあ",
+      "春ことは",
       "須藤みさ",
       "三浦わかな",
-      "乙ノ井より",
-      "琴音めい"
+      "月青ひすい",
+      "高島ちな"
     ],
     "2026-11-27": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
+      "白羽りこ",
       "桃井ゆめ",
+      "朱沢えみ",
       "茅野きく",
-      "鏡花あやめ",
-      "福原みこと",
-      "羽衣すず",
+      "星野りあ",
+      "小宮もな",
+      "桜てん",
       "七海りの",
-      "岡咲まき",
+      "美谷さや",
       "二宮しんり",
-      "青空あみか",
-      "東雲なの",
-      "月青ひすい",
-      "持田るい",
-      "雛えがお",
-      "白石あゆ",
+      "恋宵るな",
+      "小倉ゆうな",
+      "白雪つむぎ",
+      "黒崎ゆあん",
+      "鏡のえる",
+      "鏡花あやめ",
+      "秋山れんか",
+      "吉田えな",
+      "神楽そら",
       "月砂れいら",
-      "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
-      "岸本ゆうり",
-      "須藤みさ",
       "三浦わかな",
+      "九条かよ",
+      "夜野はづき",
+      "月城みかぜ",
+      "愛染あみ",
+      "南あや",
+      "龍宮もか",
+      "白金れいな",
+      "須藤みさ",
       "乙ノ井より",
-      "琴音めい"
+      "志乃りさ"
     ],
     "2026-11-28": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
-      "桃井ゆめ",
-      "茅野きく",
-      "鏡花あやめ",
-      "福原みこと",
-      "羽衣すず",
+      "秋山れんか",
+      "柚木りお",
+      "一ノ瀬のあ",
+      "甘密みさき",
+      "今野さつき",
+      "白鳥れいか",
+      "九条かよ",
+      "田中あいこ",
       "七海りの",
-      "岡咲まき",
+      "倉田みほ",
+      "恋宵るな",
       "二宮しんり",
-      "青空あみか",
-      "東雲なの",
-      "月青ひすい",
-      "持田るい",
-      "雛えがお",
+      "江黒あんな",
+      "愛染あみ",
+      "黒崎ゆあん",
+      "平松りんか",
+      "茉白ひびき",
+      "間宮かりん",
       "白石あゆ",
       "月砂れいら",
-      "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
-      "岸本ゆうり",
-      "須藤みさ",
+      "夏目りく",
+      "新山れな",
+      "美谷さや",
+      "白羽りこ",
       "三浦わかな",
-      "乙ノ井より",
-      "琴音めい"
+      "志乃りさ",
+      "南あや",
+      "水無月 ゆめ",
+      "羽衣すず",
+      "小野田ゆら"
     ],
     "2026-11-29": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
-      "桃井ゆめ",
-      "茅野きく",
-      "鏡花あやめ",
-      "福原みこと",
+      "瀬川こと",
+      "一ノ瀬のあ",
+      "今野さつき",
+      "江黒あんな",
+      "神楽そら",
+      "田中あいこ",
+      "小宮もな",
       "羽衣すず",
-      "七海りの",
-      "岡咲まき",
-      "二宮しんり",
-      "青空あみか",
-      "東雲なの",
-      "月青ひすい",
-      "持田るい",
+      "春ことは",
+      "佐山ひおり",
+      "倉田みほ",
+      "平松りんか",
+      "月城みかぜ",
+      "茉白ひびき",
+      "朱沢えみ",
+      "涼音さき",
       "雛えがお",
-      "白石あゆ",
       "月砂れいら",
-      "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
+      "白石あゆ",
+      "甘密みさき",
+      "新山れな",
+      "桜てん",
       "岸本ゆうり",
-      "須藤みさ",
-      "三浦わかな",
-      "乙ノ井より",
-      "琴音めい"
+      "氷室きょうか",
+      "龍宮もか",
+      "宮野しほ",
+      "月青ひすい",
+      "高島ちな",
+      "波多野うい",
+      "小野田ゆら",
+      "森れい"
     ],
-    "2026-11-30": [
-      "北園らん",
-      "花宮める",
-      "彩音さら",
-      "桃井ゆめ",
-      "茅野きく",
-      "鏡花あやめ",
-      "福原みこと",
-      "羽衣すず",
-      "七海りの",
-      "岡咲まき",
-      "二宮しんり",
-      "青空あみか",
-      "東雲なの",
-      "月青ひすい",
-      "持田るい",
-      "雛えがお",
-      "白石あゆ",
-      "月砂れいら",
-      "間宮かりん",
-      "志乃りさ",
-      "日向なつ",
-      "九条かよ",
-      "湊みらい",
-      "氷室きょうか",
-      "南あや",
-      "岸本ゆうり",
-      "須藤みさ",
-      "三浦わかな",
-      "乙ノ井より",
-      "琴音めい"
-    ]
+    "2026-11-30": []
   }
 }
