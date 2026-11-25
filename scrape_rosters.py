@@ -39,7 +39,7 @@ ROSTER_URLS = {
     "NEW+PLUS": "https://o-plus.site/staff.html",
     "Offsuit": "https://offsuit.site/therapist",
     "Queendom": "https://omiya-mens-este.net/therapist.html",
-    "ささやき": "https://sasayaki-esthe.com/itemList.html",
+    "グリーンアップル": "https://greenapple-esthe.com/therapist",
 }
 
 MAX_PAGES = 10          # 1店舗あたり最大何ページまで「次のページ」をたどるか
@@ -354,7 +354,7 @@ def load_previous():
 
 
 def main():
-    print("scrape_rosters.py（2026-10-10 版F）")
+    print("scrape_rosters.py（2026-10-10 版H）")
     schedule_names = load_schedule_names()
     previous = load_previous()
     shops = {}
