@@ -55,6 +55,10 @@ jobs:
       - name: アマテラス横浜を取得
         run: python scrape_amaterasu.py
 
+      - name: グリーンアップルを取得
+        continue-on-error: true  # 新しく追加した店舗のため、失敗しても他の店舗の更新は止めない
+        run: python scrape_greenapple.py
+
       - name: LINDA SPAを取得
         run: python scrape_lindaspa.py
 
