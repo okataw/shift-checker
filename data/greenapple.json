@@ -1,0 +1,361 @@
+{
+  "shop": "グリーンアップル",
+  "region": "神奈川",
+  "updated_at": "2026-11-26T00:29:31+09:00",
+  "dates": [
+    "2026-11-26",
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+  ],
+  "therapists": [
+    {
+      "name": "あいら",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/81370"
+    },
+    {
+      "name": "あさか",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/71453"
+    },
+    {
+      "name": "あすか",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/76169"
+    },
+    {
+      "name": "あすな",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/37693"
+    },
+    {
+      "name": "あめ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/74814"
+    },
+    {
+      "name": "あゆ",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/63354"
+    },
+    {
+      "name": "いおり",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/81408"
+    },
+    {
+      "name": "うと",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/76476"
+    },
+    {
+      "name": "えむ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/60960"
+    },
+    {
+      "name": "おとは",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/46713"
+    },
+    {
+      "name": "かえで",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/82999"
+    },
+    {
+      "name": "かぐら",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/34542"
+    },
+    {
+      "name": "かりな",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/37340"
+    },
+    {
+      "name": "かるあ",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/66288"
+    },
+    {
+      "name": "きょうな",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/80986"
+    },
+    {
+      "name": "ここ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/80526"
+    },
+    {
+      "name": "ここな",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/75835"
+    },
+    {
+      "name": "さくらこ",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/38581"
+    },
+    {
+      "name": "さら",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/63353"
+    },
+    {
+      "name": "しろな",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/83002"
+    },
+    {
+      "name": "じゅな",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/79741"
+    },
+    {
+      "name": "すず",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/26504"
+    },
+    {
+      "name": "すや",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/28513"
+    },
+    {
+      "name": "せな",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/43080"
+    },
+    {
+      "name": "ちか",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/63816"
+    },
+    {
+      "name": "なつき",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/21489"
+    },
+    {
+      "name": "なのか",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/59964"
+    },
+    {
+      "name": "のあ",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/26511"
+    },
+    {
+      "name": "のどか",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/54780"
+    },
+    {
+      "name": "ひびき",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/19363"
+    },
+    {
+      "name": "ひより",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/40337"
+    },
+    {
+      "name": "ふゆ",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/40682"
+    },
+    {
+      "name": "まや",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/62217"
+    },
+    {
+      "name": "みいろ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/81367"
+    },
+    {
+      "name": "みき",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/83000"
+    },
+    {
+      "name": "みく",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/37691"
+    },
+    {
+      "name": "みはね",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/63465"
+    },
+    {
+      "name": "みゆ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/82893"
+    },
+    {
+      "name": "みる",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/74908"
+    },
+    {
+      "name": "みれい",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/75563"
+    },
+    {
+      "name": "ゆい",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/32857"
+    },
+    {
+      "name": "ゆうみ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/72687"
+    },
+    {
+      "name": "ゆかな",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/41135"
+    },
+    {
+      "name": "ゆず",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/82891"
+    },
+    {
+      "name": "ゆの",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/63815"
+    },
+    {
+      "name": "ゆま",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/70828"
+    },
+    {
+      "name": "ゆりあ",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/27560"
+    },
+    {
+      "name": "りこ",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/77254"
+    },
+    {
+      "name": "りほ",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/49438"
+    },
+    {
+      "name": "りる",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/58330"
+    },
+    {
+      "name": "るみ",
+      "area": "新百合ヶ丘",
+      "url": "https://greenapple-esthe.com/therapist/42443"
+    },
+    {
+      "name": "るる",
+      "area": "登戸",
+      "url": "https://greenapple-esthe.com/therapist/49927"
+    },
+    {
+      "name": "れあ",
+      "area": "向ケ丘遊園",
+      "url": "https://greenapple-esthe.com/therapist/20698"
+    },
+    {
+      "name": "れいあ",
+      "area": "稲田堤",
+      "url": "https://greenapple-esthe.com/therapist/32912"
+    }
+  ],
+  "schedule": {
+    "2026-11-26": [
+      "みはね",
+      "なのか",
+      "みる",
+      "あすか",
+      "うと",
+      "みく",
+      "みいろ",
+      "ゆま",
+      "あいら",
+      "あゆ",
+      "いおり",
+      "ひより",
+      "りる",
+      "まや",
+      "かるあ",
+      "きょうな"
+    ],
+    "2026-11-27": [
+      "みき",
+      "おとは",
+      "ゆの",
+      "ここな",
+      "あすな",
+      "ふゆ",
+      "りこ",
+      "ひびき",
+      "れあ",
+      "ゆず",
+      "るる",
+      "りほ",
+      "のどか",
+      "さくらこ",
+      "るみ",
+      "かえで"
+    ],
+    "2026-11-28": [
+      "ひびき",
+      "しろな",
+      "ゆりあ",
+      "あさか",
+      "あめ",
+      "なつき",
+      "れいあ",
+      "のあ",
+      "ゆま",
+      "みゆ",
+      "かぐら",
+      "のどか",
+      "じゅな",
+      "ゆい",
+      "せな",
+      "ゆうみ",
+      "ゆかな"
+    ],
+    "2026-11-29": [
+      "すず",
+      "みく",
+      "さら",
+      "ちか",
+      "みれい",
+      "ここ",
+      "りほ",
+      "かりな",
+      "いおり",
+      "すや",
+      "るみ",
+      "ゆうみ",
+      "えむ"
+    ],
+    "2026-11-30": [],
+    "2026-12-01": [],
+    "2026-12-02": []
+  }
+}
