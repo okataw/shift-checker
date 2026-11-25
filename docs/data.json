@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T22:54:28+09:00",
+  "generated_at": "2026-11-25T13:22:19+09:00",
   "regions": {
     "神奈川": {
       "therapists": [
@@ -137,13 +137,6 @@
           "url": ""
         },
         {
-          "key": "アマテラス横浜::こはる",
-          "name": "こはる",
-          "area": "横浜",
-          "shop": "アマテラス横浜",
-          "url": ""
-        },
-        {
           "key": "アマテラス横浜::さえ",
           "name": "さえ",
           "area": "武蔵小杉",
@@ -154,6 +147,13 @@
           "key": "アマテラス横浜::しおん",
           "name": "しおん",
           "area": "関内",
+          "shop": "アマテラス横浜",
+          "url": ""
+        },
+        {
+          "key": "アマテラス横浜::じゅな",
+          "name": "じゅな",
+          "area": "武蔵小杉",
           "shop": "アマテラス横浜",
           "url": ""
         },
@@ -531,14 +531,14 @@
         {
           "key": "Tigger::きょう",
           "name": "きょう",
-          "area": "不明",
+          "area": "登戸・向ヶ丘遊園",
           "shop": "Tigger",
           "url": ""
         },
         {
           "key": "Tigger::きらら",
           "name": "きらら",
-          "area": "不明",
+          "area": "武蔵小杉",
           "shop": "Tigger",
           "url": ""
         },
@@ -552,28 +552,28 @@
         {
           "key": "Tigger::さくや",
           "name": "さくや",
-          "area": "登戸・向ヶ丘遊園",
-          "shop": "Tigger",
-          "url": ""
-        },
-        {
-          "key": "Tigger::せな",
-          "name": "せな",
-          "area": "登戸・向ヶ丘遊園",
+          "area": "溝の口",
           "shop": "Tigger",
           "url": ""
         },
         {
           "key": "Tigger::ちか",
           "name": "ちか",
-          "area": "溝の口",
+          "area": "不明",
           "shop": "Tigger",
           "url": ""
         },
         {
           "key": "Tigger::のあ",
           "name": "のあ",
-          "area": "武蔵小杉",
+          "area": "溝の口",
+          "shop": "Tigger",
+          "url": ""
+        },
+        {
+          "key": "Tigger::のどか",
+          "name": "のどか",
+          "area": "登戸・向ヶ丘遊園",
           "shop": "Tigger",
           "url": ""
         },
@@ -599,16 +599,9 @@
           "url": ""
         },
         {
-          "key": "Tigger::ほたる",
-          "name": "ほたる",
-          "area": "登戸・向ヶ丘遊園",
-          "shop": "Tigger",
-          "url": ""
-        },
-        {
           "key": "Tigger::ましろ",
           "name": "ましろ",
-          "area": "調布",
+          "area": "武蔵小杉",
           "shop": "Tigger",
           "url": ""
         },
@@ -643,7 +636,7 @@
         {
           "key": "Tigger::ゆか",
           "name": "ゆか",
-          "area": "不明",
+          "area": "溝の口",
           "shop": "Tigger",
           "url": ""
         },
@@ -685,7 +678,7 @@
         {
           "key": "Tigger::りな",
           "name": "りな",
-          "area": "武蔵小杉",
+          "area": "不明",
           "shop": "Tigger",
           "url": ""
         },
@@ -699,101 +692,62 @@
         {
           "key": "Tigger::天使りん",
           "name": "天使りん",
-          "area": "登戸・向ヶ丘遊園",
+          "area": "溝の口",
           "shop": "Tigger",
           "url": ""
         }
       ],
       "dates": [
-        "2026-11-24",
         "2026-11-25",
         "2026-11-26",
         "2026-11-27",
         "2026-11-28",
         "2026-11-29",
-        "2026-11-30"
+        "2026-11-30",
+        "2026-12-01"
       ],
       "schedule": {
-        "2026-11-24": {
-          "アマテラス横浜::ここ": true,
+        "2026-11-25": {
           "アマテラス横浜::みらい": true,
           "アマテラス横浜::とわ": true,
-          "アマテラス横浜::りぼん": true,
-          "アマテラス横浜::あず": true,
-          "アマテラス横浜::りりさ": true,
-          "アマテラス横浜::ここあ": true,
-          "アマテラス横浜::みさき": true,
-          "アマテラス横浜::ひな": true,
-          "アマテラス横浜::むむ": true,
-          "アマテラス横浜::るる": true,
-          "アマテラス横浜::れいか": true,
-          "アマテラス横浜::なえ": true,
-          "アマテラス横浜::にこ": true,
-          "アマテラス横浜::ほのか": true,
-          "アマテラス横浜::のん": true,
-          "アマテラス横浜::みつり": true,
-          "アマテラス横浜::ねむ": true,
-          "アマテラス横浜::いおり": true,
           "アマテラス横浜::りな": true,
-          "アマテラス横浜::らな": true,
-          "アマテラス横浜::こはる": true,
-          "アマテラス横浜::うる": true,
-          "アマテラス横浜::ゆめ": true,
-          "Tigger::めぐ": true,
-          "Tigger::ちか": true,
-          "Tigger::ほたる": true,
-          "Tigger::きらら": true,
-          "Tigger::せな": true,
-          "Tigger::ゆら": true,
-          "Tigger::天使りん": true,
-          "Tigger::りお": true,
-          "Tigger::ひかり": true,
-          "Tigger::きょう": true,
-          "Tigger::れい": true,
-          "Tigger::ゆか": true,
-          "Tigger::いちか": true,
-          "Tigger::さくや": true
-        },
-        "2026-11-25": {
+          "アマテラス横浜::みお": true,
           "アマテラス横浜::ことは": true,
           "アマテラス横浜::はなび": true,
-          "アマテラス横浜::とわ": true,
-          "アマテラス横浜::りな": true,
-          "アマテラス横浜::みらい": true,
-          "アマテラス横浜::れいか": true,
-          "アマテラス横浜::みさき": true,
-          "アマテラス横浜::ここあ": true,
-          "アマテラス横浜::かれん": true,
-          "アマテラス横浜::ゆめ": true,
           "アマテラス横浜::きらり": true,
+          "アマテラス横浜::れいか": true,
           "アマテラス横浜::しおん": true,
           "アマテラス横浜::かぐら": true,
+          "アマテラス横浜::みさき": true,
+          "アマテラス横浜::ここあ": true,
           "アマテラス横浜::なの": true,
+          "アマテラス横浜::かれん": true,
           "アマテラス横浜::あず": true,
-          "アマテラス横浜::みのり": true,
+          "アマテラス横浜::ゆめ": true,
           "アマテラス横浜::きなこ": true,
           "アマテラス横浜::かりな": true,
           "アマテラス横浜::かなえ": true,
           "アマテラス横浜::ほむら": true,
           "アマテラス横浜::あみ": true,
-          "アマテラス横浜::ゆうり": true,
           "アマテラス横浜::わかな": true,
           "アマテラス横浜::るな": true,
           "アマテラス横浜::なえ": true,
+          "アマテラス横浜::ゆうり": true,
           "アマテラス横浜::ひな": true,
-          "Tigger::ひかり": true,
-          "Tigger::天使りん": true,
+          "Tigger::めぐ": true,
           "Tigger::みこと": true,
-          "Tigger::いろは": true,
           "Tigger::みずき": true,
-          "Tigger::ゆり": true,
-          "Tigger::ありさ": true,
+          "Tigger::天使りん": true,
           "Tigger::ぴゅあ": true,
-          "Tigger::めぐ": true
+          "Tigger::ありさ": true,
+          "Tigger::ひかり": true,
+          "Tigger::いろは": true,
+          "Tigger::ゆり": true
         },
         "2026-11-26": {
           "アマテラス横浜::ことは": true,
           "アマテラス横浜::いおり": true,
+          "アマテラス横浜::じゅな": true,
           "アマテラス横浜::しおん": true,
           "アマテラス横浜::のん": true,
           "アマテラス横浜::ひな": true,
@@ -834,15 +788,16 @@
           "Tigger::りお": true
         },
         "2026-11-27": {
+          "アマテラス横浜::わかな": true,
           "アマテラス横浜::ことは": true,
           "アマテラス横浜::はなび": true,
           "アマテラス横浜::いおり": true,
+          "アマテラス横浜::じゅな": true,
           "アマテラス横浜::のん": true,
           "アマテラス横浜::ちか": true,
           "アマテラス横浜::みつり": true,
           "アマテラス横浜::ねむ": true,
           "アマテラス横浜::うる": true,
-          "アマテラス横浜::わかな": true,
           "アマテラス横浜::りま": true,
           "アマテラス横浜::みか": true,
           "アマテラス横浜::りお": true,
@@ -888,6 +843,7 @@
         "2026-11-28": {
           "アマテラス横浜::いおり": true,
           "アマテラス横浜::せり": true,
+          "アマテラス横浜::じゅな": true,
           "アマテラス横浜::のん": true,
           "アマテラス横浜::ゆりか": true,
           "アマテラス横浜::はな": true,
@@ -945,11 +901,11 @@
           "アマテラス横浜::める": true,
           "アマテラス横浜::みつり": true,
           "アマテラス横浜::ねむ": true,
-          "アマテラス横浜::りん": true,
           "アマテラス横浜::もみじ": true,
           "アマテラス横浜::ひな": true,
           "アマテラス横浜::らな": true,
           "アマテラス横浜::ちか": true,
+          "アマテラス横浜::りん": true,
           "アマテラス横浜::あず": true,
           "アマテラス横浜::あむ": true,
           "アマテラス横浜::ちさと": true,
@@ -988,6 +944,24 @@
           "Tigger::はる": true,
           "Tigger::ゆら": true,
           "Tigger::らむ": true
+        },
+        "2026-12-01": {
+          "アマテラス横浜::みる": true,
+          "Tigger::りな": true,
+          "Tigger::のどか": true,
+          "Tigger::天使りん": true,
+          "Tigger::みこと": true,
+          "Tigger::のあ": true,
+          "Tigger::きらら": true,
+          "Tigger::ちか": true,
+          "Tigger::ゆか": true,
+          "Tigger::ゆり": true,
+          "Tigger::はる": true,
+          "Tigger::ぴゅあ": true,
+          "Tigger::さくや": true,
+          "Tigger::ましろ": true,
+          "Tigger::らむ": true,
+          "Tigger::きょう": true
         }
       }
     },
@@ -1097,6 +1071,13 @@
           "area": "",
           "shop": "アロマモア",
           "url": "https://aromamore.tokyo/item_10038735.html"
+        },
+        {
+          "key": "アロマモア::南あずさ",
+          "name": "南あずさ",
+          "area": "",
+          "shop": "アロマモア",
+          "url": "https://aromamore.tokyo/item_10007084.html"
         },
         {
           "key": "アロマモア::南沢ほの",
@@ -1253,6 +1234,13 @@
           "url": "https://aromamore.tokyo/item_10042082.html"
         },
         {
+          "key": "アロマモア::川口ゆうこ",
+          "name": "川口ゆうこ",
+          "area": "",
+          "shop": "アロマモア",
+          "url": "https://aromamore.tokyo/item_10003983.html"
+        },
+        {
           "key": "アロマモア::常盤るか",
           "name": "常盤るか",
           "area": "",
@@ -1391,13 +1379,6 @@
           "area": "",
           "shop": "アロマモア",
           "url": "https://aromamore.tokyo/item_10039627.html"
-        },
-        {
-          "key": "アロマモア::有栖川かれん",
-          "name": "有栖川かれん",
-          "area": "",
-          "shop": "アロマモア",
-          "url": "https://aromamore.tokyo/item_10003949.html"
         },
         {
           "key": "アロマモア::有馬ゆあ",
@@ -1617,6 +1598,13 @@
           "url": "https://aromamore.tokyo/item_10041440.html"
         },
         {
+          "key": "アロマモア::神乃みらん",
+          "name": "神乃みらん",
+          "area": "",
+          "shop": "アロマモア",
+          "url": "https://aromamore.tokyo/item_10030676.html"
+        },
+        {
           "key": "アロマモア::神宮れいか",
           "name": "神宮れいか",
           "area": "",
@@ -1727,6 +1715,13 @@
           "area": "",
           "shop": "アロマモア",
           "url": "https://aromamore.tokyo/item_10036457.html"
+        },
+        {
+          "key": "アロマモア::藤本ななみ",
+          "name": "藤本ななみ",
+          "area": "",
+          "shop": "アロマモア",
+          "url": "https://aromamore.tokyo/item_10042412.html"
         },
         {
           "key": "アロマモア::虹野ゆめ",
@@ -2093,13 +2088,6 @@
           "url": ""
         },
         {
-          "key": "エステの気分::はるか",
-          "name": "はるか",
-          "area": "不明",
-          "shop": "エステの気分",
-          "url": ""
-        },
-        {
           "key": "エステの気分::ひかる",
           "name": "ひかる",
           "area": "不明",
@@ -2123,13 +2111,6 @@
         {
           "key": "エステの気分::ふう",
           "name": "ふう",
-          "area": "不明",
-          "shop": "エステの気分",
-          "url": ""
-        },
-        {
-          "key": "エステの気分::まい",
-          "name": "まい",
           "area": "不明",
           "shop": "エステの気分",
           "url": ""
@@ -2473,20 +2454,6 @@
         {
           "key": "LINDA SPA::三原みきな",
           "name": "三原みきな",
-          "area": "中目黒",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
-          "key": "LINDA SPA::三田もなみ",
-          "name": "三田もなみ",
-          "area": "恵比寿",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
-          "key": "LINDA SPA::丘咲えみり",
-          "name": "丘咲えみり",
           "area": "中目黒",
           "shop": "LINDA SPA",
           "url": ""
@@ -2933,13 +2900,6 @@
           "url": ""
         },
         {
-          "key": "LINDA SPA::白葉りこ",
-          "name": "白葉りこ",
-          "area": "三軒茶屋",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
           "key": "LINDA SPA::白金じゅりあ",
           "name": "白金じゅりあ",
           "area": "麻布十番",
@@ -2956,7 +2916,7 @@
         {
           "key": "LINDA SPA::真島きらり",
           "name": "真島きらり",
-          "area": "中目黒",
+          "area": "恵比寿",
           "shop": "LINDA SPA",
           "url": ""
         },
@@ -2985,13 +2945,6 @@
           "key": "LINDA SPA::神崎アン",
           "name": "神崎アン",
           "area": "麻布十番",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
-          "key": "LINDA SPA::神楽坂ひめな",
-          "name": "神楽坂ひめな",
-          "area": "恵比寿",
           "shop": "LINDA SPA",
           "url": ""
         },
@@ -3157,20 +3110,6 @@
           "url": ""
         },
         {
-          "key": "LINDA SPA::飯島なつ",
-          "name": "飯島なつ",
-          "area": "中目黒",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
-          "key": "LINDA SPA::高原りら",
-          "name": "高原りら",
-          "area": "恵比寿",
-          "shop": "LINDA SPA",
-          "url": ""
-        },
-        {
           "key": "LINDA SPA::高梨みな",
           "name": "高梨みな",
           "area": "目黒駅",
@@ -3208,13 +3147,6 @@
         {
           "key": "NEW+PLUS::一ノ瀬きらり",
           "name": "一ノ瀬きらり",
-          "area": "秋葉原/新橋/恵比寿/北千住",
-          "shop": "NEW+PLUS",
-          "url": ""
-        },
-        {
-          "key": "NEW+PLUS::七瀬ふうか",
-          "name": "七瀬ふうか",
           "area": "秋葉原/新橋/恵比寿/北千住",
           "shop": "NEW+PLUS",
           "url": ""
@@ -3297,6 +3229,13 @@
           "url": ""
         },
         {
+          "key": "NEW+PLUS::天使そら",
+          "name": "天使そら",
+          "area": "秋葉原/新橋/恵比寿/北千住",
+          "shop": "NEW+PLUS",
+          "url": ""
+        },
+        {
           "key": "NEW+PLUS::如月るな",
           "name": "如月るな",
           "area": "秋葉原/新橋/恵比寿/北千住",
@@ -3353,13 +3292,6 @@
           "url": ""
         },
         {
-          "key": "NEW+PLUS::星まいか",
-          "name": "星まいか",
-          "area": "秋葉原/新橋/恵比寿/北千住",
-          "shop": "NEW+PLUS",
-          "url": ""
-        },
-        {
           "key": "NEW+PLUS::星宮ぴかり",
           "name": "星宮ぴかり",
           "area": "秋葉原/新橋/恵比寿/北千住",
@@ -3411,6 +3343,13 @@
         {
           "key": "NEW+PLUS::松本みゆう",
           "name": "松本みゆう",
+          "area": "秋葉原/新橋/恵比寿/北千住",
+          "shop": "NEW+PLUS",
+          "url": ""
+        },
+        {
+          "key": "NEW+PLUS::柳冬実",
+          "name": "柳冬実",
           "area": "秋葉原/新橋/恵比寿/北千住",
           "shop": "NEW+PLUS",
           "url": ""
@@ -3514,8 +3453,8 @@
           "url": ""
         },
         {
-          "key": "NEW+PLUS::皇いちか",
-          "name": "皇いちか",
+          "key": "NEW+PLUS::百花れいか",
+          "name": "百花れいか",
           "area": "秋葉原/新橋/恵比寿/北千住",
           "shop": "NEW+PLUS",
           "url": ""
@@ -3530,6 +3469,13 @@
         {
           "key": "NEW+PLUS::真白にこり",
           "name": "真白にこり",
+          "area": "秋葉原/新橋/恵比寿/北千住",
+          "shop": "NEW+PLUS",
+          "url": ""
+        },
+        {
+          "key": "NEW+PLUS::神楽りん",
+          "name": "神楽りん",
           "area": "秋葉原/新橋/恵比寿/北千住",
           "shop": "NEW+PLUS",
           "url": ""
@@ -3682,22 +3628,8 @@
           "url": ""
         },
         {
-          "key": "ウサじょ学園::おとは",
-          "name": "おとは",
-          "area": "不明",
-          "shop": "ウサじょ学園",
-          "url": ""
-        },
-        {
           "key": "ウサじょ学園::かぐや",
           "name": "かぐや",
-          "area": "不明",
-          "shop": "ウサじょ学園",
-          "url": ""
-        },
-        {
-          "key": "ウサじょ学園::きき",
-          "name": "きき",
           "area": "不明",
           "shop": "ウサじょ学園",
           "url": ""
@@ -3850,22 +3782,8 @@
           "url": ""
         },
         {
-          "key": "ウサじょ学園::ゆらら",
-          "name": "ゆらら",
-          "area": "不明",
-          "shop": "ウサじょ学園",
-          "url": ""
-        },
-        {
           "key": "ウサじょ学園::りお",
           "name": "りお",
-          "area": "不明",
-          "shop": "ウサじょ学園",
-          "url": ""
-        },
-        {
-          "key": "ウサじょ学園::りん",
-          "name": "りん",
           "area": "不明",
           "shop": "ウサじょ学園",
           "url": ""
@@ -3914,167 +3832,18 @@
         }
       ],
       "dates": [
-        "2026-11-24",
         "2026-11-25",
         "2026-11-26",
         "2026-11-27",
         "2026-11-28",
         "2026-11-29",
-        "2026-11-30"
+        "2026-11-30",
+        "2026-12-01"
       ],
       "schedule": {
-        "2026-11-24": {
-          "アロマモア::雲母ひめ": true,
-          "アロマモア::月詠ほたる": true,
-          "アロマモア::佐野ほのか": true,
-          "アロマモア::茅野せいは": true,
-          "アロマモア::水無月ありさ": true,
-          "アロマモア::愛原めい": true,
-          "アロマモア::心結ゆあ": true,
-          "アロマモア::月星きらり": true,
-          "アロマモア::葵うみ": true,
-          "アロマモア::社かぐら": true,
-          "アロマモア::千歳もか": true,
-          "アロマモア::姫野あい": true,
-          "アロマモア::月野うさぎ": true,
-          "アロマモア::花澤かのん": true,
-          "アロマモア::早乙女まい": true,
-          "アロマモア::木南ひより": true,
-          "アロマモア::桜庭みあ": true,
-          "アロマモア::恋仲もも": true,
-          "アロマモア::椎名あかり": true,
-          "アロマモア::白花ゆか": true,
-          "アロマモア::寿まい": true,
-          "アロマモア::南雲みさと": true,
-          "アロマモア::藤原みお": true,
-          "アロマモア::椛りり": true,
-          "アロマモア::緋色れい": true,
-          "アロマモア::心愛える": true,
-          "アロマモア::白石るな": true,
-          "アロマモア::愛川めぐ": true,
-          "アロマモア::櫻ななお": true,
-          "アロマモア::茜まり": true,
-          "アロマモア::桃愛りこ": true,
-          "アロマモア::美咲あいか": true,
-          "アロマモア::春咲ななせ": true,
-          "アロマモア::道枝みう": true,
-          "アロマモア::阿達れむ": true,
-          "アロマモア::吉川しおり": true,
-          "アロマモア::麻美りん": true,
-          "アロマモア::神宮れいか": true,
-          "アロマモア::嬉野そよか": true,
-          "アロマモア::四葉かなの": true,
-          "アロマモア::綾瀬ねね": true,
-          "アロマモア::日南いろは": true,
-          "アロマモア::百瀬りりあ": true,
-          "アロマモア::有馬ゆあ": true,
-          "アロマモア::夏美ゆあ": true,
-          "アロマモア::立花るい": true,
-          "アロマモア::愛沢かぐや": true,
-          "アロマモア::玉響くれあ": true,
-          "アロマモア::常盤るか": true,
-          "アロマモア::環みお": true,
-          "アロマモア::本城まゆ": true,
-          "アロマモア::一条えま": true,
-          "アロマモア::有栖川かれん": true,
-          "エステの気分::2000ゲリラ割": true,
-          "エステの気分::あいす": true,
-          "エステの気分::みらい": true,
-          "エステの気分::りな": true,
-          "エステの気分::みらん": true,
-          "エステの気分::りか": true,
-          "エステの気分::あいな": true,
-          "エステの気分::まみ": true,
-          "エステの気分::きこ": true,
-          "エステの気分::みほ": true,
-          "エステの気分::ゆめ": true,
-          "エステの気分::せな": true,
-          "エステの気分::ひかる": true,
-          "エステの気分::ひまり": true,
-          "エステの気分::あのん": true,
-          "LINDA SPA::飯島なつ": true,
-          "LINDA SPA::有森りら": true,
-          "LINDA SPA::五十嵐ゆり": true,
-          "LINDA SPA::百合川みら": true,
-          "LINDA SPA::丘咲えみり": true,
-          "LINDA SPA::青山めぐ": true,
-          "LINDA SPA::戸倉このは": true,
-          "LINDA SPA::君浦はる": true,
-          "LINDA SPA::冬月りな": true,
-          "LINDA SPA::毛利かすみ": true,
-          "LINDA SPA::天塚みはる": true,
-          "LINDA SPA::三ツ矢るり": true,
-          "LINDA SPA::恵美えな": true,
-          "LINDA SPA::真島きらり": true,
-          "LINDA SPA::日比野くるみ": true,
-          "LINDA SPA::伊藤るな": true,
-          "LINDA SPA::如月りり": true,
-          "LINDA SPA::高原りら": true,
-          "LINDA SPA::滝川ななこ": true,
-          "LINDA SPA::篠原りほ": true,
-          "LINDA SPA::三田もなみ": true,
-          "LINDA SPA::橋本まなみ": true,
-          "LINDA SPA::新木ゆう": true,
-          "LINDA SPA::神楽坂ひめな": true,
-          "LINDA SPA::菜月まりな": true,
-          "LINDA SPA::西村ゆめ": true,
-          "LINDA SPA::広瀬みすず": true,
-          "LINDA SPA::矢野ひかる": true,
-          "LINDA SPA::黒木ゆずは": true,
-          "LINDA SPA::安藤そら": true,
-          "LINDA SPA::有馬みさき": true,
-          "LINDA SPA::椎名ティナ": true,
-          "LINDA SPA::天野るな": true,
-          "LINDA SPA::森川りの": true,
-          "LINDA SPA::宮野みのり": true,
-          "LINDA SPA::白葉りこ": true,
-          "LINDA SPA::今江みう": true,
-          "LINDA SPA::高梨みな": true,
-          "NEW+PLUS::伊織らえ": true,
-          "NEW+PLUS::雪野りな": true,
-          "NEW+PLUS::如月るな": true,
-          "NEW+PLUS::のあ": true,
-          "NEW+PLUS::夏目うた": true,
-          "NEW+PLUS::エマ": true,
-          "NEW+PLUS::星街しずく": true,
-          "NEW+PLUS::宇佐見しいな": true,
-          "NEW+PLUS::七瀬ふうか": true,
-          "NEW+PLUS::姫来みあり": true,
-          "NEW+PLUS::水城さくら": true,
-          "NEW+PLUS::黒崎ひめか": true,
-          "NEW+PLUS::弓乃かほ": true,
-          "NEW+PLUS::皇いちか": true,
-          "NEW+PLUS::橋本まりな": true,
-          "NEW+PLUS::朝比奈まみ": true,
-          "NEW+PLUS::清水りり": true,
-          "NEW+PLUS::白雪みるく": true,
-          "NEW+PLUS::星まいか": true,
-          "NEW+PLUS::伊東あおい": true,
-          "NEW+PLUS::町田りこ": true,
-          "NEW+PLUS::藤堂ゆり": true,
-          "ウサじょ学園::あのん": true,
-          "ウサじょ学園::みう": true,
-          "ウサじょ学園::うい": true,
-          "ウサじょ学園::まゆ": true,
-          "ウサじょ学園::れあ": true,
-          "ウサじょ学園::きき": true,
-          "ウサじょ学園::あかね": true,
-          "ウサじょ学園::りん": true,
-          "ウサじょ学園::のどか": true,
-          "ウサじょ学園::せり": true,
-          "ウサじょ学園::みおか": true,
-          "ウサじょ学園::あき": true,
-          "ウサじょ学園::るい": true,
-          "ウサじょ学園::きなこ": true,
-          "ウサじょ学園::ゆらら": true,
-          "ウサじょ学園::こゆん": true
-        },
         "2026-11-25": {
           "アロマモア::水瀬はるか": true,
-          "アロマモア::観月ゆり": true,
-          "アロマモア::宝生のぞみ": true,
           "アロマモア::千里ひかる": true,
-          "アロマモア::姫野あい": true,
           "アロマモア::白花ゆか": true,
           "アロマモア::櫻ななお": true,
           "アロマモア::桜井ゆめか": true,
@@ -4083,21 +3852,16 @@
           "アロマモア::茅野せいは": true,
           "アロマモア::桜庭みあ": true,
           "アロマモア::藤原みお": true,
-          "アロマモア::楪らむ": true,
           "アロマモア::月野うさぎ": true,
           "アロマモア::社かぐら": true,
           "アロマモア::阿達れむ": true,
           "アロマモア::雲母ひめ": true,
           "アロマモア::若葉えな": true,
-          "アロマモア::芹沢えみり": true,
           "アロマモア::浜辺さな": true,
+          "アロマモア::白石るな": true,
           "アロマモア::天乃そら": true,
-          "アロマモア::夢咲りな": true,
           "アロマモア::加賀美ゆり": true,
           "アロマモア::新垣ひかり": true,
-          "アロマモア::三上あかね": true,
-          "アロマモア::東城ゆか": true,
-          "アロマモア::星乃もか": true,
           "アロマモア::椎名あかり": true,
           "アロマモア::来栖りお": true,
           "アロマモア::成海のん": true,
@@ -4108,60 +3872,69 @@
           "アロマモア::朝比奈まお": true,
           "アロマモア::有馬ゆあ": true,
           "アロマモア::南雲みさと": true,
+          "アロマモア::宝生のぞみ": true,
           "アロマモア::月星きらり": true,
           "アロマモア::南沢ほの": true,
+          "アロマモア::姫野あい": true,
           "アロマモア::花宮いちか": true,
           "アロマモア::早乙女まい": true,
+          "アロマモア::夢咲りな": true,
+          "アロマモア::星乃もか": true,
           "アロマモア::寿まい": true,
           "アロマモア::春咲ななせ": true,
           "アロマモア::音海あんな": true,
           "アロマモア::道枝みう": true,
           "アロマモア::神宮れいか": true,
+          "アロマモア::三上あかね": true,
           "アロマモア::夏乃うた": true,
           "アロマモア::四葉かなの": true,
           "アロマモア::綾瀬ねね": true,
           "アロマモア::日南いろは": true,
+          "アロマモア::芹沢えみり": true,
           "アロマモア::百瀬りりあ": true,
+          "アロマモア::東城ゆか": true,
+          "アロマモア::観月ゆり": true,
+          "アロマモア::楪らむ": true,
           "アロマモア::一宮ゆい": true,
           "アロマモア::環みお": true,
           "アロマモア::本城まゆ": true,
-          "エステの気分::ぴの": true,
-          "エステの気分::かえで": true,
+          "エステの気分::2000ゲリラ割": true,
           "エステの気分::みき": true,
           "エステの気分::えり": true,
           "エステの気分::ゆな": true,
-          "エステの気分::あやみ": true,
           "エステの気分::なぎ": true,
-          "エステの気分::ひかる": true,
-          "エステの気分::みなみ": true,
           "エステの気分::あのん": true,
           "エステの気分::ことね": true,
-          "エステの気分::もも": true,
-          "エステの気分::ひまり": true,
           "エステの気分::かすみ": true,
+          "エステの気分::さくら": true,
+          "エステの気分::ももな": true,
+          "エステの気分::あみ": true,
+          "エステの気分::かおる": true,
+          "エステの気分::まり": true,
+          "エステの気分::さつき": true,
+          "エステの気分::さら": true,
+          "エステの気分::みなみ": true,
+          "エステの気分::かえで": true,
+          "エステの気分::あやみ": true,
+          "エステの気分::ひまり": true,
+          "エステの気分::ぴの": true,
+          "エステの気分::もも": true,
           "エステの気分::かれん": true,
           "エステの気分::うみ": true,
           "エステの気分::みほ": true,
-          "エステの気分::さくら": true,
-          "エステの気分::さら": true,
-          "エステの気分::ももな": true,
-          "エステの気分::あみ": true,
           "エステの気分::らな": true,
-          "エステの気分::かおる": true,
           "エステの気分::みれい": true,
-          "エステの気分::まり": true,
           "エステの気分::なつ": true,
           "エステの気分::きらり": true,
-          "エステの気分::さつき": true,
           "エステの気分::しろ": true,
           "エステの気分::みい": true,
+          "エステの気分::ひかる": true,
           "エステの気分::れおな": true,
-          "エステの気分::はるか": true,
           "LINDA SPA::森川りの": true,
-          "LINDA SPA::有森りら": true,
           "LINDA SPA::五十嵐ゆり": true,
           "LINDA SPA::滝川ななこ": true,
           "LINDA SPA::西村ゆめ": true,
+          "LINDA SPA::有森りら": true,
           "LINDA SPA::毛利かすみ": true,
           "LINDA SPA::森まな": true,
           "LINDA SPA::和久井なお": true,
@@ -4202,7 +3975,6 @@
           "LINDA SPA::君浦はる": true,
           "LINDA SPA::平澤ゆみえ": true,
           "NEW+PLUS::橋本まりな": true,
-          "NEW+PLUS::桃園めぐみ": true,
           "NEW+PLUS::朝比奈まみ": true,
           "NEW+PLUS::篠宮とうか": true,
           "NEW+PLUS::真白にこり": true,
@@ -4224,16 +3996,16 @@
           "NEW+PLUS::真冬れん": true,
           "NEW+PLUS::松本みゆう": true,
           "NEW+PLUS::神田きら": true,
+          "NEW+PLUS::桃園めぐみ": true,
           "ウサじょ学園::こゆん": true,
           "ウサじょ学園::ぽめ": true,
           "ウサじょ学園::あき": true,
           "ウサじょ学園::のどか": true,
-          "ウサじょ学園::せり": true,
-          "ウサじょ学園::おとは": true,
           "ウサじょ学園::あかね": true,
+          "ウサじょ学園::みう": true,
           "ウサじょ学園::はに": true,
-          "ウサじょ学園::かぐや": true,
           "ウサじょ学園::きなこ": true,
+          "ウサじょ学園::かぐや": true,
           "ウサじょ学園::あむ": true,
           "ウサじょ学園::りお": true,
           "ウサじょ学園::れな": true,
@@ -4241,7 +4013,6 @@
         },
         "2026-11-26": {
           "アロマモア::椛りり": true,
-          "アロマモア::神宮れいか": true,
           "アロマモア::水瀬はるか": true,
           "アロマモア::夏乃うた": true,
           "アロマモア::泉ふう": true,
@@ -4263,7 +4034,6 @@
           "アロマモア::茅野せいは": true,
           "アロマモア::月野うさぎ": true,
           "アロマモア::阿達れむ": true,
-          "アロマモア::南野ここみ": true,
           "アロマモア::寿まい": true,
           "アロマモア::天乃そら": true,
           "アロマモア::雲母ひめ": true,
@@ -4286,12 +4056,14 @@
           "アロマモア::緋色れい": true,
           "アロマモア::美咲あいか": true,
           "アロマモア::道枝みう": true,
+          "アロマモア::神宮れいか": true,
           "アロマモア::虹野ゆめ": true,
           "アロマモア::綾瀬ねね": true,
           "アロマモア::日南いろは": true,
           "アロマモア::芹沢えみり": true,
           "アロマモア::玉響くれあ": true,
           "アロマモア::本城まゆ": true,
+          "アロマモア::南野ここみ": true,
           "エステの気分::ありす": true,
           "エステの気分::まゆ": true,
           "エステの気分::えり": true,
@@ -4299,7 +4071,6 @@
           "エステの気分::のん": true,
           "エステの気分::あのん": true,
           "エステの気分::ことね": true,
-          "エステの気分::まい": true,
           "エステの気分::かすみ": true,
           "エステの気分::れいな": true,
           "エステの気分::みらん": true,
@@ -4438,11 +4209,11 @@
           "アロマモア::美咲あいか": true,
           "アロマモア::天城かなで": true,
           "アロマモア::桃愛りこ": true,
+          "アロマモア::藤本ななみ": true,
           "アロマモア::南雲みさと": true,
           "アロマモア::愛川めぐ": true,
           "アロマモア::椎名あかり": true,
           "アロマモア::姫野あい": true,
-          "アロマモア::四ノ森あきね": true,
           "アロマモア::玉響くれあ": true,
           "アロマモア::若葉えな": true,
           "アロマモア::恋仲もも": true,
@@ -4452,6 +4223,7 @@
           "アロマモア::佐野ほのか": true,
           "アロマモア::月島えり": true,
           "アロマモア::緋色れい": true,
+          "アロマモア::四ノ森あきね": true,
           "アロマモア::神宮れいか": true,
           "アロマモア::広末みさ": true,
           "アロマモア::胡桃のあ": true,
@@ -4485,6 +4257,7 @@
           "エステの気分::むぎ": true,
           "エステの気分::みな": true,
           "エステの気分::なほ": true,
+          "エステの気分::りな": true,
           "エステの気分::しろ": true,
           "エステの気分::なみ": true,
           "エステの気分::なな": true,
@@ -4502,7 +4275,6 @@
           "LINDA SPA::有森りら": true,
           "LINDA SPA::日夜梨ひな": true,
           "LINDA SPA::三ツ矢るり": true,
-          "LINDA SPA::真島きらり": true,
           "LINDA SPA::宮田れい": true,
           "LINDA SPA::恵美えな": true,
           "LINDA SPA::神谷すずね": true,
@@ -4536,7 +4308,6 @@
           "NEW+PLUS::清水りり": true,
           "NEW+PLUS::沼田はまる": true,
           "NEW+PLUS::小日向うい": true,
-          "NEW+PLUS::藤堂ゆり": true,
           "NEW+PLUS::真白にこり": true,
           "NEW+PLUS::弓乃かほ": true,
           "NEW+PLUS::南雲るみな": true,
@@ -4569,7 +4340,8 @@
           "ウサじょ学園::うい": true,
           "ウサじょ学園::ねね": true,
           "ウサじょ学園::ひなの": true,
-          "ウサじょ学園::るん": true
+          "ウサじょ学園::るん": true,
+          "ウサじょ学園::こゆん": true
         },
         "2026-11-28": {
           "アロマモア::夏乃うた": true,
@@ -4682,6 +4454,7 @@
           "LINDA SPA::鈴風ゆら": true,
           "LINDA SPA::平澤ゆみえ": true,
           "LINDA SPA::日比野くるみ": true,
+          "LINDA SPA::真島きらり": true,
           "LINDA SPA::菜月まりな": true,
           "LINDA SPA::神崎アン": true,
           "LINDA SPA::関谷かな": true,
@@ -4747,9 +4520,9 @@
           "アロマモア::光月みさ": true,
           "アロマモア::白羽せいら": true,
           "アロマモア::宝生のぞみ": true,
-          "アロマモア::茅野せいは": true,
           "アロマモア::千里ひかる": true,
           "アロマモア::三上あかね": true,
+          "アロマモア::茅野せいは": true,
           "アロマモア::乙葉くるみ": true,
           "アロマモア::広末みさ": true,
           "アロマモア::常盤るか": true,
@@ -4877,7 +4650,6 @@
         },
         "2026-11-30": {
           "アロマモア::花城りん": true,
-          "アロマモア::花澤かのん": true,
           "アロマモア::神宮れいか": true,
           "アロマモア::百瀬りりあ": true,
           "アロマモア::愛沢かぐや": true,
@@ -4889,8 +4661,8 @@
           "アロマモア::姫野あい": true,
           "アロマモア::白石るな": true,
           "アロマモア::天音みゆ": true,
+          "アロマモア::茅野せいは": true,
           "アロマモア::木南ひより": true,
-          "アロマモア::月島えり": true,
           "アロマモア::常盤るか": true,
           "アロマモア::櫻ななお": true,
           "アロマモア::月野うさぎ": true,
@@ -4903,7 +4675,6 @@
           "アロマモア::瀬名かえで": true,
           "アロマモア::桜庭みあ": true,
           "アロマモア::芹沢えみり": true,
-          "アロマモア::茅野せいは": true,
           "アロマモア::浜辺さな": true,
           "アロマモア::若葉えな": true,
           "アロマモア::麻美りん": true,
@@ -4917,16 +4688,18 @@
           "アロマモア::水無月ありさ": true,
           "アロマモア::有馬ゆあ": true,
           "アロマモア::小日向ひなの": true,
+          "アロマモア::花澤かのん": true,
+          "アロマモア::月島えり": true,
           "アロマモア::日南いろは": true,
           "アロマモア::観月ゆり": true,
           "アロマモア::本城まゆ": true,
           "アロマモア::一条えま": true,
+          "NEW+PLUS::清水りり": true,
           "NEW+PLUS::藤堂ゆり": true,
           "NEW+PLUS::橋本まりな": true,
           "NEW+PLUS::弓乃かほ": true,
           "NEW+PLUS::姫来みあり": true,
           "NEW+PLUS::長谷川かれん": true,
-          "NEW+PLUS::清水りり": true,
           "NEW+PLUS::木かなの": true,
           "NEW+PLUS::十条ティナ": true,
           "NEW+PLUS::真白にこり": true,
@@ -4941,6 +4714,73 @@
           "NEW+PLUS::宇佐見しいな": true,
           "NEW+PLUS::如月るな": true,
           "NEW+PLUS::若宮つばさ": true
+        },
+        "2026-12-01": {
+          "アロマモア::美咲あいか": true,
+          "アロマモア::夏乃うた": true,
+          "アロマモア::神宮れいか": true,
+          "アロマモア::水瀬はるか": true,
+          "アロマモア::愛沢かぐや": true,
+          "アロマモア::嬉野そよか": true,
+          "アロマモア::水無月ありさ": true,
+          "アロマモア::姫野あい": true,
+          "アロマモア::千里ひかる": true,
+          "アロマモア::白石るな": true,
+          "アロマモア::神乃みらん": true,
+          "アロマモア::心結ゆあ": true,
+          "アロマモア::常盤るか": true,
+          "アロマモア::月野うさぎ": true,
+          "アロマモア::香坂ゆずは": true,
+          "アロマモア::緋色れい": true,
+          "アロマモア::南あずさ": true,
+          "アロマモア::八千草あやめ": true,
+          "アロマモア::一ノ瀬みるく": true,
+          "アロマモア::吉川しおり": true,
+          "アロマモア::雲母ひめ": true,
+          "アロマモア::桃愛りこ": true,
+          "アロマモア::浜辺さな": true,
+          "アロマモア::夢咲りな": true,
+          "アロマモア::新垣ひかり": true,
+          "アロマモア::三上あかね": true,
+          "アロマモア::星乃もか": true,
+          "アロマモア::茜まり": true,
+          "アロマモア::櫻ななお": true,
+          "アロマモア::来栖りお": true,
+          "アロマモア::愛瀬のの": true,
+          "アロマモア::心愛える": true,
+          "アロマモア::四ノ森あきね": true,
+          "アロマモア::玉響くれあ": true,
+          "アロマモア::南沢ほの": true,
+          "アロマモア::早乙女まい": true,
+          "アロマモア::梓ことね": true,
+          "アロマモア::寿まい": true,
+          "アロマモア::春咲ななせ": true,
+          "アロマモア::日南いろは": true,
+          "アロマモア::川口ゆうこ": true,
+          "アロマモア::一宮ゆい": true,
+          "アロマモア::一条えま": true,
+          "NEW+PLUS::のあ": true,
+          "NEW+PLUS::神楽りん": true,
+          "NEW+PLUS::藤堂ゆり": true,
+          "NEW+PLUS::天使そら": true,
+          "NEW+PLUS::町田りこ": true,
+          "NEW+PLUS::三上もも": true,
+          "NEW+PLUS::弓乃かほ": true,
+          "NEW+PLUS::南雲るみな": true,
+          "NEW+PLUS::苺あめ": true,
+          "NEW+PLUS::猫瀬ひまり": true,
+          "NEW+PLUS::清水りり": true,
+          "NEW+PLUS::音海かりん": true,
+          "NEW+PLUS::白雪みるく": true,
+          "NEW+PLUS::青山りか": true,
+          "NEW+PLUS::百花れいか": true,
+          "NEW+PLUS::柳冬実": true,
+          "NEW+PLUS::若宮つばさ": true,
+          "NEW+PLUS::宇佐見しいな": true,
+          "NEW+PLUS::星街しずく": true,
+          "NEW+PLUS::三澄こはる": true,
+          "NEW+PLUS::白瀬れな": true,
+          "NEW+PLUS::片瀬ありす": true
         }
       }
     },
@@ -5269,20 +5109,6 @@
           "url": ""
         },
         {
-          "key": "Offsuit::西沢　はる",
-          "name": "西沢　はる",
-          "area": "大宮/浦和/赤羽",
-          "shop": "Offsuit",
-          "url": ""
-        },
-        {
-          "key": "Offsuit::進藤　果林",
-          "name": "進藤　果林",
-          "area": "大宮/浦和/赤羽",
-          "shop": "Offsuit",
-          "url": ""
-        },
-        {
           "key": "Offsuit::野田　りん",
           "name": "野田　りん",
           "area": "大宮/浦和/赤羽",
@@ -5320,13 +5146,6 @@
         {
           "key": "Offsuit::駒月　みらん",
           "name": "駒月　みらん",
-          "area": "大宮/浦和/赤羽",
-          "shop": "Offsuit",
-          "url": ""
-        },
-        {
-          "key": "Offsuit::高峰　まや",
-          "name": "高峰　まや",
           "area": "大宮/浦和/赤羽",
           "shop": "Offsuit",
           "url": ""
@@ -5507,13 +5326,6 @@
           "url": ""
         },
         {
-          "key": "Queendom::守屋みずき",
-          "name": "守屋みずき",
-          "area": "大宮",
-          "shop": "Queendom",
-          "url": ""
-        },
-        {
           "key": "Queendom::安西すい",
           "name": "安西すい",
           "area": "大宮",
@@ -5605,13 +5417,6 @@
           "url": ""
         },
         {
-          "key": "Queendom::東雲けい",
-          "name": "東雲けい",
-          "area": "大宮",
-          "shop": "Queendom",
-          "url": ""
-        },
-        {
           "key": "Queendom::桃瀬もも",
           "name": "桃瀬もも",
           "area": "大宮",
@@ -5675,13 +5480,6 @@
           "url": ""
         },
         {
-          "key": "Queendom::深瀬るる",
-          "name": "深瀬るる",
-          "area": "大宮",
-          "shop": "Queendom",
-          "url": ""
-        },
-        {
           "key": "Queendom::瀬戸ののか",
           "name": "瀬戸ののか",
           "area": "大宮",
@@ -5705,13 +5503,6 @@
         {
           "key": "Queendom::皇まい",
           "name": "皇まい",
-          "area": "大宮",
-          "shop": "Queendom",
-          "url": ""
-        },
-        {
-          "key": "Queendom::石井ひかる",
-          "name": "石井ひかる",
           "area": "大宮",
           "shop": "Queendom",
           "url": ""
@@ -5773,13 +5564,6 @@
           "url": ""
         },
         {
-          "key": "Queendom::野口ゆな",
-          "name": "野口ゆな",
-          "area": "川越",
-          "shop": "Queendom",
-          "url": ""
-        },
-        {
           "key": "Queendom::金木さゆり",
           "name": "金木さゆり",
           "area": "大宮",
@@ -5809,74 +5593,23 @@
         }
       ],
       "dates": [
-        "2026-11-24",
         "2026-11-25",
         "2026-11-26",
         "2026-11-27",
         "2026-11-28",
         "2026-11-29",
-        "2026-11-30"
+        "2026-11-30",
+        "2026-12-01"
       ],
       "schedule": {
-        "2026-11-24": {
-          "Offsuit::高峰　まや": true,
-          "Offsuit::天使　ひめな": true,
-          "Offsuit::りお": true,
-          "Offsuit::瀬名 いおり": true,
-          "Offsuit::前田　せな": true,
-          "Offsuit::加藤　ゆな": true,
-          "Offsuit::吉岡　みれい": true,
-          "Offsuit::白石　えま": true,
-          "Offsuit::月見　あむ": true,
-          "Offsuit::進藤　果林": true,
-          "Offsuit::白雪　ゆうこ": true,
-          "Offsuit::水嶋　あおい": true,
-          "Offsuit::相原　しの": true,
-          "Offsuit::森川　すず": true,
-          "Offsuit::綾瀬　りな": true,
-          "Offsuit::桃瀬　えれな": true,
-          "Offsuit::桜羽　もも": true,
-          "Offsuit::れむ": true,
-          "Offsuit::永野　らん": true,
-          "Offsuit::西沢　はる": true,
-          "Offsuit::夏川りんね": true,
-          "Offsuit::神楽　ゆん": true,
-          "Offsuit::月城　さら": true,
-          "Queendom::七瀬まむ": true,
-          "Queendom::瀬戸ののか": true,
-          "Queendom::南なお": true,
-          "Queendom::神楽ゆあ": true,
-          "Queendom::守屋みずき": true,
-          "Queendom::石沢ゆうな": true,
-          "Queendom::城之内まふゆ": true,
-          "Queendom::深瀬るる": true,
-          "Queendom::東雲けい": true,
-          "Queendom::宮城ゆき": true,
-          "Queendom::一条ななせ": true,
-          "Queendom::浜辺るみ": true,
-          "Queendom::白石なぎさ": true,
-          "Queendom::九条つばき": true,
-          "Queendom::宝城れん": true,
-          "Queendom::木村あみ": true,
-          "Queendom::野口ゆな": true,
-          "Queendom::芹沢じゅり": true,
-          "Queendom::紫月りゅうり": true,
-          "Queendom::与田おと": true,
-          "Queendom::石井ひかる": true,
-          "Queendom::金木さゆり": true,
-          "Queendom::池田かりな": true
-        },
         "2026-11-25": {
           "Offsuit::白羽うゆ": true,
           "Offsuit::桜羽　もも": true,
-          "Offsuit::相原　しの": true,
-          "Offsuit::上原　あかね": true,
           "Offsuit::桃瀬　えれな": true,
           "Offsuit::結城　みおん": true,
           "Offsuit::加藤　ゆな": true,
           "Offsuit::清野　ちひろ": true,
           "Offsuit::今井　蛍": true,
-          "Offsuit::青山　ねね": true,
           "Offsuit::真鍋　りりか": true,
           "Offsuit::芳根　ひより": true,
           "Offsuit::高梨　もえ": true,
@@ -5886,8 +5619,11 @@
           "Offsuit::瀬名 いおり": true,
           "Offsuit::金築　みんと": true,
           "Offsuit::前田　せな": true,
+          "Offsuit::相原　しの": true,
           "Offsuit::駒月　みらん": true,
+          "Offsuit::上原　あかね": true,
           "Offsuit::鈴音　えり": true,
+          "Offsuit::青山　ねね": true,
           "Offsuit::桃園　かれん": true,
           "Offsuit::夏川りんね": true,
           "Queendom::北斗ゆりあ": true,
@@ -5895,8 +5631,8 @@
           "Queendom::木村あみ": true,
           "Queendom::天宮れん": true,
           "Queendom::天音るい": true,
-          "Queendom::野口ゆな": true,
           "Queendom::紫月りゅうり": true,
+          "Queendom::月城るか": true,
           "Queendom::姫咲れな": true,
           "Queendom::橋本このみ": true,
           "Queendom::水無月あき": true,
@@ -5909,20 +5645,18 @@
           "Queendom::小栗ゆりな": true,
           "Queendom::大塚のあ": true,
           "Queendom::芹沢じゅり": true,
-          "Queendom::黒崎いちご": true,
           "Queendom::月野かなめ": true,
-          "Queendom::西園寺きらら": true,
+          "Queendom::黒崎いちご": true,
           "Queendom::篠塚ゆの": true,
+          "Queendom::西園寺きらら": true,
           "Queendom::一条ななせ": true,
           "Queendom::安西すい": true,
           "Queendom::宮城ゆき": true,
-          "Queendom::月城るか": true,
           "Queendom::城之内まふゆ": true
         },
         "2026-11-26": {
           "Offsuit::白石　えま": true,
           "Offsuit::月見　あむ": true,
-          "Offsuit::進藤　果林": true,
           "Offsuit::白雪　ゆうこ": true,
           "Offsuit::陽向まりい": true,
           "Offsuit::上原　あかね": true,
@@ -5948,7 +5682,6 @@
           "Queendom::兎ぽん": true,
           "Queendom::芹沢じゅり": true,
           "Queendom::天音るい": true,
-          "Queendom::野口ゆな": true,
           "Queendom::紫月りゅうり": true,
           "Queendom::月城るか": true,
           "Queendom::与田おと": true,
@@ -5968,11 +5701,9 @@
           "Queendom::菅井なな": true
         },
         "2026-11-27": {
-          "Offsuit::篠崎　りあ": true,
           "Offsuit::白石　えま": true,
           "Offsuit::月見　あむ": true,
           "Offsuit::桜羽　もも": true,
-          "Offsuit::進藤　果林": true,
           "Offsuit::上原　あかね": true,
           "Offsuit::七瀬　ゆり": true,
           "Offsuit::清野　ちひろ": true,
@@ -5989,6 +5720,7 @@
           "Offsuit::伊藤　みさき": true,
           "Offsuit::姫川　りり": true,
           "Offsuit::高比良　いずみ": true,
+          "Offsuit::篠崎　りあ": true,
           "Offsuit::駒月　みらん": true,
           "Offsuit::吉岡　みれい": true,
           "Offsuit::夏川りんね": true,
@@ -5996,7 +5728,6 @@
           "Queendom::三崎なこ": true,
           "Queendom::芹沢じゅり": true,
           "Queendom::宝城れん": true,
-          "Queendom::野口ゆな": true,
           "Queendom::長濱ゆいな": true,
           "Queendom::天宮れん": true,
           "Queendom::七瀬まむ": true,
@@ -6084,7 +5815,6 @@
           "Offsuit::桃瀬　えれな": true,
           "Offsuit::芹沢　あいみ": true,
           "Offsuit::流川　るな": true,
-          "Offsuit::進藤　果林": true,
           "Offsuit::森川　すず": true,
           "Offsuit::綾瀬　りな": true,
           "Offsuit::永野　らん": true,
@@ -6101,8 +5831,8 @@
           "Offsuit::一二三　さつき": true,
           "Offsuit::神楽　ゆん": true,
           "Offsuit::桃園　かれん": true,
-          "Queendom::長濱ゆいな": true,
           "Queendom::芹沢じゅり": true,
+          "Queendom::長濱ゆいな": true,
           "Queendom::宝城れん": true,
           "Queendom::天宮れん": true,
           "Queendom::鈴屋すず": true,
@@ -6112,7 +5842,6 @@
           "Queendom::金木さゆり": true,
           "Queendom::池田かりな": true,
           "Queendom::篠塚ゆの": true,
-          "Queendom::野口ゆな": true,
           "Queendom::星乃ゆうか": true,
           "Queendom::川崎りさ": true,
           "Queendom::神楽ゆあ": true,
@@ -6126,7 +5855,8 @@
           "Queendom::森山にちか": true,
           "Queendom::咲良えのん": true
         },
-        "2026-11-30": {}
+        "2026-11-30": {},
+        "2026-12-01": {}
       }
     },
     "千葉": {
@@ -6202,13 +5932,6 @@
           "url": "https://sasayaki-esthe.com/item_10039408.html"
         },
         {
-          "key": "ささやき::北園らん",
-          "name": "北園らん",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10042318.html"
-        },
-        {
           "key": "ささやき::南あや",
           "name": "南あや",
           "area": "",
@@ -6244,13 +5967,6 @@
           "url": "https://sasayaki-esthe.com/item_10039623.html"
         },
         {
-          "key": "ささやき::夢咲ふう",
-          "name": "夢咲ふう",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10039520.html"
-        },
-        {
           "key": "ささやき::姫坂のあ",
           "name": "姫坂のあ",
           "area": "",
@@ -6284,13 +6000,6 @@
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10029202.html"
-        },
-        {
-          "key": "ささやき::岡咲まき",
-          "name": "岡咲まき",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10042040.html"
         },
         {
           "key": "ささやき::岸本ゆうり",
@@ -6349,25 +6058,11 @@
           "url": "https://sasayaki-esthe.com/item_10029203.html"
         },
         {
-          "key": "ささやき::持田るい",
-          "name": "持田るい",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10037198.html"
-        },
-        {
           "key": "ささやき::新山れな",
           "name": "新山れな",
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10029228.html"
-        },
-        {
-          "key": "ささやき::日向なつ",
-          "name": "日向なつ",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10030089.html"
         },
         {
           "key": "ささやき::早瀬ゆい",
@@ -6412,13 +6107,6 @@
           "url": "https://sasayaki-esthe.com/item_10041372.html"
         },
         {
-          "key": "ささやき::望月りな",
-          "name": "望月りな",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10043063.html"
-        },
-        {
           "key": "ささやき::未来ねね",
           "name": "未来ねね",
           "area": "",
@@ -6431,13 +6119,6 @@
           "area": "",
           "shop": "ささやき",
           "url": "https://sasayaki-esthe.com/item_10029194.html"
-        },
-        {
-          "key": "ささやき::東雲なの",
-          "name": "東雲なの",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10034053.html"
         },
         {
           "key": "ささやき::柚木りお",
@@ -6615,13 +6296,6 @@
           "url": "https://sasayaki-esthe.com/item_10037508.html"
         },
         {
-          "key": "ささやき::花宮める",
-          "name": "花宮める",
-          "area": "",
-          "shop": "ささやき",
-          "url": "https://sasayaki-esthe.com/item_10043679.html"
-        },
-        {
           "key": "ささやき::茅野きく",
           "name": "茅野きく",
           "area": "",
@@ -6707,64 +6381,28 @@
         }
       ],
       "dates": [
-        "2026-11-24",
         "2026-11-25",
         "2026-11-26",
         "2026-11-27",
         "2026-11-28",
         "2026-11-29",
-        "2026-11-30"
+        "2026-11-30",
+        "2026-12-01"
       ],
       "schedule": {
-        "2026-11-24": {
-          "ささやき::七海りの": true,
-          "ささやき::青空あみか": true,
-          "ささやき::月青ひすい": true,
-          "ささやき::雛えがお": true,
-          "ささやき::月砂れいら": true,
-          "ささやき::間宮かりん": true,
-          "ささやき::日向なつ": true,
-          "ささやき::九条かよ": true,
-          "ささやき::志乃りさ": true,
-          "ささやき::氷室きょうか": true,
-          "ささやき::南あや": true,
-          "ささやき::岸本ゆうり": true,
-          "ささやき::須藤みさ": true,
-          "ささやき::三浦わかな": true,
-          "ささやき::乙ノ井より": true,
-          "ささやき::北園らん": true,
-          "ささやき::二宮しんり": true,
-          "ささやき::白石あゆ": true,
-          "ささやき::鏡花あやめ": true,
-          "ささやき::茅野きく": true,
-          "ささやき::琴音めい": true,
-          "ささやき::持田るい": true,
-          "ささやき::岡咲まき": true,
-          "ささやき::彩音さら": true,
-          "ささやき::花宮める": true,
-          "ささやき::福原みこと": true,
-          "ささやき::桃井ゆめ": true,
-          "ささやき::羽衣すず": true,
-          "ささやき::東雲なの": true
-        },
         "2026-11-25": {
-          "ささやき::浜崎せいら": true,
-          "ささやき::春ことは": true,
           "ささやき::新山れな": true,
           "ささやき::月青ひすい": true,
           "ささやき::須藤みさ": true,
-          "ささやき::彩音さら": true,
-          "ささやき::田中あいこ": true,
           "ささやき::琴音めい": true,
-          "ささやき::星野りあ": true,
+          "ささやき::田中あいこ": true,
           "ささやき::朱沢えみ": true,
-          "ささやき::望月りな": true,
+          "ささやき::白鳥れいか": true,
           "ささやき::御子柴むぎ": true,
           "ささやき::青空あみか": true,
           "ささやき::小倉ゆうな": true,
           "ささやき::未来ねね": true,
           "ささやき::宮野しほ": true,
-          "ささやき::持田るい": true,
           "ささやき::白石あゆ": true,
           "ささやき::月砂れいら": true,
           "ささやき::雛えがお": true,
@@ -6778,9 +6416,13 @@
           "ささやき::高島ちな": true,
           "ささやき::姫坂のあ": true,
           "ささやき::吉田えな": true,
-          "ささやき::霞ゆうき": true
+          "ささやき::浜崎せいら": true,
+          "ささやき::春ことは": true,
+          "ささやき::霞ゆうき": true,
+          "ささやき::彩音さら": true
         },
         "2026-11-26": {
+          "ささやき::神楽そら": true,
           "ささやき::浜崎せいら": true,
           "ささやき::白羽りこ": true,
           "ささやき::茅野きく": true,
@@ -6796,7 +6438,6 @@
           "ささやき::早瀬ゆい": true,
           "ささやき::小倉ゆうな": true,
           "ささやき::未来ねね": true,
-          "ささやき::夢咲ふう": true,
           "ささやき::湊みらい": true,
           "ささやき::九条かよ": true,
           "ささやき::甘密みさき": true,
@@ -6824,9 +6465,9 @@
           "ささやき::二宮しんり": true,
           "ささやき::恋宵るな": true,
           "ささやき::小倉ゆうな": true,
+          "ささやき::鏡のえる": true,
           "ささやき::白雪つむぎ": true,
           "ささやき::黒崎ゆあん": true,
-          "ささやき::鏡のえる": true,
           "ささやき::鏡花あやめ": true,
           "ささやき::秋山れんか": true,
           "ささやき::吉田えな": true,
@@ -6909,7 +6550,8 @@
           "ささやき::小野田ゆら": true,
           "ささやき::森れい": true
         },
-        "2026-11-30": {}
+        "2026-11-30": {},
+        "2026-12-01": {}
       }
     },
     "多摩": {
@@ -7216,13 +6858,6 @@
           "url": ""
         },
         {
-          "key": "トキョプラ::野尻さき",
-          "name": "野尻さき",
-          "area": "立川",
-          "shop": "トキョプラ",
-          "url": ""
-        },
-        {
           "key": "トキョプラ::長濱ももか♦︎",
           "name": "長濱ももか♦︎",
           "area": "新宿",
@@ -7238,61 +6873,41 @@
         }
       ],
       "dates": [
-        "2026-11-24",
         "2026-11-25",
         "2026-11-26",
         "2026-11-27",
         "2026-11-28",
         "2026-11-29",
-        "2026-11-30"
+        "2026-11-30",
+        "2026-12-01"
       ],
       "schedule": {
-        "2026-11-24": {
-          "トキョプラ::滝沢あみ": true,
-          "トキョプラ::星川ありさ♦︎": true,
-          "トキョプラ::美波みな": true,
-          "トキョプラ::野尻さき": true,
-          "トキョプラ::渚みおり♦︎": true,
-          "トキョプラ::水瀬せな♦︎": true,
-          "トキョプラ::森あかり♦︎": true,
-          "トキョプラ::真白あず": true,
-          "トキョプラ::小鳥遊もね": true,
-          "トキョプラ::芹沢れお": true,
-          "トキョプラ::佐藤まゆ": true,
-          "トキョプラ::小日向ちい♦︎": true,
-          "トキョプラ::桜井ひより♦︎": true,
-          "トキョプラ::七森さつき♦︎": true,
-          "トキョプラ::河北ゆきな": true,
-          "トキョプラ::三柴わかな♦︎": true,
-          "トキョプラ::有栖りこ♦︎": true,
-          "トキョプラ::一色ゆう♦︎": true,
-          "トキョプラ::愛川りお": true
-        },
         "2026-11-25": {
-          "トキョプラ::河北ゆきな": true,
-          "トキョプラ::有坂みく♦︎": true,
           "トキョプラ::長濱ももか♦︎": true,
           "トキョプラ::野々宮つかさ♦︎": true,
-          "トキョプラ::美波みな": true,
-          "トキョプラ::姫宮ののみ♦︎": true,
           "トキョプラ::七沢かりん♦︎": true,
+          "トキョプラ::河北ゆきな": true,
+          "トキョプラ::有坂みく♦︎": true,
           "トキョプラ::三柴わかな♦︎": true,
-          "トキョプラ::芹沢れお": true,
           "トキョプラ::真白あず": true,
           "トキョプラ::星乃りあん♦︎": true,
           "トキョプラ::姫乃つぐみ♦︎": true,
-          "トキョプラ::渚みおり♦︎": true,
+          "トキョプラ::芹沢れお": true,
+          "トキョプラ::美波みな": true,
+          "トキョプラ::姫宮ののみ♦︎": true,
           "トキョプラ::佐野まや♦︎": true,
           "トキョプラ::森あかり♦︎": true,
           "トキョプラ::小鳥遊もね": true,
           "トキョプラ::天野にいな♦︎": true,
+          "トキョプラ::愛内りな": true,
           "トキョプラ::星川ありさ♦︎": true,
           "トキョプラ::高嶺れな": true,
           "トキョプラ::栗原かな♦︎": true,
           "トキョプラ::神谷はるか♦︎": true,
           "トキョプラ::一色ゆう♦︎": true,
           "トキョプラ::氷室いろは♦︎": true,
-          "トキョプラ::小日向ちい♦︎": true
+          "トキョプラ::小日向ちい♦︎": true,
+          "トキョプラ::渚みおり♦︎": true
         },
         "2026-11-26": {
           "トキョプラ::河北ゆきな": true,
@@ -7305,7 +6920,6 @@
           "トキョプラ::芹沢れお": true,
           "トキョプラ::長濱ももか♦︎": true,
           "トキョプラ::真白あず": true,
-          "トキョプラ::桜井ひより♦︎": true,
           "トキョプラ::水瀬せな♦︎": true,
           "トキョプラ::渚みおり♦︎": true,
           "トキョプラ::白瀬まりあ♦︎": true,
@@ -7315,7 +6929,8 @@
           "トキョプラ::有栖りこ♦︎": true,
           "トキョプラ::滝沢あみ": true,
           "トキョプラ::愛須める♦︎": true,
-          "トキョプラ::小日向ちい♦︎": true
+          "トキョプラ::小日向ちい♦︎": true,
+          "トキョプラ::桜井ひより♦︎": true
         },
         "2026-11-27": {
           "トキョプラ::佐藤まゆ": true,
@@ -7384,7 +6999,8 @@
           "トキョプラ::千森かごめ♦︎": true,
           "トキョプラ::一色ゆう♦︎": true
         },
-        "2026-11-30": {}
+        "2026-11-30": {},
+        "2026-12-01": {}
       }
     }
   }
